@@ -872,7 +872,6 @@ pattern_0 = SubResource("TileMapPattern_ogfmu")
 
 [node name="Player" parent="." instance=ExtResource("1_hg5f1")]
 position = Vector2(33, 165)
-has_double_jump = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
