@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var speed : float = 200.0
 @export var jump_velocity : float = -150.0
 @export var double_jump_velocity : float = -100
+@export var has_double_jump : bool = false
 
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite
 
@@ -24,7 +25,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
 			velocity.y = jump_velocity
-		elif not has_double_jumped:
+		elif has_double_jump && not has_double_jumped:
 			velocity.y += double_jump_velocity
 			has_double_jumped = true
 		
