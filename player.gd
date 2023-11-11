@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var speed : float = 200.0
 #acceleration between 0-1
 @export var acceleration : float = 10
-@export var deacceleration : float = 0.5
+@export var deacceleration : float = 10
 @export var jump_velocity : float = -150.0
 @export var double_jump_velocity : float = -100
 
