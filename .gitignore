@@ -15,4 +15,4 @@ data_*/
 mono_crash.*.json
 
 # ignore Godot Git plugin because of OS specific files
-addons/godot-git-plugin
+# addons/godot-git-plugin
