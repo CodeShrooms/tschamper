@@ -3,8 +3,8 @@ extends CharacterBody2D
 # player movement variables
 @export var speed : float = 200.0
 #acceleration between 0-1
-@export var acceleration : float = 0.5
-@export var deacceleration : float = 100
+@export var acceleration : float = 10
+@export var deacceleration : float = 0.5
 @export var jump_velocity : float = -150.0
 @export var double_jump_velocity : float = -100
 
@@ -39,11 +39,7 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	direction = Input.get_vector("left", "right", "jump", "down")
 	if direction:
-		
-		var calculated_speed = abs(velocity.x) + (speed * acceleration)
-		print("calculated_speed:",calculated_speed)
-		velocity.x = direction.x * (calculated_speed if calculated_speed < speed else speed)
-		print("velocity.x:",velocity.x)
+		velocity.x = move_toward(velocity.x, direction.x * speed, acceleration)
 	else:
 		velocity.x = move_toward(velocity.x, 0, deacceleration)
 
