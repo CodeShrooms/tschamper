@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://b572t6ca2rq6g"]
+[gd_scene load_steps=2 format=3 uid="uid://b572t6ca2rq6g"]
+
+[ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/MainScreen/ChakraPetch-Bold.ttf" id="1_7stx4"]
 
 [node name="OptionsScreen" type="Control"]
 layout_mode = 3
@@ -8,45 +10,59 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -350.0
-offset_top = -272.5
-offset_right = 350.0
-offset_bottom = 272.5
+offset_left = -500.0
+offset_top = -350.0
+offset_right = 500.0
+offset_bottom = 350.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 theme_override_constants/separation = 40
 alignment = 1
 
-[node name="Sound" type="Button" parent="VBoxContainer"]
+[node name="Sound" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Save")
+focus_neighbor_top = NodePath("../../Save")
+theme_override_fonts/font = ExtResource("1_7stx4")
 theme_override_font_sizes/font_size = 50
 text = "Sound"
 
-[node name="Graphics" type="Button" parent="VBoxContainer"]
+[node name="Graphics" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_7stx4")
 theme_override_font_sizes/font_size = 50
 text = "Graphics"
 
-[node name="Controls" type="Button" parent="VBoxContainer"]
+[node name="Controls" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_7stx4")
 theme_override_font_sizes/font_size = 50
 text = "Controls"
 
-[node name="Back" type="Button" parent="VBoxContainer"]
+[node name="Back" type="Button" parent="MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("1_7stx4")
 theme_override_font_sizes/font_size = 50
 text = "Back"
 
-[node name="Save" type="Button" parent="VBoxContainer"]
+[node name="Save" type="Button" parent="MarginContainer"]
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../Sound")
+size_flags_horizontal = 0
+size_flags_vertical = 8
+focus_neighbor_bottom = NodePath("../VBoxContainer/Sound")
+theme_override_fonts/font = ExtResource("1_7stx4")
 theme_override_font_sizes/font_size = 50
 text = "Save"
