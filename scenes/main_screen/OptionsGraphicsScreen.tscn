@@ -12,8 +12,10 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fubfp")
+metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(400, 400)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -47,18 +49,21 @@ theme_override_font_sizes/font_size = 38
 text = "Resolution"
 
 [node name="Checks" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
 theme_override_constants/separation = 20
 
 [node name="FullScreen" type="CheckBox" parent="HBoxContainer/Checks"]
 layout_mode = 2
 
-[node name="Resolution" type="ItemList" parent="HBoxContainer/Checks"]
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer/Checks"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
-allow_reselect = true
-auto_height = true
-text_overrun_behavior = 0
 item_count = 2
-item_0/text = "1920x1080"
-item_1/text = "720x480"
+popup/item_0/text = "1920x1080"
+popup/item_0/id = 0
+popup/item_1/text = "720x480"
+popup/item_1/id = 1
+
+[connection signal="item_selected" from="HBoxContainer/Checks/OptionButton" to="." method="_on_option_button_item_selected"]
