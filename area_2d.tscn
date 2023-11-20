@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dfjnhqa6x1rfm"]
 
 [ext_resource type="Script" path="res://Area2D.gd" id="1_il12x"]
-[ext_resource type="Texture2D" uid="uid://ee8gdwmaimli" path="res://Assets/laserRed01.png" id="2_li1wh"]
+[ext_resource type="Texture2D" path="res://Assets/laserRed01.png" id="2_li1wh"]
 
 [node name="Area2D" type="Area2D"]
 script = ExtResource("1_il12x")
