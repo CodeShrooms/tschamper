@@ -20,42 +20,11 @@ var line_timer := 0.0
 var curr_line := 0
 var lines := []
 
-var credits = [
-	[
-		"A game by Awesome Game Company"
-	],[
-		"Programming",
-		"Programmer Name",
-		"Programmer Name 2"
-	],[
-		"Art",
-		"Artist Name"
-	],[
-		"Music",
-		"Musician Name"
-	],[
-		"Sound Effects",
-		"SFX Name"
-	],[
-		"Testers",
-		"Name 1",
-		"Name 2",
-		"Name 3"
-	],[
-		"Tools used",
-		"Developed with Godot Engine",
-		"https://godotengine.org/license",
-		"",
-		"Art created with My Favourite Art Program",
-		"https://myfavouriteartprogram.com"
-	],[
-		"Special thanks",
-		"My parents",
-		"My friends",
-		"My pet rabbit"
-	]
-]
+var credits_file_path = "res://scenes/main_screen/files/credits.txt"
+var credits := []
 
+func _ready():
+	load_credits()
 
 func _process(delta):
 	var scroll_speed = base_speed * delta
@@ -123,3 +92,23 @@ func _unhandled_input(event):
 		speed_up = true
 	if event.is_action_released("ui_down") and !event.is_echo():
 		speed_up = false
+
+
+func load_credits():
+	#TODO remove dumb logic
+	var file = FileAccess.open(credits_file_path, FileAccess.READ)
+	if OK == OK:
+		var section = []
+		while !file.eof_reached():
+			var line = file.get_line().strip_edges()
+			if line != "":
+				section.append(line)
+			elif section.size() > 0:
+				credits.append(section)
+				section = []
+		# Add the last section if it exists
+		if section.size() > 0:
+			credits.append(section)
+		file.close()
+	else:
+		print("Error opening file:", credits_file_path)

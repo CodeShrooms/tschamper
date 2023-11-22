@@ -1,0 +1,31 @@
+A game by Awesome Game Company
+
+Programming
+Programmer Name
+Programmer Name 2
+
+Art
+Artist Name
+
+Music
+Musician Name
+
+Sound Effects
+SFX Name
+
+Testers
+Name 1
+Name 2
+Name 3
+
+Tools used
+Developed with Godot Engine
+https://godotengine.org/license
+
+Art created with My Favourite Art Program
+https://myfavouriteartprogram.com
+
+Special thanks
+My parents
+My friends
+My pet rabbit
