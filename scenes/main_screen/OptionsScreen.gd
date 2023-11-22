@@ -25,5 +25,12 @@ func _on_back_pressed():
 
 func _on_save_pressed():
 	#TODO make save logic
-	$"../MainMenuScreen".visible = true
-	$".".visible = false
+	var mainMenuScreen = $"../MainMenuScreen"
+	var currentScreen = $"."
+
+	if mainMenuScreen and currentScreen:
+		mainMenuScreen.visible = true
+		currentScreen.visible = false
+	else:
+		# Nodes don't exist, return to MainMenu
+		get_tree().change_scene_to_file("res://scenes/main_screen/Menu.tscn")

@@ -1,7 +1,23 @@
-[gd_scene format=3 uid="uid://56bukds5qajf"]
+[gd_scene load_steps=2 format=3 uid="uid://56bukds5qajf"]
+
+[ext_resource type="Script" path="res://scenes/main_screen/UISettingCheckbox.gd" id="1_cvqdj"]
 
 [node name="Graphics" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="UISettingCheckbox" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_cvqdj")
+
+[node name="Label" type="Label" parent="UISettingCheckbox"]
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="UISettingCheckbox"]
+layout_mode = 2
+
+[connection signal="toggled" from="UISettingCheckbox/CheckBox" to="UISettingCheckbox" method="_on_check_box_toggled"]

@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcfv21754uprc"]
+
+[ext_resource type="Script" path="res://scenes/main_screen/CreditScreen.gd" id="1_ihcji"]
+[ext_resource type="Texture2D" uid="uid://b2nldohsax5ms" path="res://Assets/MainScreen/credits_background.png" id="2_i5k8m"]
+
+[node name="CreditScreen" type="Node2D"]
+script = ExtResource("1_ihcji")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_i5k8m")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 420.0
+offset_right = 1500.0
+offset_bottom = 1080.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.129412, 0.2, 0.290196, 0.552941)
+
+[node name="CreditsContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 420.0
+offset_right = 1500.0
+offset_bottom = 1080.0
+
+[node name="Line" type="Label" parent="CreditsContainer"]
+layout_mode = 0
+anchor_right = 1.0
+offset_top = 1054.0
+offset_bottom = 1080.0
+size_flags_horizontal = 3
+text = "Credits line"
