@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://b572t6ca2rq6g"]
+[gd_scene load_steps=3 format=3 uid="uid://b572t6ca2rq6g"]
 
+[ext_resource type="Script" path="res://scenes/main_screen/OptionsScreen.gd" id="1_1lw5t"]
 [ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/MainScreen/ChakraPetch-Bold.ttf" id="1_7stx4"]
 
 [node name="OptionsScreen" type="Control"]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_1lw5t")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -66,3 +68,6 @@ focus_neighbor_bottom = NodePath("../VBoxContainer/Sound")
 theme_override_fonts/font = ExtResource("1_7stx4")
 theme_override_font_sizes/font_size = 50
 text = "Save"
+
+[connection signal="pressed" from="MarginContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="MarginContainer/Save" to="." method="_on_save_pressed"]
