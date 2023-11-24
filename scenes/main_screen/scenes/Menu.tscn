@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://71fhltlkcdhw"]
+[gd_scene load_steps=4 format=3 uid="uid://71fhltlkcdhw"]
 
 [ext_resource type="Script" path="res://scenes/main_screen/scripts/Menu.gd" id="1_4n5nq"]
 [ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/MainScreen/ChakraPetch-Bold.ttf" id="2_eh5yb"]
 [ext_resource type="PackedScene" uid="uid://b572t6ca2rq6g" path="res://scenes/main_screen/scenes/OptionsScreen.tscn" id="3_80yph"]
-[ext_resource type="PackedScene" uid="uid://bcfv21754uprc" path="res://scenes/main_screen/scenes/credit_screen.tscn" id="4_hul46"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -88,9 +87,6 @@ focus_neighbor_bottom = NodePath("../../VBoxContainer/LoadGame")
 theme_override_fonts/font = ExtResource("2_eh5yb")
 theme_override_font_sizes/font_size = 50
 text = "Credits"
-
-[node name="CreditScreen" parent="." instance=ExtResource("4_hul46")]
-visible = false
 
 [node name="OptionsScreen" parent="." instance=ExtResource("3_80yph")]
 visible = false

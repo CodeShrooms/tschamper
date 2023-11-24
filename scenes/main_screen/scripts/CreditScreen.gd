@@ -12,8 +12,6 @@ var speed_up := false
 @onready var line := $CenterContainer/CreditsContainer/Line
 
 var main_menu_file_path = "res://scenes/main_screen/scenes/Menu.tscn"
-@onready var mainMenuScreen = $"../MenuScreen"
-@onready var currentScreen = $"."
 
 var started := false
 var finished := false
@@ -24,8 +22,6 @@ var section_timer := 0.0
 var line_timer := 0.0
 var curr_line := 0
 var lines := []
-
-
 
 var credits_file_path = "res://scenes/main_screen/files/credits.txt"
 var credits := []
@@ -72,14 +68,8 @@ func _process(delta):
 func finish():
 	if not finished:
 		finished = true
-
-		if mainMenuScreen and currentScreen:
-			mainMenuScreen.visible = true
-			currentScreen.visible = false
-	else:
 		get_tree().change_scene_to_file(main_menu_file_path)
-
-
+		#$BackgroundSound.stop()
 
 func add_line():
 	var new_line = line.duplicate()

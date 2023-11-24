@@ -1,13 +1,18 @@
 extends Control
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
+	#set default checkbox values
+	match DisplayServer.window_get_mode():
+		DisplayServer.WINDOW_MODE_FULLSCREEN:
+			$CenterContainer/HBoxContainer/Checks/FullScreen.set_pressed_no_signal(true)
+		DisplayServer.WINDOW_MODE_MAXIMIZED:
+			$CenterContainer/HBoxContainer/Checks/FullScreen.set_pressed_no_signal(false)
+	match DisplayServer.window_get_vsync_mode():
+		DisplayServer.VSYNC_ENABLED:
+			$"CenterContainer/HBoxContainer/Checks/V-sync".set_pressed_no_signal(true)
+		DisplayServer.VSYNC_DISABLED:
+			$"CenterContainer/HBoxContainer/Checks/V-sync".set_pressed_no_signal(false)
+			
 
 func set_resolution(width, height):
 	get_viewport().size = Vector2i(width, height)
@@ -28,4 +33,11 @@ func _on_full_screen_toggled(button_pressed):
 	if button_pressed:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+
+
+func _on_vsync_toggled(button_pressed):
+	if button_pressed:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+	else:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)

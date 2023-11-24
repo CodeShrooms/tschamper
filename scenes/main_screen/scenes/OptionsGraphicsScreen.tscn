@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgiuej5w02cnl"]
+[gd_scene load_steps=6 format=3 uid="uid://dgiuej5w02cnl"]
 
 [ext_resource type="Script" path="res://scenes/main_screen/scripts/OptionsGraphicsScreen.gd" id="1_fubfp"]
 [ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/MainScreen/ChakraPetch-Bold.ttf" id="2_xnn1f"]
 [ext_resource type="Texture2D" uid="uid://8t7srgejt17g" path="res://Assets/MainScreen/checkbox_checked.png" id="3_vdjpr"]
 [ext_resource type="Texture2D" uid="uid://dbeouhnbm20y1" path="res://Assets/MainScreen/checkbox_unchecked.png" id="4_r5ctp"]
+
+[sub_resource type="Theme" id="Theme_god3r"]
+Fonts/fonts/large = ExtResource("2_xnn1f")
+Fonts/fonts/normal = ExtResource("2_xnn1f")
 
 [node name="Graphics" type="Control"]
 layout_mode = 3
@@ -35,7 +39,7 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
-theme_override_constants/separation = 50
+theme_override_constants/separation = 80
 
 [node name="FullScreen" type="Label" parent="CenterContainer/HBoxContainer/Labels"]
 layout_mode = 2
@@ -44,6 +48,12 @@ size_flags_vertical = 6
 theme_override_fonts/font = ExtResource("2_xnn1f")
 theme_override_font_sizes/font_size = 40
 text = "Full Screen"
+
+[node name="V-sync" type="Label" parent="CenterContainer/HBoxContainer/Labels"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_xnn1f")
+theme_override_font_sizes/font_size = 40
+text = "V-Sync"
 
 [node name="Resolution" type="Label" parent="CenterContainer/HBoxContainer/Labels"]
 layout_mode = 2
@@ -58,6 +68,7 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
+theme_override_constants/separation = 20
 
 [node name="FullScreen" type="CheckBox" parent="CenterContainer/HBoxContainer/Checks"]
 layout_mode = 2
@@ -68,16 +79,28 @@ theme_override_icons/checked = ExtResource("3_vdjpr")
 theme_override_icons/unchecked = ExtResource("4_r5ctp")
 expand_icon = true
 
-[node name="ResolutionSelect" type="OptionButton" parent="CenterContainer/HBoxContainer/Checks"]
+[node name="V-sync" type="CheckBox" parent="CenterContainer/HBoxContainer/Checks"]
 layout_mode = 2
+theme_override_constants/h_separation = 20
 theme_override_fonts/font = ExtResource("2_xnn1f")
 theme_override_font_sizes/font_size = 50
+theme_override_icons/checked = ExtResource("3_vdjpr")
+theme_override_icons/unchecked = ExtResource("4_r5ctp")
+expand_icon = true
+
+[node name="ResolutionSelect" type="OptionButton" parent="CenterContainer/HBoxContainer/Checks"]
+layout_mode = 2
+theme = SubResource("Theme_god3r")
+theme_override_fonts/font = ExtResource("2_xnn1f")
+theme_override_font_sizes/font_size = 30
 expand_icon = true
 item_count = 2
+selected = 0
 popup/item_0/text = "1920x1080"
 popup/item_0/id = 0
 popup/item_1/text = "720x480"
 popup/item_1/id = 1
 
 [connection signal="toggled" from="CenterContainer/HBoxContainer/Checks/FullScreen" to="." method="_on_full_screen_toggled"]
+[connection signal="toggled" from="CenterContainer/HBoxContainer/Checks/V-sync" to="." method="_on_vsync_toggled"]
 [connection signal="item_selected" from="CenterContainer/HBoxContainer/Checks/ResolutionSelect" to="." method="_on_option_button_item_selected"]
