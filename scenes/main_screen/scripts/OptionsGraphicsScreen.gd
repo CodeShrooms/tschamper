@@ -1,18 +1,7 @@
 extends Control
 
 func _ready():
-	#set default checkbox values
-	match DisplayServer.window_get_mode():
-		DisplayServer.WINDOW_MODE_FULLSCREEN:
-			$CenterContainer/HBoxContainer/Checks/FullScreen.set_pressed_no_signal(true)
-		DisplayServer.WINDOW_MODE_MAXIMIZED:
-			$CenterContainer/HBoxContainer/Checks/FullScreen.set_pressed_no_signal(false)
-	match DisplayServer.window_get_vsync_mode():
-		DisplayServer.VSYNC_ENABLED:
-			$"CenterContainer/HBoxContainer/Checks/V-sync".set_pressed_no_signal(true)
-		DisplayServer.VSYNC_DISABLED:
-			$"CenterContainer/HBoxContainer/Checks/V-sync".set_pressed_no_signal(false)
-			
+	update_button_values()
 
 func set_resolution(width, height):
 	get_viewport().size = Vector2i(width, height)
@@ -41,3 +30,36 @@ func _on_vsync_toggled(button_pressed):
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 	else:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+
+
+func _on_full_screen_default_pressed():
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	update_button_values()
+
+
+func _on_vsync_default_pressed():
+	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+	update_button_values()
+
+
+func _on_resolution_default_pressed():
+	set_resolution(1920, 1080)
+	update_button_values()
+	
+func update_button_values():
+		#set default checkbox values
+	match DisplayServer.window_get_mode():
+		DisplayServer.WINDOW_MODE_FULLSCREEN:
+			$CenterContainer/HBoxContainer/Checks/FullScreen.set_pressed_no_signal(true)
+		DisplayServer.WINDOW_MODE_MAXIMIZED:
+			$CenterContainer/HBoxContainer/Checks/FullScreen.set_pressed_no_signal(false)
+	match DisplayServer.window_get_vsync_mode():
+		DisplayServer.VSYNC_ENABLED:
+			$"CenterContainer/HBoxContainer/Checks/V-sync".set_pressed_no_signal(true)
+		DisplayServer.VSYNC_DISABLED:
+			$"CenterContainer/HBoxContainer/Checks/V-sync".set_pressed_no_signal(false)
+	match get_viewport().get_size():
+		Vector2i(1920, 1080):
+			$CenterContainer/HBoxContainer/Checks/ResolutionSelect.selected = 0
+		Vector2i(720, 480):
+			$CenterContainer/HBoxContainer/Checks/ResolutionSelect.selected = 1

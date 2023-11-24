@@ -1,0 +1,124 @@
+[gd_scene load_steps=7 format=3 uid="uid://dsw7vy60tqeyv"]
+
+[ext_resource type="Script" path="res://scenes/main_screen/scenes/OptionsSoundScreen.gd" id="1_7ytku"]
+[ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/MainScreen/ChakraPetch-Bold.ttf" id="1_o5asq"]
+[ext_resource type="Texture2D" uid="uid://cgf0yjbiihvxu" path="res://Assets/MainScreen/reset_to_default.png" id="2_k6ylg"]
+[ext_resource type="Texture2D" uid="uid://eitb1007jtaj" path="res://Assets/MainScreen/slider_grabber.png" id="3_swvqc"]
+[ext_resource type="Texture2D" uid="uid://d0aho36i6k5gh" path="res://Assets/MainScreen/slider.png" id="4_p14ep"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6c7yn"]
+texture = ExtResource("4_p14ep")
+texture_margin_top = 60.0
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7ytku")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+use_top_left = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Labels" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 80
+
+[node name="Master" type="Label" parent="CenterContainer/HBoxContainer/Labels"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("1_o5asq")
+theme_override_font_sizes/font_size = 40
+text = "Master"
+vertical_alignment = 1
+
+[node name="Music" type="Label" parent="CenterContainer/HBoxContainer/Labels"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_o5asq")
+theme_override_font_sizes/font_size = 40
+text = "Music"
+vertical_alignment = 1
+
+[node name="SFX" type="Label" parent="CenterContainer/HBoxContainer/Labels"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("1_o5asq")
+theme_override_font_sizes/font_size = 40
+text = "SFX"
+vertical_alignment = 1
+
+[node name="Defaults" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="Master_default" type="Button" parent="CenterContainer/HBoxContainer/Defaults"]
+layout_mode = 2
+icon = ExtResource("2_k6ylg")
+
+[node name="Music_default" type="Button" parent="CenterContainer/HBoxContainer/Defaults"]
+layout_mode = 2
+icon = ExtResource("2_k6ylg")
+
+[node name="SFX_default" type="Button" parent="CenterContainer/HBoxContainer/Defaults"]
+layout_mode = 2
+icon = ExtResource("2_k6ylg")
+
+[node name="Slider" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 50
+
+[node name="MasterVolumeSlider" type="HSlider" parent="CenterContainer/HBoxContainer/Slider"]
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("3_swvqc")
+theme_override_icons/grabber_highlight = ExtResource("3_swvqc")
+theme_override_styles/slider = SubResource("StyleBoxTexture_6c7yn")
+
+[node name="MusicVolumeSlider" type="HSlider" parent="CenterContainer/HBoxContainer/Slider"]
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("3_swvqc")
+theme_override_icons/grabber_highlight = ExtResource("3_swvqc")
+theme_override_styles/slider = SubResource("StyleBoxTexture_6c7yn")
+
+[node name="SFXVolumeSlider" type="HSlider" parent="CenterContainer/HBoxContainer/Slider"]
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("3_swvqc")
+theme_override_icons/grabber_highlight = ExtResource("3_swvqc")
+theme_override_styles/slider = SubResource("StyleBoxTexture_6c7yn")
+
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Defaults/Master_default" to="." method="_on_master_default_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Defaults/Music_default" to="." method="_on_music_default_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Defaults/SFX_default" to="." method="_on_sfx_default_pressed"]
+[connection signal="value_changed" from="CenterContainer/HBoxContainer/Slider/MasterVolumeSlider" to="." method="_on_master_volume_slider_value_changed"]
+[connection signal="value_changed" from="CenterContainer/HBoxContainer/Slider/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
+[connection signal="value_changed" from="CenterContainer/HBoxContainer/Slider/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]

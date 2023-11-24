@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgiuej5w02cnl"]
+[gd_scene load_steps=7 format=3 uid="uid://dgiuej5w02cnl"]
 
 [ext_resource type="Script" path="res://scenes/main_screen/scripts/OptionsGraphicsScreen.gd" id="1_fubfp"]
 [ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/MainScreen/ChakraPetch-Bold.ttf" id="2_xnn1f"]
+[ext_resource type="Texture2D" uid="uid://cgf0yjbiihvxu" path="res://Assets/MainScreen/reset_to_default.png" id="3_1k0go"]
 [ext_resource type="Texture2D" uid="uid://8t7srgejt17g" path="res://Assets/MainScreen/checkbox_checked.png" id="3_vdjpr"]
 [ext_resource type="Texture2D" uid="uid://dbeouhnbm20y1" path="res://Assets/MainScreen/checkbox_unchecked.png" id="4_r5ctp"]
 
@@ -63,6 +64,24 @@ theme_override_fonts/font = ExtResource("2_xnn1f")
 theme_override_font_sizes/font_size = 40
 text = "Resolution"
 
+[node name="Defaults" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="FullScreen_default" type="Button" parent="CenterContainer/HBoxContainer/Defaults"]
+layout_mode = 2
+icon = ExtResource("3_1k0go")
+
+[node name="V-sync_default" type="Button" parent="CenterContainer/HBoxContainer/Defaults"]
+layout_mode = 2
+icon = ExtResource("3_1k0go")
+
+[node name="Resolution_default" type="Button" parent="CenterContainer/HBoxContainer/Defaults"]
+layout_mode = 2
+icon = ExtResource("3_1k0go")
+
 [node name="Checks" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
@@ -101,6 +120,9 @@ popup/item_0/id = 0
 popup/item_1/text = "720x480"
 popup/item_1/id = 1
 
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Defaults/FullScreen_default" to="." method="_on_full_screen_default_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Defaults/V-sync_default" to="." method="_on_vsync_default_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Defaults/Resolution_default" to="." method="_on_resolution_default_pressed"]
 [connection signal="toggled" from="CenterContainer/HBoxContainer/Checks/FullScreen" to="." method="_on_full_screen_toggled"]
 [connection signal="toggled" from="CenterContainer/HBoxContainer/Checks/V-sync" to="." method="_on_vsync_toggled"]
 [connection signal="item_selected" from="CenterContainer/HBoxContainer/Checks/ResolutionSelect" to="." method="_on_option_button_item_selected"]

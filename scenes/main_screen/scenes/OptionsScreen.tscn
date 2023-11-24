@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b572t6ca2rq6g"]
+[gd_scene load_steps=5 format=3 uid="uid://b572t6ca2rq6g"]
 
 [ext_resource type="Script" path="res://scenes/main_screen/scripts/OptionsScreen.gd" id="1_g7cxx"]
 [ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/MainScreen/ChakraPetch-Bold.ttf" id="2_nmpog"]
 [ext_resource type="PackedScene" uid="uid://dgiuej5w02cnl" path="res://scenes/main_screen/scenes/OptionsGraphicsScreen.tscn" id="3_pmu2v"]
+[ext_resource type="PackedScene" uid="uid://dsw7vy60tqeyv" path="res://scenes/main_screen/scenes/OptionsSoundScreen.tscn" id="4_h5eqf"]
 
 [node name="OptionsScreen" type="Control"]
 layout_mode = 3
@@ -39,7 +40,7 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
-[node name="Sound" type="Control" parent="VBoxContainer/MarginContainer2/CenterContainer/TabContainer"]
+[node name="Sound" parent="VBoxContainer/MarginContainer2/CenterContainer/TabContainer" instance=ExtResource("4_h5eqf")]
 visible = false
 layout_mode = 2
 
