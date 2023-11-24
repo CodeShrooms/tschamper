@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://b572t6ca2rq6g"]
+[gd_scene load_steps=7 format=3 uid="uid://b572t6ca2rq6g"]
 
 [ext_resource type="Script" path="res://scenes/main_screen/scripts/OptionsScreen.gd" id="1_g7cxx"]
 [ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/MainScreen/ChakraPetch-Bold.ttf" id="2_nmpog"]
 [ext_resource type="PackedScene" uid="uid://dgiuej5w02cnl" path="res://scenes/main_screen/scenes/OptionsGraphicsScreen.tscn" id="3_pmu2v"]
 [ext_resource type="PackedScene" uid="uid://dsw7vy60tqeyv" path="res://scenes/main_screen/scenes/OptionsSoundScreen.tscn" id="4_h5eqf"]
+[ext_resource type="PackedScene" uid="uid://d1xhsttsa41tm" path="res://scenes/main_screen/scenes/OptionsControlsScreen.tscn" id="5_usew7"]
+[ext_resource type="PackedScene" uid="uid://ckoly6homro4b" path="res://scenes/main_screen/scenes/OptionsGeneralScreen.tscn" id="6_c3vva"]
 
 [node name="OptionsScreen" type="Control"]
 layout_mode = 3
@@ -33,18 +35,18 @@ theme_override_constants/side_margin = 0
 theme_override_fonts/font = ExtResource("2_nmpog")
 theme_override_font_sizes/font_size = 50
 
-[node name="General" type="Control" parent="VBoxContainer/MarginContainer2/CenterContainer/TabContainer"]
-layout_mode = 2
-
-[node name="Graphics" parent="VBoxContainer/MarginContainer2/CenterContainer/TabContainer" instance=ExtResource("3_pmu2v")]
-visible = false
+[node name="General" parent="VBoxContainer/MarginContainer2/CenterContainer/TabContainer" instance=ExtResource("6_c3vva")]
 layout_mode = 2
 
 [node name="Sound" parent="VBoxContainer/MarginContainer2/CenterContainer/TabContainer" instance=ExtResource("4_h5eqf")]
 visible = false
 layout_mode = 2
 
-[node name="Controls" type="Control" parent="VBoxContainer/MarginContainer2/CenterContainer/TabContainer"]
+[node name="Graphics" parent="VBoxContainer/MarginContainer2/CenterContainer/TabContainer" instance=ExtResource("3_pmu2v")]
+visible = false
+layout_mode = 2
+
+[node name="Controls" parent="VBoxContainer/MarginContainer2/CenterContainer/TabContainer" instance=ExtResource("5_usew7")]
 visible = false
 layout_mode = 2
 

@@ -24,7 +24,3 @@ func _on_save_pressed():
 
 func finish():
 	get_tree().change_scene_to_file(main_menu_file_path)
-
-
-func _on_graphics_pressed():
-	pass # Replace with function body.

@@ -13,10 +13,8 @@ func _on_option_button_item_selected(index):
 			set_resolution(1920, 1080)
 		"720x480":
 			set_resolution(720, 480)
-		# Add more options as needed
 		_:
 			print("Unknown option selected:", selected_option)
-
 
 func _on_full_screen_toggled(button_pressed):
 	if button_pressed:
@@ -24,30 +22,26 @@ func _on_full_screen_toggled(button_pressed):
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 
-
 func _on_vsync_toggled(button_pressed):
 	if button_pressed:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 	else:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 
-
 func _on_full_screen_default_pressed():
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	update_button_values()
 
-
 func _on_vsync_default_pressed():
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 	update_button_values()
-
 
 func _on_resolution_default_pressed():
 	set_resolution(1920, 1080)
 	update_button_values()
 	
 func update_button_values():
-		#set default checkbox values
+	#set default checkbox values//check which options are 4real currently enabled
 	match DisplayServer.window_get_mode():
 		DisplayServer.WINDOW_MODE_FULLSCREEN:
 			$CenterContainer/HBoxContainer/Checks/FullScreen.set_pressed_no_signal(true)
