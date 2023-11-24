@@ -1,69 +1,83 @@
-[gd_scene load_steps=2 format=3 uid="uid://dgiuej5w02cnl"]
+[gd_scene load_steps=5 format=3 uid="uid://dgiuej5w02cnl"]
 
 [ext_resource type="Script" path="res://scenes/main_screen/scripts/OptionsGraphicsScreen.gd" id="1_fubfp"]
+[ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/MainScreen/ChakraPetch-Bold.ttf" id="2_xnn1f"]
+[ext_resource type="Texture2D" uid="uid://8t7srgejt17g" path="res://Assets/MainScreen/checkbox_checked.png" id="3_vdjpr"]
+[ext_resource type="Texture2D" uid="uid://dbeouhnbm20y1" path="res://Assets/MainScreen/checkbox_unchecked.png" id="4_r5ctp"]
 
 [node name="Graphics" type="Control"]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fubfp")
-metadata/_edit_use_anchors_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(400, 400)
+[node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -114.0
-offset_top = -58.0
-offset_right = 114.0
-offset_bottom = 58.0
 grow_horizontal = 2
 grow_vertical = 2
+use_top_left = true
 
-[node name="Labels" type="VBoxContainer" parent="HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+theme_override_constants/separation = 30
+alignment = 1
 
-[node name="FullScreen" type="Label" parent="HBoxContainer/Labels"]
+[node name="Labels" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 50
+
+[node name="FullScreen" type="Label" parent="CenterContainer/HBoxContainer/Labels"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-theme_override_font_sizes/font_size = 38
+theme_override_fonts/font = ExtResource("2_xnn1f")
+theme_override_font_sizes/font_size = 40
 text = "Full Screen"
 
-[node name="Resolution" type="Label" parent="HBoxContainer/Labels"]
+[node name="Resolution" type="Label" parent="CenterContainer/HBoxContainer/Labels"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-theme_override_font_sizes/font_size = 38
+theme_override_fonts/font = ExtResource("2_xnn1f")
+theme_override_font_sizes/font_size = 40
 text = "Resolution"
 
-[node name="Checks" type="VBoxContainer" parent="HBoxContainer"]
+[node name="Checks" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
-theme_override_constants/separation = 20
 
-[node name="FullScreen" type="CheckBox" parent="HBoxContainer/Checks"]
+[node name="FullScreen" type="CheckBox" parent="CenterContainer/HBoxContainer/Checks"]
 layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_fonts/font = ExtResource("2_xnn1f")
+theme_override_font_sizes/font_size = 50
+theme_override_icons/checked = ExtResource("3_vdjpr")
+theme_override_icons/unchecked = ExtResource("4_r5ctp")
+expand_icon = true
 
-[node name="OptionButton" type="OptionButton" parent="HBoxContainer/Checks"]
+[node name="ResolutionSelect" type="OptionButton" parent="CenterContainer/HBoxContainer/Checks"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_xnn1f")
+theme_override_font_sizes/font_size = 50
+expand_icon = true
 item_count = 2
 popup/item_0/text = "1920x1080"
 popup/item_0/id = 0
 popup/item_1/text = "720x480"
 popup/item_1/id = 1
 
-[connection signal="item_selected" from="HBoxContainer/Checks/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="toggled" from="CenterContainer/HBoxContainer/Checks/FullScreen" to="." method="_on_full_screen_toggled"]
+[connection signal="item_selected" from="CenterContainer/HBoxContainer/Checks/ResolutionSelect" to="." method="_on_option_button_item_selected"]
