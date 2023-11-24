@@ -1,0 +1,103 @@
+[gd_scene load_steps=5 format=3 uid="uid://71fhltlkcdhw"]
+
+[ext_resource type="Script" path="res://scenes/main_screen/scripts/Menu.gd" id="1_4n5nq"]
+[ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/MainScreen/ChakraPetch-Bold.ttf" id="2_eh5yb"]
+[ext_resource type="PackedScene" uid="uid://b572t6ca2rq6g" path="res://scenes/main_screen/scenes/OptionsScreen.tscn" id="3_80yph"]
+[ext_resource type="PackedScene" uid="uid://bcfv21754uprc" path="res://scenes/main_screen/scenes/credit_screen.tscn" id="4_hul46"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4n5nq")
+
+[node name="MenuScreen" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -272.5
+offset_right = 350.0
+offset_bottom = 272.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="LoadGame" type="Button" parent="MenuScreen/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../../MarginContainer/Credits")
+theme_override_fonts/font = ExtResource("2_eh5yb")
+theme_override_font_sizes/font_size = 50
+text = "Load Game"
+
+[node name="NewGame" type="Button" parent="MenuScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_eh5yb")
+theme_override_font_sizes/font_size = 50
+text = "New Game"
+
+[node name="Options" type="Button" parent="MenuScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_eh5yb")
+theme_override_font_sizes/font_size = 50
+text = "Options"
+
+[node name="Quit" type="Button" parent="MenuScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_eh5yb")
+theme_override_font_sizes/font_size = 50
+text = "Quit"
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuScreen"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -124.0
+offset_right = 180.0
+grow_vertical = 0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Credits" type="Button" parent="MenuScreen/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+focus_neighbor_bottom = NodePath("../../VBoxContainer/LoadGame")
+theme_override_fonts/font = ExtResource("2_eh5yb")
+theme_override_font_sizes/font_size = 50
+text = "Credits"
+
+[node name="CreditScreen" parent="." instance=ExtResource("4_hul46")]
+visible = false
+
+[node name="OptionsScreen" parent="." instance=ExtResource("3_80yph")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="MenuScreen/VBoxContainer/LoadGame" to="." method="_on_load_game_pressed"]
+[connection signal="pressed" from="MenuScreen/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="MenuScreen/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MenuScreen/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MenuScreen/MarginContainer/Credits" to="." method="_on_credits_pressed"]

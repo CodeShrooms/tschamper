@@ -1,17 +1,25 @@
-A game by Awesome Game Company
+Tschumper-Game
+
+by Sharks 'n Shrooms
 
 Programming
-Programmer Name
-Programmer Name 2
+Thomas Klaus
+Jessica Zickgraf
+Sven Vogel
+Felix Müller
+Charlotte Bauer
+Eva Hölzl
 
 Art
-Artist Name
+Sven Vogel
+Jessica Zickgraf
+Charlotte Bauer
 
 Music
-Musician Name
+DJ Ferrari
 
 Sound Effects
-SFX Name
+DJ Ferrari
 
 Testers
 Name 1

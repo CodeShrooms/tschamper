@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://56bukds5qajf"]
 
-[ext_resource type="Script" path="res://scenes/main_screen/UISettingCheckbox.gd" id="1_cvqdj"]
+[ext_resource type="Script" path="res://scenes/main_screen/scripts/UISettingCheckbox.gd" id="1_cvqdj"]
 
 [node name="Graphics" type="Control"]
 layout_mode = 3

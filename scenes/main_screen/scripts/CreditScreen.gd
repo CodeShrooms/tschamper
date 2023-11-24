@@ -4,12 +4,17 @@ const section_time := 2.0
 const line_time := 0.3
 const base_speed := 100
 const speed_up_multiplier := 10.0
-const title_color := Color.BLUE_VIOLET
+const title_color := Color.RED
 
 var scroll_speed := base_speed
 var speed_up := false
 
-@onready var line := $CreditsContainer/Line
+@onready var line := $CenterContainer/CreditsContainer/Line
+
+var main_menu_file_path = "res://scenes/main_screen/scenes/Menu.tscn"
+@onready var mainMenuScreen = $"../MenuScreen"
+@onready var currentScreen = $"."
+
 var started := false
 var finished := false
 
@@ -19,6 +24,8 @@ var section_timer := 0.0
 var line_timer := 0.0
 var curr_line := 0
 var lines := []
+
+
 
 var credits_file_path = "res://scenes/main_screen/files/credits.txt"
 var credits := []
@@ -65,9 +72,13 @@ func _process(delta):
 func finish():
 	if not finished:
 		finished = true
-		# NOTE: This is called when the credits finish
-		# - Hook up your code to return to the relevant scene here, eg...
-		#get_tree().change_scene("res://scenes/MainMenu.tscn")
+
+		if mainMenuScreen and currentScreen:
+			mainMenuScreen.visible = true
+			currentScreen.visible = false
+	else:
+		get_tree().change_scene_to_file(main_menu_file_path)
+
 
 
 func add_line():
@@ -76,7 +87,7 @@ func add_line():
 	lines.append(new_line)
 	if curr_line == 0:
 		new_line.set("font_color", title_color)
-	$CreditsContainer.add_child(new_line)
+	$CenterContainer/CreditsContainer.add_child(new_line)
 	
 	if section.size() > 0:
 		curr_line += 1
@@ -88,9 +99,9 @@ func add_line():
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):
 		finish()
-	if event.is_action_pressed("ui_down") and !event.is_echo():
+	if (event.is_action_pressed("ui_down") || event.is_action_pressed("ui_up")) and !event.is_echo():
 		speed_up = true
-	if event.is_action_released("ui_down") and !event.is_echo():
+	if (event.is_action_released("ui_down") || event.is_action_released("ui_up")) and !event.is_echo():
 		speed_up = false
 
 
@@ -112,3 +123,7 @@ func load_credits():
 		file.close()
 	else:
 		print("Error opening file:", credits_file_path)
+
+
+func _on_back_pressed():
+	finish()

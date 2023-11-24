@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dgiuej5w02cnl"]
 
-[ext_resource type="Script" path="res://scenes/main_screen/OptionsGraphicsScreen.gd" id="1_fubfp"]
+[ext_resource type="Script" path="res://scenes/main_screen/scripts/OptionsGraphicsScreen.gd" id="1_fubfp"]
 
 [node name="Graphics" type="Control"]
 layout_mode = 3
