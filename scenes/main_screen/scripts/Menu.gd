@@ -4,7 +4,7 @@ extends Control
 @onready var optionsScreen = $OptionsScreen
 
 var first_level_file_path = "res://scenes/levels/test_level.tscn"
-var credits_screen_file_path = "res://scenes/main_screen/scenes/credit_screen.tscn"
+var credits_screen_file_path = "res://scenes/main_screen/scenes/CreditScreen.tscn"
 
 func _ready():
 	#select New Game Button with keyboard

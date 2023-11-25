@@ -1,12 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://bcfv21754uprc"]
 
-[ext_resource type="Script" path="res://scenes/main_screen/scripts/CreditScreen.gd" id="1_wpjfj"]
-[ext_resource type="Texture2D" uid="uid://b2nldohsax5ms" path="res://Assets/MainScreen/credits_background.png" id="2_o581d"]
-[ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/MainScreen/ChakraPetch-Bold.ttf" id="3_vplmj"]
-[ext_resource type="AudioStream" uid="uid://cfa7bq1i8wy84" path="res://Assets/Sound/Ending Song Demo 1.wav" id="4_wvqsd"]
+[ext_resource type="Script" path="res://scenes/main_screen/scripts/CreditScreen.gd" id="1_hxto2"]
+[ext_resource type="Texture2D" uid="uid://b2nldohsax5ms" path="res://Assets/MainScreen/credits_background.png" id="2_jj3o3"]
+[ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/MainScreen/ChakraPetch-Bold.ttf" id="3_whp5t"]
+[ext_resource type="AudioStream" uid="uid://cfa7bq1i8wy84" path="res://Assets/Sound/Ending Song Demo 1.wav" id="4_jrsr4"]
 
 [node name="CreditScreen" type="Node2D"]
-script = ExtResource("1_wpjfj")
+script = ExtResource("1_hxto2")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 offset_right = 1920.0
@@ -14,7 +14,7 @@ offset_bottom = 1080.0
 
 [node name="TextureRect" type="TextureRect" parent="CenterContainer"]
 layout_mode = 2
-texture = ExtResource("2_o581d")
+texture = ExtResource("2_jj3o3")
 
 [node name="ColorRect" type="ColorRect" parent="CenterContainer"]
 custom_minimum_size = Vector2(1480, 880)
@@ -46,12 +46,12 @@ theme_override_constants/margin_bottom = 50
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
-theme_override_fonts/font = ExtResource("3_vplmj")
+theme_override_fonts/font = ExtResource("3_whp5t")
 theme_override_font_sizes/font_size = 50
 text = "Back"
 
 [node name="BackgroundSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_wvqsd")
+stream = ExtResource("4_jrsr4")
 autoplay = true
 
 [connection signal="pressed" from="MarginContainer/Back" to="." method="_on_back_pressed"]
