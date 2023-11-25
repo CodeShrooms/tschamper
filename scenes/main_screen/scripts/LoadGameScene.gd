@@ -5,6 +5,10 @@ extends Control
 
 var main_menu_file_path = "res://scenes/main_screen/scenes/Menu.tscn"
 
+func _on_button_pressed():
+	print("Button pressed")
+	pass # Replace with function body.
+
 func _on_back_pressed():
 	if mainMenuScreen and currentScreen:
 		mainMenuScreen.visible = true
@@ -21,7 +25,7 @@ func _on_save_pressed():
 		currentScreen.visible = false
 	else:
 		finish()
-
+		
 func finish():
 	get_tree().change_scene_to_file(main_menu_file_path)
 

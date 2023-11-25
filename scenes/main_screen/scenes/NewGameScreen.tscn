@@ -1,0 +1,202 @@
+[gd_scene load_steps=6 format=3 uid="uid://hkf7y4d4qw4t"]
+
+[ext_resource type="Script" path="res://scenes/main_screen/scripts/NewGameScreen.gd" id="1_o78j0"]
+[ext_resource type="FontFile" uid="uid://chh381606d4a8" path="res://Assets/Fonts/MainScreen/ChakraPetch-Medium.ttf" id="1_uj1aj"]
+[ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/MainScreen/ChakraPetch-Bold.ttf" id="2_o4ocl"]
+[ext_resource type="FontFile" uid="uid://bhp44yo407br1" path="res://Assets/Fonts/MainScreen/ChakraPetch-Italic.ttf" id="3_44xjf"]
+[ext_resource type="FontFile" uid="uid://dpsw4r8hh4c6r" path="res://Assets/Fonts/MainScreen/ChakraPetch-BoldItalic.ttf" id="4_owvxd"]
+
+[node name="NewGameScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o78j0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_constants/separation = 140
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 170
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 70
+
+[node name="Slot1" type="RichTextLabel" parent="VBoxContainer/MarginContainer2/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(450, 650)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_uj1aj")
+theme_override_fonts/bold_font = ExtResource("2_o4ocl")
+theme_override_fonts/italics_font = ExtResource("3_44xjf")
+theme_override_fonts/bold_italics_font = ExtResource("4_owvxd")
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 50
+theme_override_font_sizes/italics_font_size = 30
+theme_override_font_sizes/bold_italics_font_size = 40
+bbcode_enabled = true
+text = "[center]
+
+
+
+
+[b]New Game[/b]
+
+Slot 1
+[/center]
+[center][i]This Slot Name[/i][/center]
+"
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer2/CenterContainer/HBoxContainer/Slot1"]
+show_behind_parent = true
+use_parent_material = true
+custom_minimum_size = Vector2(450, 650)
+layout_mode = 0
+offset_right = 450.0
+offset_bottom = 650.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.423529, 0.784314, 0.603922, 1)
+
+[node name="Slot1Button" type="Button" parent="VBoxContainer/MarginContainer2/CenterContainer/HBoxContainer/Slot1"]
+show_behind_parent = true
+custom_minimum_size = Vector2(450, 650)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -330.0
+offset_right = 450.0
+offset_bottom = 320.0
+grow_vertical = 2
+
+[node name="Slot2" type="RichTextLabel" parent="VBoxContainer/MarginContainer2/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(450, 650)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_uj1aj")
+theme_override_fonts/bold_font = ExtResource("2_o4ocl")
+theme_override_fonts/italics_font = ExtResource("3_44xjf")
+theme_override_fonts/bold_italics_font = ExtResource("4_owvxd")
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 50
+theme_override_font_sizes/italics_font_size = 30
+theme_override_font_sizes/bold_italics_font_size = 40
+bbcode_enabled = true
+text = "[center]
+
+
+
+
+[b]New Game[/b]
+
+Slot 2
+[/center]
+[center][i]This Slot Name[/i][/center]
+"
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer2/CenterContainer/HBoxContainer/Slot2"]
+show_behind_parent = true
+use_parent_material = true
+custom_minimum_size = Vector2(450, 650)
+layout_mode = 0
+offset_right = 450.0
+offset_bottom = 650.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.423529, 0.784314, 0.603922, 1)
+
+[node name="Slot2Button" type="Button" parent="VBoxContainer/MarginContainer2/CenterContainer/HBoxContainer/Slot2"]
+show_behind_parent = true
+custom_minimum_size = Vector2(450, 650)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -330.0
+offset_right = 450.0
+offset_bottom = 320.0
+grow_vertical = 2
+
+[node name="Slot3" type="RichTextLabel" parent="VBoxContainer/MarginContainer2/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(450, 650)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_uj1aj")
+theme_override_fonts/bold_font = ExtResource("2_o4ocl")
+theme_override_fonts/italics_font = ExtResource("3_44xjf")
+theme_override_fonts/bold_italics_font = ExtResource("4_owvxd")
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 50
+theme_override_font_sizes/italics_font_size = 30
+theme_override_font_sizes/bold_italics_font_size = 40
+bbcode_enabled = true
+text = "[center]
+
+
+
+
+[b]New Game[/b]
+
+Slot 3
+[/center]
+[center][i]This Slot Name[/i][/center]
+"
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer2/CenterContainer/HBoxContainer/Slot3"]
+show_behind_parent = true
+use_parent_material = true
+custom_minimum_size = Vector2(450, 650)
+layout_mode = 0
+offset_right = 450.0
+offset_bottom = 650.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.423529, 0.784314, 0.603922, 1)
+
+[node name="Slot3Button" type="Button" parent="VBoxContainer/MarginContainer2/CenterContainer/HBoxContainer/Slot3"]
+show_behind_parent = true
+custom_minimum_size = Vector2(450, 650)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -330.0
+offset_right = 450.0
+offset_bottom = 320.0
+grow_vertical = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Back" type="Button" parent="VBoxContainer/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_o4ocl")
+theme_override_font_sizes/font_size = 50
+text = "Back"
+
+[node name="Save" type="Button" parent="VBoxContainer/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_o4ocl")
+theme_override_font_sizes/font_size = 50
+text = "Save"
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer2/CenterContainer/HBoxContainer/Slot1/Slot1Button" to="." method="_on_slot_1_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer2/CenterContainer/HBoxContainer/Slot2/Slot2Button" to="." method="_on_slot_2_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer2/CenterContainer/HBoxContainer/Slot3/Slot3Button" to="." method="_on_slot_3_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer3/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer3/Save" to="." method="_on_save_pressed"]
