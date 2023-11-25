@@ -1,11 +1,13 @@
 extends Node2D
 
 const section_time := 2.0
-const line_time := 0.3
+const line_time := 0.6
 const base_speed := 100.0
 const speed_up_multiplier := 10.0
-const title_color := Color.INDIGO
 
+#TODO change this color according to design choice
+const title_color := Color.INDIGO
+const title_font_size = 32
 # 
 var scroll_speed := base_speed
 var speed_up := false
@@ -77,6 +79,7 @@ func add_line():
 	if curr_line == 0:
 		# there is no setter for colour, therefore setting it manually
 		new_line.set("theme_override_colors/font_color", title_color)
+		new_line.set("theme_override_font_sizes/font_size", title_font_size)
 	
 	$CenterContainer/CreditsContainer.add_child(new_line)
 	
