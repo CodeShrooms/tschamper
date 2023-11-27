@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://d0lj1uwsmvav4"
-path="res://.godot/imported/ChakraPetch-MediumItalic.ttf-a24cac90986bcd0025913c7517838c3c.fontdata"
+uid="uid://bdia5m4kefhlb"
+path="res://.godot/imported/ChakraPetch-SemiBold.ttf-0933e25383de51f2e0dc74c62325139d.fontdata"
 
 [deps]
 
-source_file="res://Assets/Fonts/MainScreen/ChakraPetch-MediumItalic.ttf"
-dest_files=["res://.godot/imported/ChakraPetch-MediumItalic.ttf-a24cac90986bcd0025913c7517838c3c.fontdata"]
+source_file="res://Assets/Fonts/ChakraPetch/ChakraPetch-SemiBold.ttf"
+dest_files=["res://.godot/imported/ChakraPetch-SemiBold.ttf-0933e25383de51f2e0dc74c62325139d.fontdata"]
 
 [params]
 

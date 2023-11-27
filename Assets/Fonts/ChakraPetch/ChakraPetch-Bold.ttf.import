@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dra5v8ict37en"
-path="res://.godot/imported/ChakraPetch-LightItalic.ttf-b67b70316583afa37acd7c11ec530a71.fontdata"
+uid="uid://butu340vydyre"
+path="res://.godot/imported/ChakraPetch-Bold.ttf-685b1d9138f2d18367785fb5461f8096.fontdata"
 
 [deps]
 
-source_file="res://Assets/Fonts/MainScreen/ChakraPetch-LightItalic.ttf"
-dest_files=["res://.godot/imported/ChakraPetch-LightItalic.ttf-b67b70316583afa37acd7c11ec530a71.fontdata"]
+source_file="res://Assets/Fonts/ChakraPetch/ChakraPetch-Bold.ttf"
+dest_files=["res://.godot/imported/ChakraPetch-Bold.ttf-685b1d9138f2d18367785fb5461f8096.fontdata"]
 
 [params]
 

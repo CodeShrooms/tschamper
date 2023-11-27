@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ckoly6homro4b"]
 
 [ext_resource type="Script" path="res://scenes/main_screen/scripts/OptionsGeneralScreen.gd" id="1_dah8e"]
-[ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/MainScreen/ChakraPetch-Bold.ttf" id="2_x0xuj"]
+[ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-Bold.ttf" id="2_x0xuj"]
 [ext_resource type="Texture2D" uid="uid://cgf0yjbiihvxu" path="res://Assets/MainScreen/reset_to_default.png" id="3_rvhq4"]
 
 [sub_resource type="Theme" id="Theme_bh0py"]

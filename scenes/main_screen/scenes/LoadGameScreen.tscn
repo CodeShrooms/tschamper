@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://btw5eu5hmtbso"]
 
-[ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/MainScreen/ChakraPetch-Bold.ttf" id="1_3n0yt"]
+[ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-Bold.ttf" id="1_3n0yt"]
 [ext_resource type="Script" path="res://scenes/main_screen/scripts/LoadGameScene.gd" id="1_wcyi1"]
-[ext_resource type="FontFile" uid="uid://chh381606d4a8" path="res://Assets/Fonts/MainScreen/ChakraPetch-Medium.ttf" id="3_fcvna"]
-[ext_resource type="FontFile" uid="uid://bhp44yo407br1" path="res://Assets/Fonts/MainScreen/ChakraPetch-Italic.ttf" id="5_3n838"]
-[ext_resource type="FontFile" uid="uid://dpsw4r8hh4c6r" path="res://Assets/Fonts/MainScreen/ChakraPetch-BoldItalic.ttf" id="6_a4il1"]
+[ext_resource type="FontFile" uid="uid://chh381606d4a8" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-Medium.ttf" id="3_fcvna"]
+[ext_resource type="FontFile" uid="uid://bhp44yo407br1" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-Italic.ttf" id="5_3n838"]
+[ext_resource type="FontFile" uid="uid://dpsw4r8hh4c6r" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-BoldItalic.ttf" id="6_a4il1"]
 [ext_resource type="PackedScene" uid="uid://clmfqp3chgjlv" path="res://scenes/main_screen/scenes/NewGameSlot.tscn" id="6_qx4d1"]
 
 [node name="LoadGameScene" type="Control"]

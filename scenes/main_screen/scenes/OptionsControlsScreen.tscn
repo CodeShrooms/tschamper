@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d1xhsttsa41tm"]
 
-[ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/MainScreen/ChakraPetch-Bold.ttf" id="1_khq1i"]
+[ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-Bold.ttf" id="1_khq1i"]
 
 [node name="Controls" type="Control"]
 layout_mode = 3
