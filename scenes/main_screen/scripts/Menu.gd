@@ -5,7 +5,6 @@ extends Control
 @onready var loadGameScreen = %LoadGameScreen
 @onready var newGameScreen = %NewGameScreen
 
-var first_level_file_path = "res://scenes/levels/test_level.tscn"
 var credits_screen_file_path = "res://scenes/main_screen/scenes/CreditScreen.tscn"
 
 func _ready():
