@@ -8,11 +8,9 @@
 [sub_resource type="GDScript" id="GDScript_teoev"]
 script/source = "extends Control
 
-const DEFAULT_DB = linear_to_db(0.8)
+const DEFAULT_VOLUME = 80
 
-const MASTER_BUS_ID = 0
-const MUSIC_BUS_ID = 1
-const SFX_BUS_ID = 2
+enum {MASTER_BUS_ID, MUSIC_BUS_ID, SFX_BUS_ID}
 
 @onready var master_volume_slider = %MasterVolumeSlider
 @onready var music_volume_slider =%MusicVolumeSlider
@@ -25,20 +23,28 @@ func _ready():
 	sfx_volume_slider.value = db_to_linear(AudioServer.get_bus_volume_db(SFX_BUS_ID))*100
 
 func _on_master_default_pressed():
-	AudioServer.set_bus_volume_db(MASTER_BUS_ID, DEFAULT_DB)
-	set_slider_default(master_volume_slider)
+	set_volume(MASTER_BUS_ID, DEFAULT_VOLUME)
+	set_slider(master_volume_slider, DEFAULT_VOLUME)
 
 func _on_music_default_pressed():
-	AudioServer.set_bus_volume_db(MUSIC_BUS_ID, DEFAULT_DB)
-	set_slider_default(music_volume_slider)
+	set_volume(MUSIC_BUS_ID, DEFAULT_VOLUME)
+	set_slider(music_volume_slider, DEFAULT_VOLUME)
 
 func _on_sfx_default_pressed():
-	AudioServer.set_bus_volume_db(SFX_BUS_ID, DEFAULT_DB)
-	set_slider_default(sfx_volume_slider)
+	set_volume(SFX_BUS_ID, DEFAULT_VOLUME)
+	set_slider(sfx_volume_slider, DEFAULT_VOLUME)
 
 
 func _on_master_volume_slider_value_changed(volume):
 	set_volume(MASTER_BUS_ID, volume)
+	var master_volume = AudioServer.get_bus_volume_db(MASTER_BUS_ID)
+	
+	if AudioServer.get_bus_volume_db(MUSIC_BUS_ID) > master_volume:
+		set_volume(MUSIC_BUS_ID, volume)
+		set_slider(music_volume_slider, DEFAULT_VOLUME)
+	if AudioServer.get_bus_volume_db(SFX_BUS_ID) > master_volume:
+		set_volume(SFX_BUS_ID, volume)
+		set_slider(sfx_volume_slider, DEFAULT_VOLUME)
 
 func _on_music_volume_slider_value_changed(volume):
 	set_volume(MUSIC_BUS_ID, volume)
@@ -46,8 +52,8 @@ func _on_music_volume_slider_value_changed(volume):
 func _on_sfx_volume_slider_value_changed(volume):
 	set_volume(SFX_BUS_ID, volume)
 
-func set_slider_default(slider_node):
-	slider_node.value = 80 # in percent
+func set_slider(slider_node, volume):
+	slider_node.value = volume
 	
 func set_volume(bus_id, volume):
 	AudioServer.set_bus_volume_db(bus_id, linear_to_db(volume/100))

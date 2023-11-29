@@ -55,5 +55,6 @@ text = "Back"
 [node name="BackgroundSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_jrsr4")
 autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="MarginContainer/Back" to="." method="_on_back_pressed"]

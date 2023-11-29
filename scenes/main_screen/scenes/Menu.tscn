@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://71fhltlkcdhw"]
+[gd_scene load_steps=6 format=3 uid="uid://71fhltlkcdhw"]
 
 [ext_resource type="Script" path="res://scenes/main_screen/scripts/Menu.gd" id="1_4n5nq"]
 [ext_resource type="Texture2D" uid="uid://b6wvamka4427c" path="res://Assets/MainScreen/Main_background.png" id="2_kml86"]
-[ext_resource type="PackedScene" uid="uid://b572t6ca2rq6g" path="res://scenes/main_screen/scenes/OptionsScreen.tscn" id="3_80yph"]
+[ext_resource type="PackedScene" uid="uid://b572t6ca2rq6g" path="res://scenes/main_screen/scenes/options_screen/OptionsScreen.tscn" id="3_80yph"]
 [ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-Bold.ttf" id="3_x0bec"]
-[ext_resource type="PackedScene" uid="uid://btw5eu5hmtbso" path="res://scenes/main_screen/scenes/LoadGameScreen.tscn" id="4_l7rv4"]
-[ext_resource type="PackedScene" uid="uid://hkf7y4d4qw4t" path="res://scenes/main_screen/scenes/NewGameScreen.tscn" id="5_ogssb"]
+[ext_resource type="PackedScene" uid="uid://hkf7y4d4qw4t" path="res://scenes/main_screen/scenes/PlayGameScreen.tscn" id="5_ogssb"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -53,18 +52,11 @@ grow_vertical = 2
 theme_override_constants/separation = 40
 alignment = 1
 
-[node name="LoadGame" type="Button" parent="MenuScreen/VBoxContainer"]
-layout_mode = 2
-focus_neighbor_top = NodePath("../../MarginContainer/Credits")
-theme_override_fonts/font = ExtResource("3_x0bec")
-theme_override_font_sizes/font_size = 50
-text = "Load Game"
-
-[node name="NewGame" type="Button" parent="MenuScreen/VBoxContainer"]
+[node name="Play" type="Button" parent="MenuScreen/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_x0bec")
 theme_override_font_sizes/font_size = 50
-text = "New Game"
+text = "Play"
 
 [node name="Options" type="Button" parent="MenuScreen/VBoxContainer"]
 layout_mode = 2
@@ -93,7 +85,6 @@ theme_override_constants/margin_bottom = 50
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
-focus_neighbor_bottom = NodePath("../../VBoxContainer/LoadGame")
 theme_override_fonts/font = ExtResource("3_x0bec")
 theme_override_font_sizes/font_size = 50
 text = "Credits"
@@ -103,17 +94,12 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 1
 
-[node name="LoadGameScreen" parent="." instance=ExtResource("4_l7rv4")]
-unique_name_in_owner = true
-visible = false
-
-[node name="NewGameScreen" parent="." instance=ExtResource("5_ogssb")]
+[node name="PlayGameScreen" parent="." instance=ExtResource("5_ogssb")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
 
-[connection signal="pressed" from="MenuScreen/VBoxContainer/LoadGame" to="." method="_on_load_game_pressed"]
-[connection signal="pressed" from="MenuScreen/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="MenuScreen/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MenuScreen/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="MenuScreen/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="MenuScreen/MarginContainer/Credits" to="." method="_on_credits_pressed"]

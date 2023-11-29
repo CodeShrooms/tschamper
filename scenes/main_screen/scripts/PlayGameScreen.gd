@@ -32,15 +32,6 @@ func _on_back_pressed():
 	else:
 		# Nodes don't exist, return to MainMenu
 		finish()
-
-func _on_save_pressed():
-	#TODO make save logic
-
-	if mainMenuScreen and currentScreen:
-		mainMenuScreen.visible = true
-		currentScreen.visible = false
-	else:
-		finish()
 		
 func finish():
 	get_tree().change_scene_to_file(main_menu_file_path)

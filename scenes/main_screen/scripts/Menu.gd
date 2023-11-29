@@ -2,21 +2,16 @@ extends Control
 
 @onready var mainMenuScreen = %MenuScreen
 @onready var optionsScreen = %OptionsScreen
-@onready var loadGameScreen = %LoadGameScreen
-@onready var newGameScreen = %NewGameScreen
+@onready var playGameScreen = %PlayGameScreen
 
 var credits_screen_file_path = "res://scenes/main_screen/scenes/CreditScreen.tscn"
 
 func _ready():
 	#select New Game Button with keyboard
-	%MenuScreen/VBoxContainer/LoadGame.grab_focus()
+	%MenuScreen/VBoxContainer/Play.grab_focus()
 
-func _on_load_game_pressed():
-	loadGameScreen.visible = true
-	mainMenuScreen.visible = false
-
-func _on_new_game_pressed():
-	newGameScreen.visible = true
+func _on_play_pressed():
+	playGameScreen.visible = true
 	mainMenuScreen.visible = false
 
 func _on_options_pressed():
