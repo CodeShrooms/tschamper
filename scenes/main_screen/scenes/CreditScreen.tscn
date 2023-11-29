@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/main_screen/scripts/CreditScreen.gd" id="1_hxto2"]
 [ext_resource type="Texture2D" uid="uid://b2nldohsax5ms" path="res://Assets/MainScreen/credits_background.png" id="2_jj3o3"]
-[ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/MainScreen/ChakraPetch-Bold.ttf" id="3_whp5t"]
+[ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-Bold.ttf" id="3_whp5t"]
 [ext_resource type="AudioStream" uid="uid://cfa7bq1i8wy84" path="res://Assets/Sound/Ending Song Demo 1.wav" id="4_jrsr4"]
 
 [node name="CreditScreen" type="Node2D"]

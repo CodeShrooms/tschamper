@@ -1,13 +1,61 @@
 [gd_scene load_steps=7 format=3 uid="uid://dsw7vy60tqeyv"]
 
-[ext_resource type="Script" path="res://scenes/main_screen/scripts/OptionsSoundScreen.gd" id="1_7ytku"]
-[ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-Bold.ttf" id="1_o5asq"]
-[ext_resource type="Texture2D" uid="uid://cgf0yjbiihvxu" path="res://Assets/MainScreen/reset_to_default.png" id="2_k6ylg"]
-[ext_resource type="Texture2D" uid="uid://eitb1007jtaj" path="res://Assets/MainScreen/slider_grabber.png" id="3_swvqc"]
-[ext_resource type="Texture2D" uid="uid://d0aho36i6k5gh" path="res://Assets/MainScreen/slider.png" id="4_p14ep"]
+[ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-Bold.ttf" id="2_r1juf"]
+[ext_resource type="Texture2D" uid="uid://cgf0yjbiihvxu" path="res://Assets/MainScreen/reset_to_default.png" id="3_50fx5"]
+[ext_resource type="Texture2D" uid="uid://eitb1007jtaj" path="res://Assets/MainScreen/slider_grabber.png" id="4_8r5d5"]
+[ext_resource type="Texture2D" uid="uid://d0aho36i6k5gh" path="res://Assets/MainScreen/slider.png" id="5_hd13l"]
+
+[sub_resource type="GDScript" id="GDScript_teoev"]
+script/source = "extends Control
+
+const DEFAULT_DB = linear_to_db(0.8)
+
+const MASTER_BUS_ID = 0
+const MUSIC_BUS_ID = 1
+const SFX_BUS_ID = 2
+
+@onready var master_volume_slider = %MasterVolumeSlider
+@onready var music_volume_slider =%MusicVolumeSlider
+@onready var sfx_volume_slider =%SFXVolumeSlider
+
+func _ready():
+	# set slider value to current music bus value
+	master_volume_slider.value = db_to_linear(AudioServer.get_bus_volume_db(MASTER_BUS_ID))*100
+	music_volume_slider.value = db_to_linear(AudioServer.get_bus_volume_db(MUSIC_BUS_ID))*100
+	sfx_volume_slider.value = db_to_linear(AudioServer.get_bus_volume_db(SFX_BUS_ID))*100
+
+func _on_master_default_pressed():
+	AudioServer.set_bus_volume_db(MASTER_BUS_ID, DEFAULT_DB)
+	set_slider_default(master_volume_slider)
+
+func _on_music_default_pressed():
+	AudioServer.set_bus_volume_db(MUSIC_BUS_ID, DEFAULT_DB)
+	set_slider_default(music_volume_slider)
+
+func _on_sfx_default_pressed():
+	AudioServer.set_bus_volume_db(SFX_BUS_ID, DEFAULT_DB)
+	set_slider_default(sfx_volume_slider)
+
+
+func _on_master_volume_slider_value_changed(volume):
+	set_volume(MASTER_BUS_ID, volume)
+
+func _on_music_volume_slider_value_changed(volume):
+	set_volume(MUSIC_BUS_ID, volume)
+
+func _on_sfx_volume_slider_value_changed(volume):
+	set_volume(SFX_BUS_ID, volume)
+
+func set_slider_default(slider_node):
+	slider_node.value = 80 # in percent
+	
+func set_volume(bus_id, volume):
+	AudioServer.set_bus_volume_db(bus_id, linear_to_db(volume/100))
+	AudioServer.set_bus_mute(bus_id, volume < .05)
+"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6c7yn"]
-texture = ExtResource("4_p14ep")
+texture = ExtResource("5_hd13l")
 texture_margin_top = 60.0
 
 [node name="Control" type="Control"]
@@ -23,7 +71,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_7ytku")
+script = SubResource("GDScript_teoev")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -52,14 +100,14 @@ theme_override_constants/separation = 80
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-theme_override_fonts/font = ExtResource("1_o5asq")
+theme_override_fonts/font = ExtResource("2_r1juf")
 theme_override_font_sizes/font_size = 40
 text = "Master"
 vertical_alignment = 1
 
 [node name="Music" type="Label" parent="CenterContainer/HBoxContainer/Labels"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_o5asq")
+theme_override_fonts/font = ExtResource("2_r1juf")
 theme_override_font_sizes/font_size = 40
 text = "Music"
 vertical_alignment = 1
@@ -68,7 +116,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-theme_override_fonts/font = ExtResource("1_o5asq")
+theme_override_fonts/font = ExtResource("2_r1juf")
 theme_override_font_sizes/font_size = 40
 text = "SFX"
 vertical_alignment = 1
@@ -81,15 +129,15 @@ theme_override_constants/separation = 20
 
 [node name="Master_default" type="Button" parent="CenterContainer/HBoxContainer/Defaults"]
 layout_mode = 2
-icon = ExtResource("2_k6ylg")
+icon = ExtResource("3_50fx5")
 
 [node name="Music_default" type="Button" parent="CenterContainer/HBoxContainer/Defaults"]
 layout_mode = 2
-icon = ExtResource("2_k6ylg")
+icon = ExtResource("3_50fx5")
 
 [node name="SFX_default" type="Button" parent="CenterContainer/HBoxContainer/Defaults"]
 layout_mode = 2
-icon = ExtResource("2_k6ylg")
+icon = ExtResource("3_50fx5")
 
 [node name="Slider" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
@@ -101,24 +149,24 @@ theme_override_constants/separation = 50
 [node name="MasterVolumeSlider" type="HSlider" parent="CenterContainer/HBoxContainer/Slider"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_icons/grabber = ExtResource("3_swvqc")
-theme_override_icons/grabber_highlight = ExtResource("3_swvqc")
+theme_override_icons/grabber = ExtResource("4_8r5d5")
+theme_override_icons/grabber_highlight = ExtResource("4_8r5d5")
 theme_override_styles/slider = SubResource("StyleBoxTexture_6c7yn")
 value = 80.0
 
 [node name="MusicVolumeSlider" type="HSlider" parent="CenterContainer/HBoxContainer/Slider"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_icons/grabber = ExtResource("3_swvqc")
-theme_override_icons/grabber_highlight = ExtResource("3_swvqc")
+theme_override_icons/grabber = ExtResource("4_8r5d5")
+theme_override_icons/grabber_highlight = ExtResource("4_8r5d5")
 theme_override_styles/slider = SubResource("StyleBoxTexture_6c7yn")
 value = 80.0
 
 [node name="SFXVolumeSlider" type="HSlider" parent="CenterContainer/HBoxContainer/Slider"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_icons/grabber = ExtResource("3_swvqc")
-theme_override_icons/grabber_highlight = ExtResource("3_swvqc")
+theme_override_icons/grabber = ExtResource("4_8r5d5")
+theme_override_icons/grabber_highlight = ExtResource("4_8r5d5")
 theme_override_styles/slider = SubResource("StyleBoxTexture_6c7yn")
 value = 80.0
 

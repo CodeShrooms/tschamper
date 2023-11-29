@@ -1,11 +1,44 @@
 [gd_scene load_steps=7 format=3 uid="uid://b572t6ca2rq6g"]
 
-[ext_resource type="Script" path="res://scenes/main_screen/scripts/OptionsScreen.gd" id="1_g7cxx"]
 [ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-Bold.ttf" id="2_n5hht"]
-[ext_resource type="PackedScene" uid="uid://dgiuej5w02cnl" path="res://scenes/main_screen/scenes/OptionsGraphicsScreen.tscn" id="3_pmu2v"]
-[ext_resource type="PackedScene" uid="uid://dsw7vy60tqeyv" path="res://scenes/main_screen/scenes/OptionsSoundScreen.tscn" id="4_h5eqf"]
-[ext_resource type="PackedScene" uid="uid://d1xhsttsa41tm" path="res://scenes/main_screen/scenes/OptionsControlsScreen.tscn" id="5_usew7"]
-[ext_resource type="PackedScene" uid="uid://ckoly6homro4b" path="res://scenes/main_screen/scenes/OptionsGeneralScreen.tscn" id="6_c3vva"]
+[ext_resource type="PackedScene" uid="uid://dgiuej5w02cnl" path="res://scenes/main_screen/scenes/options_screen/OptionsGraphicsScreen.tscn" id="3_pmu2v"]
+[ext_resource type="PackedScene" uid="uid://dsw7vy60tqeyv" path="res://scenes/main_screen/scenes/options_screen/OptionsSoundScreen.tscn" id="4_h5eqf"]
+[ext_resource type="PackedScene" uid="uid://d1xhsttsa41tm" path="res://scenes/main_screen/scenes/options_screen/OptionsControlsScreen.tscn" id="5_usew7"]
+[ext_resource type="PackedScene" uid="uid://ckoly6homro4b" path="res://scenes/main_screen/scenes/options_screen/OptionsGeneralScreen.tscn" id="6_c3vva"]
+
+[sub_resource type="GDScript" id="GDScript_4a3u2"]
+script/source = "extends Control
+
+@onready var mainMenuScreen = %MenuScreen
+@onready var currentScreen = $\".\"
+
+var main_menu_file_path = \"res://scenes/main_screen/scenes/Menu.tscn\"
+
+func _on_back_pressed():
+	if mainMenuScreen and currentScreen:
+		mainMenuScreen.visible = true
+		currentScreen.visible = false
+	else:
+		# Nodes don't exist, return to MainMenu
+		finish()
+
+func _on_save_pressed():
+	#TODO make save logic
+
+	if mainMenuScreen and currentScreen:
+		mainMenuScreen.visible = true
+		currentScreen.visible = false
+	else:
+		finish()
+
+func finish():
+	get_tree().change_scene_to_file(main_menu_file_path)
+
+func _unhandled_input(event):
+	# If you press Esc return to MainScreen
+	if event.is_action_pressed(\"ui_cancel\"):
+		finish()
+"
 
 [node name="OptionsScreen" type="Control"]
 layout_mode = 3
@@ -14,7 +47,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_g7cxx")
+script = SubResource("GDScript_4a3u2")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0

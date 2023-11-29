@@ -1,10 +1,71 @@
 [gd_scene load_steps=7 format=3 uid="uid://dgiuej5w02cnl"]
 
-[ext_resource type="Script" path="res://scenes/main_screen/scripts/OptionsGraphicsScreen.gd" id="1_fubfp"]
 [ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-Bold.ttf" id="2_xnn1f"]
 [ext_resource type="Texture2D" uid="uid://cgf0yjbiihvxu" path="res://Assets/MainScreen/reset_to_default.png" id="3_1k0go"]
 [ext_resource type="Texture2D" uid="uid://8t7srgejt17g" path="res://Assets/MainScreen/checkbox_checked.png" id="3_vdjpr"]
 [ext_resource type="Texture2D" uid="uid://dbeouhnbm20y1" path="res://Assets/MainScreen/checkbox_unchecked.png" id="4_r5ctp"]
+
+[sub_resource type="GDScript" id="GDScript_46t7p"]
+script/source = "extends Control
+
+func _ready():
+	update_button_values()
+
+func set_resolution(width, height):
+	get_viewport().size = Vector2i(width, height)
+
+func _on_option_button_item_selected(index):
+	var selected_option = $CenterContainer/HBoxContainer/Checks/ResolutionSelect.get_item_text(index)
+	match selected_option:
+		\"1920x1080\":
+			set_resolution(1920, 1080)
+		\"720x480\":
+			set_resolution(720, 480)
+		_:
+			print(\"Unknown option selected:\", selected_option)
+
+func _on_full_screen_toggled(button_pressed):
+	if button_pressed:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+
+func _on_vsync_toggled(button_pressed):
+	if button_pressed:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+	else:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+
+func _on_full_screen_default_pressed():
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	update_button_values()
+
+func _on_vsync_default_pressed():
+	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+	update_button_values()
+
+func _on_resolution_default_pressed():
+	set_resolution(1920, 1080)
+	update_button_values()
+	
+func update_button_values():
+	#set default checkbox values//check which options are 4real currently enabled
+	match DisplayServer.window_get_mode():
+		DisplayServer.WINDOW_MODE_FULLSCREEN:
+			$CenterContainer/HBoxContainer/Checks/FullScreen.set_pressed_no_signal(true)
+		DisplayServer.WINDOW_MODE_MAXIMIZED:
+			$CenterContainer/HBoxContainer/Checks/FullScreen.set_pressed_no_signal(false)
+	match DisplayServer.window_get_vsync_mode():
+		DisplayServer.VSYNC_ENABLED:
+			$\"CenterContainer/HBoxContainer/Checks/V-sync\".set_pressed_no_signal(true)
+		DisplayServer.VSYNC_DISABLED:
+			$\"CenterContainer/HBoxContainer/Checks/V-sync\".set_pressed_no_signal(false)
+	match get_viewport().get_size():
+		Vector2i(1920, 1080):
+			$CenterContainer/HBoxContainer/Checks/ResolutionSelect.selected = 0
+		Vector2i(720, 480):
+			$CenterContainer/HBoxContainer/Checks/ResolutionSelect.selected = 1
+"
 
 [sub_resource type="Theme" id="Theme_god3r"]
 Fonts/fonts/large = ExtResource("2_xnn1f")
@@ -17,7 +78,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_fubfp")
+script = SubResource("GDScript_46t7p")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
