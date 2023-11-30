@@ -103,13 +103,4 @@ theme_override_fonts/font = ExtResource("2_n5hht")
 theme_override_font_sizes/font_size = 50
 text = "Back"
 
-[node name="Save" type="Button" parent="VBoxContainer/MarginContainer3"]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
-theme_override_fonts/font = ExtResource("2_n5hht")
-theme_override_font_sizes/font_size = 50
-text = "Save"
-
 [connection signal="pressed" from="VBoxContainer/MarginContainer3/Back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="VBoxContainer/MarginContainer3/Save" to="." method="_on_save_pressed"]
