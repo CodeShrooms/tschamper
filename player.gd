@@ -49,9 +49,9 @@ func _physics_process(delta):
 
 func update_facing_direction():
 	if direction.x > 0:
-		animated_sprite.flip_h = true
-	elif direction.x < 0:
 		animated_sprite.flip_h = false
+	elif direction.x < 0:
+		animated_sprite.flip_h = true
 
 func update_animation():
 	if not animation_locked:
