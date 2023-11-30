@@ -8,8 +8,6 @@
 [sub_resource type="GDScript" id="GDScript_teoev"]
 script/source = "extends Control
 
-# Default sound-bus volume. Used on reset to default
-const DEFAULT_VOLUME = 100
 
 # Sound-bus IDs: FIRST_BUS_ID = 0, SECOND_BUS_ID = 1, etc.
 enum {MASTER_BUS_ID, MUSIC_BUS_ID, SFX_BUS_ID}
@@ -20,17 +18,26 @@ enum {MASTER_BUS_ID, MUSIC_BUS_ID, SFX_BUS_ID}
 @onready var music_volume_slider =%MusicVolumeSlider
 @onready var sfx_volume_slider =%SFXVolumeSlider
 
+# Default sound-bus volume.
+@onready var DEFAULT_VOLUME = db_to_linear(AudioServer.get_bus_volume_db(MASTER_BUS_ID))*100
+
+func _ready():
+	# set slider value to current sound bus values
+	master_volume_slider.value = db_to_linear(AudioServer.get_bus_volume_db(MASTER_BUS_ID))*100
+	music_volume_slider.value = db_to_linear(AudioServer.get_bus_volume_db(MUSIC_BUS_ID))*100
+	sfx_volume_slider.value = db_to_linear(AudioServer.get_bus_volume_db(SFX_BUS_ID))*100
+	
 
 func _on_master_default_pressed():
 	# set master volume to default value if user presses default button
 	set_default_volume(MASTER_BUS_ID, master_volume_slider)
+	print(DEFAULT_VOLUME)
 
 func _on_music_default_pressed():
 	# set music volume to default value if user presses default button
 	set_default_volume(MUSIC_BUS_ID, music_volume_slider)
 
 func _on_sfx_default_pressed():
-	# set music volume to default value if user presses default button
 	set_default_volume(SFX_BUS_ID, sfx_volume_slider)
 
 func _on_master_volume_slider_value_changed(volume):
@@ -152,7 +159,7 @@ layout_mode = 2
 theme_override_icons/grabber = ExtResource("4_8r5d5")
 theme_override_icons/grabber_highlight = ExtResource("4_8r5d5")
 theme_override_styles/slider = SubResource("StyleBoxTexture_6c7yn")
-value = 100.0
+value = 80.0
 
 [node name="MusicVolumeSlider" type="HSlider" parent="CenterContainer/HBoxContainer/Slider"]
 unique_name_in_owner = true
@@ -160,7 +167,7 @@ layout_mode = 2
 theme_override_icons/grabber = ExtResource("4_8r5d5")
 theme_override_icons/grabber_highlight = ExtResource("4_8r5d5")
 theme_override_styles/slider = SubResource("StyleBoxTexture_6c7yn")
-value = 100.0
+value = 80.0
 
 [node name="SFXVolumeSlider" type="HSlider" parent="CenterContainer/HBoxContainer/Slider"]
 unique_name_in_owner = true
@@ -168,7 +175,7 @@ layout_mode = 2
 theme_override_icons/grabber = ExtResource("4_8r5d5")
 theme_override_icons/grabber_highlight = ExtResource("4_8r5d5")
 theme_override_styles/slider = SubResource("StyleBoxTexture_6c7yn")
-value = 100.0
+value = 80.0
 
 [connection signal="pressed" from="CenterContainer/HBoxContainer/Defaults/Master_default" to="." method="_on_master_default_pressed"]
 [connection signal="pressed" from="CenterContainer/HBoxContainer/Defaults/Music_default" to="." method="_on_music_default_pressed"]
