@@ -1,12 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcfv21754uprc"]
+[gd_scene load_steps=9 format=3 uid="uid://bcfv21754uprc"]
 
-[ext_resource type="Script" path="res://scenes/main_screen/scripts/CreditScreen.gd" id="1_hxto2"]
+[ext_resource type="Script" path="res://scenes/main_screen/scenes/CreditScreen.gd" id="1_0srmo"]
 [ext_resource type="Texture2D" uid="uid://b2nldohsax5ms" path="res://Assets/MainScreen/credits_background.png" id="2_jj3o3"]
 [ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-Bold.ttf" id="3_whp5t"]
 [ext_resource type="AudioStream" uid="uid://cfa7bq1i8wy84" path="res://Assets/Sound/Ending Song Demo 1.wav" id="4_jrsr4"]
+[ext_resource type="FontFile" uid="uid://chh381606d4a8" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-Medium.ttf" id="4_yeqo5"]
+[ext_resource type="FontFile" uid="uid://bhp44yo407br1" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-Italic.ttf" id="6_orroo"]
+[ext_resource type="FontFile" uid="uid://dpsw4r8hh4c6r" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-BoldItalic.ttf" id="7_hu06q"]
+[ext_resource type="Script" path="res://scenes/main_screen/scenes/RichTextLabel.gd" id="8_uoc1q"]
 
 [node name="CreditScreen" type="Node2D"]
-script = ExtResource("1_hxto2")
+script = ExtResource("1_0srmo")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 offset_right = 1920.0
@@ -23,18 +27,29 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 color = Color(0.129412, 0.2, 0.290196, 0.552941)
 
-[node name="CreditsContainer" type="Control" parent="CenterContainer"]
-custom_minimum_size = Vector2(1280, 680)
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(1280, 700)
 layout_mode = 2
 
-[node name="Line" type="Label" parent="CenterContainer/CreditsContainer"]
-layout_mode = 0
-anchor_right = 1.0
-offset_top = 700.0
-offset_bottom = 726.0
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 25
-horizontal_alignment = 1
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/ScrollContainer"]
+custom_minimum_size = Vector2(1280, 680)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/normal_font = ExtResource("4_yeqo5")
+theme_override_fonts/bold_font = ExtResource("3_whp5t")
+theme_override_fonts/italics_font = ExtResource("6_orroo")
+theme_override_fonts/bold_italics_font = ExtResource("7_hu06q")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+text = "
+
+
+"
+fit_content = true
+script = ExtResource("8_uoc1q")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_right = 1920.0
