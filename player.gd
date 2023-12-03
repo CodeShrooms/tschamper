@@ -60,3 +60,7 @@ func update_animation():
 		else:
 			animated_sprite.play("idle")
 		
+
+
+func _on_area_2d_body_entered(body):
+	queue_free()
