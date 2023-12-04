@@ -13,6 +13,7 @@ extends CharacterBody2D
 
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite
 
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var has_double_jumped : bool = false
@@ -61,6 +62,10 @@ func update_animation():
 			animated_sprite.play("idle")
 		
 
+# wenn irgendein Objekt aus den Collision Masks die Area betritt, wird der Spieler gelöscht
+func _on_area_2d_body_entered(_body):
+	queue_free() #austauschen durch eine Sterbefunktion
+	
 
-func _on_area_2d_body_entered(body):
-	queue_free()
+
+	
