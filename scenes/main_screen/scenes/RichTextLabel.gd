@@ -37,9 +37,6 @@ func _process(delta):
 
 	# Check if the content has reached the end
 	if self.position.y < -self.size.y:
-		# Reset the position to the bottom to create a loop
-		#self.position.y = 0
-		
 		# Call finish() when the entire text has scrolled out of view
 		finish()
 		
@@ -69,6 +66,8 @@ func _unhandled_input(event):
 	# If you press Esc return to MainScreen
 	if event.is_action_pressed("ui_cancel"):
 		finish()
+
+	# event.is_echo() might be triggered when a key is held down, we dont want the echo behaviour.
 	if (event.is_action_pressed("ui_down") || event.is_action_pressed("ui_up")) and !event.is_echo():
 		speed_up = true
 	if (event.is_action_released("ui_down") || event.is_action_released("ui_up")) and !event.is_echo():
