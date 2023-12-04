@@ -1,46 +1,44 @@
 extends RichTextLabel
 
-# Speed of scrolling
+# Speed of scrolling.
 var base_scroll_speed : int = 60
 var current_scroll_speed : int = base_scroll_speed
-# Factor to increase speed when holding up/down keys
+# Factor to increase speed when holding up/down keys.
 var speed_up_factor : int = 10
-
-var scroll_speed : int = base_scroll_speed
-
+# Is the speed currently increased?
 var speed_up : bool = false
-
 
 var credits_file_path : String = "res://scenes/main_screen/files/credits.txt"
 var main_menu_file_path : String = "res://scenes/main_screen/scenes/Menu.tscn"
 
-# The root node of the script is $"."
-@onready var credits_text_label : Node = $"."
-
 func _ready():
-	var credits_text : String = load_text_from_file(credits_file_path)
-	credits_text_label.text = credits_text
-	# make scrollbar of ScrollContainer invisible
-	credits_text_label.get_v_scroll_bar().scale.x = 0
+	# Add multiple newlines so the text of the credits file is on the bottom of the screen.
+	# Initial set in UI text box would be more ugly and \n's could not be counted.
+	for i in range(26):
+		self.append_text("\n")
 	
-	# Set the initial position to the top
-	position.y = 0
+	# Get and set text of the Credits.
+	var credits_text : String = load_text_from_file(credits_file_path)
+	self.append_text(credits_text)
+
+	# Set the initial position to the top of the text
+	self.position.y = 0
 	
 	# Adjust the size of the label based on the text content
-	credits_text_label.size.y = credits_text_label.get_content_height()
+	self.size.y = self.get_content_height()
 
 
 func _process(delta):
 	# Adjust scroll speed based on whether speed_up is true or false
-	current_scroll_speed = base_scroll_speed * speed_up_factor if speed_up else base_scroll_speed
+	current_scroll_speed = base_scroll_speed if (not speed_up) else (base_scroll_speed * speed_up_factor)
 
 	# Move the RichTextLabel content upwards
-	position.y -= current_scroll_speed * delta
+	self.position.y -= current_scroll_speed * delta
 
 	# Check if the content has reached the end
-	if position.y < -size.y:
+	if self.position.y < -self.size.y:
 		# Reset the position to the bottom to create a loop
-		position.y = 0
+		#self.position.y = 0
 		
 		# Call finish() when the entire text has scrolled out of view
 		finish()
