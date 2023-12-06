@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bcfv21754uprc"]
 
-[ext_resource type="Texture2D" uid="uid://c6vlrdfcajx1y" path="res://Assets/MainScreen/credits_background2.jpg" id="2_7wrtc"]
+[ext_resource type="Texture2D" uid="uid://c6vlrdfcajx1y" path="res://Assets/MainScreen/credits_background.jpg" id="1_uowjv"]
 [ext_resource type="Script" path="res://Components/main_screen/scripts/Background.gd" id="2_sjbf7"]
 [ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-Bold.ttf" id="3_whp5t"]
 [ext_resource type="AudioStream" uid="uid://cfa7bq1i8wy84" path="res://Assets/Sound/Ending Song Demo 1.wav" id="4_jrsr4"]
@@ -18,11 +18,11 @@ var current_scroll_speed: int = base_scroll_speed
 # Factor to increase speed when holding up/down keys.
 var speed_up_factor: int = 10
 # Is the speed currently increased?
-var speed_up : bool = false
+var speed_up: bool = false
 
 
-var main_menu_file_path :String = \"res://Components/main_screen/scenes/Menu.tscn\"
-@onready var credits_scroll_container : ScrollContainer = $CenterContainer/ScrollContainer
+var main_menu_file_path: String = \"res://Components/main_screen/scenes/Menu.tscn\"
+@onready var credits_scroll_container: ScrollContainer = $CenterContainer/ScrollContainer
 
 
 func _ready():
@@ -57,7 +57,7 @@ script = SubResource("GDScript_3agnd")
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 1920.0
 offset_bottom = 7560.0
-texture = ExtResource("2_7wrtc")
+texture = ExtResource("1_uowjv")
 script = ExtResource("2_sjbf7")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]

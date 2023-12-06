@@ -36,7 +36,7 @@ func _process(delta):
 		
 
 func load_text_from_file(file_path : String) -> String:
-	var file : FileAccess = FileAccess.open(file_path, FileAccess.READ)
+	var file: FileAccess = FileAccess.open(file_path, FileAccess.READ)
 	
 	# Open the file in read mode
 	if file != null:
