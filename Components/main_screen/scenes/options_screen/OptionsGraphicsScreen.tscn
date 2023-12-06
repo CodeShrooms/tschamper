@@ -24,7 +24,7 @@ func _on_vsync_toggled(button_pressed):
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 
 func _on_full_screen_default_pressed():
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 	update_button_values()
 
 func _on_vsync_default_pressed():
