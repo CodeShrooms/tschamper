@@ -111,7 +111,7 @@ item_count = 2
 selected = 0
 popup/item_0/text = "English"
 popup/item_0/id = 0
-popup/item_1/text = "German"
+popup/item_1/text = "Deutsch"
 popup/item_1/id = 1
 
 [connection signal="pressed" from="CenterContainer/HBoxContainer/Defaults/Language_default" to="." method="_on_language_default_pressed"]
