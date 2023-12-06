@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qs0d7cmo8srr"
-path="res://.godot/imported/slider.png-26cb36d01658a0267a0c56f82afdf1dd.ctex"
+uid="uid://b6yilcu3a6oqq"
+path="res://.godot/imported/ExtraLayer.png-f12d301e1b009ec40cbab52f15884bf0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/MainScreen/slider.png"
-dest_files=["res://.godot/imported/slider.png-26cb36d01658a0267a0c56f82afdf1dd.ctex"]
+source_file="res://textures/ExtraLayer.png"
+dest_files=["res://.godot/imported/ExtraLayer.png-f12d301e1b009ec40cbab52f15884bf0.ctex"]
 
 [params]
 

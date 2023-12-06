@@ -2,8 +2,8 @@
 
 [ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-Bold.ttf" id="2_r1juf"]
 [ext_resource type="Texture2D" uid="uid://cgf0yjbiihvxu" path="res://Assets/MainScreen/reset_to_default.png" id="3_50fx5"]
-[ext_resource type="Texture2D" uid="uid://eitb1007jtaj" path="res://Assets/MainScreen/slider_grabber.png" id="4_8r5d5"]
-[ext_resource type="Texture2D" uid="uid://d0aho36i6k5gh" path="res://Assets/MainScreen/slider.png" id="5_hd13l"]
+[ext_resource type="Texture2D" uid="uid://8f1jh2cbr2hb" path="res://Assets/MainScreen/slider_grabber.png" id="4_8r5d5"]
+[ext_resource type="Texture2D" uid="uid://qs0d7cmo8srr" path="res://Assets/MainScreen/slider.png" id="5_hd13l"]
 
 [sub_resource type="GDScript" id="GDScript_teoev"]
 script/source = "extends Control

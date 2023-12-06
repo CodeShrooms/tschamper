@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-Bold.ttf" id="2_xnn1f"]
 [ext_resource type="Texture2D" uid="uid://cgf0yjbiihvxu" path="res://Assets/MainScreen/reset_to_default.png" id="3_1k0go"]
-[ext_resource type="Texture2D" uid="uid://8t7srgejt17g" path="res://Assets/MainScreen/checkbox_checked.png" id="3_vdjpr"]
+[ext_resource type="Texture2D" uid="uid://ce7rvx22tvxib" path="res://Assets/MainScreen/checkbox_checked.png" id="3_vdjpr"]
 [ext_resource type="Texture2D" uid="uid://dbeouhnbm20y1" path="res://Assets/MainScreen/checkbox_unchecked.png" id="4_r5ctp"]
 
 [sub_resource type="GDScript" id="GDScript_46t7p"]
