@@ -5,6 +5,7 @@ var first_game_scene_file_path = "res://Components/levels/test_level.tscn"
 
 @onready var mainMenuScreen = %MenuScreen
 @onready var currentScreen = $"."
+@onready var firstLevelPreloaded = preload("res://Components/levels/test_level.tscn")
 
 func _on_slot_1_button_pressed():
 	start_game()
@@ -18,7 +19,7 @@ func _on_slot_3_button_pressed():
 func start_game():
 	#TODO add save logic here
 	#TODO let the player name their Slot and save Slot Name
-	get_tree().change_scene_to_file(first_game_scene_file_path)
+	get_tree().change_scene_to_packed(firstLevelPreloaded)
 
 func _unhandled_input(event):
 	# If you press Esc return to MainScreen

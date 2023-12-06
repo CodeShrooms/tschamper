@@ -22,7 +22,7 @@ buses/default_bus_layout="res://Components/sound/default_bus_layout.tres"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=3
+window/size/mode=2
 window/size/initial_position_type=4
 window/stretch/mode="canvas_items"
 window/size/width=720
