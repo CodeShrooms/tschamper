@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgiuej5w02cnl"]
+[gd_scene load_steps=6 format=3 uid="uid://dgiuej5w02cnl"]
 
 [ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-Bold.ttf" id="2_xnn1f"]
 [ext_resource type="Texture2D" uid="uid://cgf0yjbiihvxu" path="res://Assets/MainScreen/reset_to_default.png" id="3_1k0go"]
@@ -10,19 +10,6 @@ script/source = "extends Control
 
 func _ready():
 	update_button_values()
-
-func set_resolution(width, height):
-	get_viewport().size = Vector2i(width, height)
-
-func _on_option_button_item_selected(index):
-	var selected_option = $CenterContainer/HBoxContainer/Checks/ResolutionSelect.get_item_text(index)
-	match selected_option:
-		\"1920x1080\":
-			set_resolution(1920, 1080)
-		\"720x480\":
-			set_resolution(720, 480)
-		_:
-			print(\"Unknown option selected:\", selected_option)
 
 func _on_full_screen_toggled(button_pressed):
 	if button_pressed:
@@ -43,10 +30,6 @@ func _on_full_screen_default_pressed():
 func _on_vsync_default_pressed():
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 	update_button_values()
-
-func _on_resolution_default_pressed():
-	set_resolution(1920, 1080)
-	update_button_values()
 	
 func update_button_values():
 	#set default checkbox values//check which options are 4real currently enabled
@@ -60,16 +43,7 @@ func update_button_values():
 			$\"CenterContainer/HBoxContainer/Checks/V-sync\".set_pressed_no_signal(true)
 		DisplayServer.VSYNC_DISABLED:
 			$\"CenterContainer/HBoxContainer/Checks/V-sync\".set_pressed_no_signal(false)
-	match get_viewport().get_size():
-		Vector2i(1920, 1080):
-			$CenterContainer/HBoxContainer/Checks/ResolutionSelect.selected = 0
-		Vector2i(720, 480):
-			$CenterContainer/HBoxContainer/Checks/ResolutionSelect.selected = 1
 "
-
-[sub_resource type="Theme" id="Theme_god3r"]
-Fonts/fonts/large = ExtResource("2_xnn1f")
-Fonts/fonts/normal = ExtResource("2_xnn1f")
 
 [node name="Graphics" type="Control"]
 layout_mode = 3
@@ -117,14 +91,6 @@ theme_override_fonts/font = ExtResource("2_xnn1f")
 theme_override_font_sizes/font_size = 40
 text = "V-Sync"
 
-[node name="Resolution" type="Label" parent="CenterContainer/HBoxContainer/Labels"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
-theme_override_fonts/font = ExtResource("2_xnn1f")
-theme_override_font_sizes/font_size = 40
-text = "Resolution"
-
 [node name="Defaults" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
@@ -136,10 +102,6 @@ layout_mode = 2
 icon = ExtResource("3_1k0go")
 
 [node name="V-sync_default" type="Button" parent="CenterContainer/HBoxContainer/Defaults"]
-layout_mode = 2
-icon = ExtResource("3_1k0go")
-
-[node name="Resolution_default" type="Button" parent="CenterContainer/HBoxContainer/Defaults"]
 layout_mode = 2
 icon = ExtResource("3_1k0go")
 
@@ -168,22 +130,7 @@ theme_override_icons/checked = ExtResource("3_vdjpr")
 theme_override_icons/unchecked = ExtResource("4_r5ctp")
 expand_icon = true
 
-[node name="ResolutionSelect" type="OptionButton" parent="CenterContainer/HBoxContainer/Checks"]
-layout_mode = 2
-theme = SubResource("Theme_god3r")
-theme_override_fonts/font = ExtResource("2_xnn1f")
-theme_override_font_sizes/font_size = 30
-expand_icon = true
-item_count = 2
-selected = 0
-popup/item_0/text = "1920x1080"
-popup/item_0/id = 0
-popup/item_1/text = "720x480"
-popup/item_1/id = 1
-
 [connection signal="pressed" from="CenterContainer/HBoxContainer/Defaults/FullScreen_default" to="." method="_on_full_screen_default_pressed"]
 [connection signal="pressed" from="CenterContainer/HBoxContainer/Defaults/V-sync_default" to="." method="_on_vsync_default_pressed"]
-[connection signal="pressed" from="CenterContainer/HBoxContainer/Defaults/Resolution_default" to="." method="_on_resolution_default_pressed"]
 [connection signal="toggled" from="CenterContainer/HBoxContainer/Checks/FullScreen" to="." method="_on_full_screen_toggled"]
 [connection signal="toggled" from="CenterContainer/HBoxContainer/Checks/V-sync" to="." method="_on_vsync_toggled"]
-[connection signal="item_selected" from="CenterContainer/HBoxContainer/Checks/ResolutionSelect" to="." method="_on_option_button_item_selected"]
