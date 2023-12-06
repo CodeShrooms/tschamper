@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://hkf7y4d4qw4t"]
 
-[ext_resource type="Script" path="res://scenes/main_screen/scripts/PlayGameScreen.gd" id="1_o78j0"]
+[ext_resource type="Script" path="res://Components/main_screen/scripts/PlayGameScreen.gd" id="1_o78j0"]
 [ext_resource type="FontFile" uid="uid://chh381606d4a8" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-Medium.ttf" id="1_uj1aj"]
 [ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-Bold.ttf" id="2_o4ocl"]
 [ext_resource type="FontFile" uid="uid://bhp44yo407br1" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-Italic.ttf" id="3_44xjf"]

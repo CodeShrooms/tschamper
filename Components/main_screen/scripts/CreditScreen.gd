@@ -25,8 +25,8 @@ var line_timer := 0.0
 var curr_line := 0
 var lines := []
 
-var main_menu_file_path = "res://scenes/main_screen/scenes/Menu.tscn"
-var credits_file_path = "res://scenes/main_screen/files/credits.txt"
+var main_menu_file_path = "res://Components/main_screen/scenes/Menu.tscn"
+var credits_file_path = "res://Components/main_screen/files/credits.txt"
 var credits := []
 
 func finish():

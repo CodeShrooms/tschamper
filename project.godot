@@ -11,8 +11,12 @@ config_version=5
 [application]
 
 config/name="Demo 2D Jump and Run"
-run/main_scene="res://scenes/main_screen/scenes/Menu.tscn"
+run/main_scene="res://Components/main_screen/scenes/Menu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
+
+[audio]
+
+buses/default_bus_layout="res://Components/sound/default_bus_layout.tres"
 
 [display]
 

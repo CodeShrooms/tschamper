@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://3ufc8tfftg1g"]
 
-[ext_resource type="PackedScene" uid="uid://cj2i5rtsdrvne" path="res://player.tscn" id="1_hg5f1"]
+[ext_resource type="PackedScene" uid="uid://cj2i5rtsdrvne" path="res://Components/player/player.tscn" id="1_hg5f1"]
 [ext_resource type="Texture2D" uid="uid://ujsqfcu6x663" path="res://Assets/Tilemap/tilemap_packed.png" id="3_340c7"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ogfmu"]

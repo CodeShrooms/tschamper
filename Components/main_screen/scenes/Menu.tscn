@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://71fhltlkcdhw"]
 
-[ext_resource type="Script" path="res://scenes/main_screen/scripts/Menu.gd" id="1_4n5nq"]
+[ext_resource type="Script" path="res://Components/main_screen/scripts/Menu.gd" id="1_4n5nq"]
 [ext_resource type="Texture2D" uid="uid://b6wvamka4427c" path="res://Assets/MainScreen/Main_background.png" id="2_kml86"]
-[ext_resource type="PackedScene" uid="uid://b572t6ca2rq6g" path="res://scenes/main_screen/scenes/options_screen/OptionsScreen.tscn" id="3_80yph"]
+[ext_resource type="PackedScene" uid="uid://b572t6ca2rq6g" path="res://Components/main_screen/scenes/options_screen/OptionsScreen.tscn" id="3_80yph"]
 [ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-Bold.ttf" id="3_x0bec"]
-[ext_resource type="PackedScene" uid="uid://hkf7y4d4qw4t" path="res://scenes/main_screen/scenes/PlayGameScreen.tscn" id="5_ogssb"]
+[ext_resource type="PackedScene" uid="uid://hkf7y4d4qw4t" path="res://Components/main_screen/scenes/PlayGameScreen.tscn" id="5_ogssb"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3

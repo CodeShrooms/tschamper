@@ -4,7 +4,7 @@ extends Control
 @onready var optionsScreen = %OptionsScreen
 @onready var playGameScreen = %PlayGameScreen
 
-var credits_screen_file_path = "res://scenes/main_screen/scenes/CreditScreen.tscn"
+var credits_screen_file_path = "res://Components/main_screen/scenes/CreditScreen.tscn"
 
 func _ready():
 	#select New Game Button with keyboard

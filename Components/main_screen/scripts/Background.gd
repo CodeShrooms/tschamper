@@ -1,6 +1,6 @@
 extends TextureRect
 
-var main_menu_file_path : String = "res://scenes/main_screen/scenes/Menu.tscn"
+var main_menu_file_path : String = "res://Components/main_screen/scenes/Menu.tscn"
 
 @onready var credit_screen_root_node: Node2D = $".."
 

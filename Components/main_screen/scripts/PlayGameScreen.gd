@@ -1,7 +1,7 @@
 extends Control
 
-var main_menu_file_path = "res://scenes/main_screen/scenes/Menu.tscn"
-var first_game_scene_file_path = "res://scenes/levels/test_level.tscn"
+var main_menu_file_path = "res://Components/main_screen/scenes/Menu.tscn"
+var first_game_scene_file_path = "res://Components/levels/test_level.tscn"
 
 @onready var mainMenuScreen = %MenuScreen
 @onready var currentScreen = $"."
