@@ -560,24 +560,24 @@ shadow_enabled = true
 shadow_filter = 2
 texture = SubResource("GradientTexture2D_n4fdl")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
+[node name="lamp" type="RigidBody2D" parent="."]
 position = Vector2(-26, 26)
 collision_layer = 4
 collision_mask = 4
 freeze_mode = 1
 
-[node name="ExitSign" type="Sprite2D" parent="RigidBody2D"]
+[node name="ExitSign" type="Sprite2D" parent="lamp"]
 light_mask = 0
 position = Vector2(436, 80)
 scale = Vector2(0.12, 0.12)
 texture = ExtResource("4_bghr4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lamp"]
 position = Vector2(436, 80)
 scale = Vector2(0.12, 0.12)
 shape = SubResource("RectangleShape2D_tw4sf")
 
-[node name="PointLight2D3" type="PointLight2D" parent="RigidBody2D"]
+[node name="PointLight2D3" type="PointLight2D" parent="lamp"]
 position = Vector2(436, 80)
 rotation = -1.57079
 scale = Vector2(1.94455, 1.99116)
@@ -592,6 +592,6 @@ collision_layer = 2
 collision_mask = 4
 
 [node name="Testmob2" parent="." instance=ExtResource("6_bs0iy")]
-position = Vector2(485, 101)
+position = Vector2(483, 98)
 collision_layer = 2
 collision_mask = 4
