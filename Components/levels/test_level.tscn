@@ -1,5 +1,6 @@
-[gd_scene load_steps=68 format=3 uid="uid://3ufc8tfftg1g"]
+[gd_scene load_steps=69 format=3 uid="uid://3ufc8tfftg1g"]
 
+[ext_resource type="Script" path="res://Components/levels/test_level.gd" id="1_313cm"]
 [ext_resource type="PackedScene" uid="uid://cj2i5rtsdrvne" path="res://Components/player/player.tscn" id="1_hg5f1"]
 [ext_resource type="Texture2D" uid="uid://blqdxeg62yfuo" path="res://textures/background.png" id="1_jg77k"]
 [ext_resource type="Texture2D" uid="uid://bok8yinqhw5bj" path="res://textures/extras.png" id="2_q28wk"]
@@ -492,6 +493,7 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.495726)
 
 [node name="TestLevel" type="Node2D"]
+script = ExtResource("1_313cm")
 
 [node name="Background" type="TileMap" parent="."]
 position = Vector2(83, 124)

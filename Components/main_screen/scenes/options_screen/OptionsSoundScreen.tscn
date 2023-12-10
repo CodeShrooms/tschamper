@@ -20,6 +20,11 @@ enum {MASTER_BUS_ID, MUSIC_BUS_ID, SFX_BUS_ID}
 @onready var music_volume_slider =%MusicVolumeSlider
 @onready var sfx_volume_slider =%SFXVolumeSlider
 
+func _ready():
+	# set slider value to current sound bus values
+	master_volume_slider.value = db_to_linear(AudioServer.get_bus_volume_db(MASTER_BUS_ID))*100
+	music_volume_slider.value = db_to_linear(AudioServer.get_bus_volume_db(MUSIC_BUS_ID))*100
+	sfx_volume_slider.value = db_to_linear(AudioServer.get_bus_volume_db(SFX_BUS_ID))*100
 
 func _on_master_default_pressed():
 	# set master volume to default value if user presses default button

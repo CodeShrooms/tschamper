@@ -1,15 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgiuej5w02cnl"]
+[gd_scene load_steps=7 format=3 uid="uid://dgiuej5w02cnl"]
 
 [ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-Bold.ttf" id="2_xnn1f"]
 [ext_resource type="Texture2D" uid="uid://cgf0yjbiihvxu" path="res://Assets/MainScreen/reset_to_default.png" id="3_1k0go"]
 [ext_resource type="Texture2D" uid="uid://ce7rvx22tvxib" path="res://Assets/MainScreen/checkbox_checked.png" id="3_vdjpr"]
 [ext_resource type="Texture2D" uid="uid://dbeouhnbm20y1" path="res://Assets/MainScreen/checkbox_unchecked.png" id="4_r5ctp"]
+[ext_resource type="Texture2D" uid="uid://id4v05icw0re" path="res://Assets/MainScreen/checkbox_checked_disabled.png" id="5_sl48k"]
 
 [sub_resource type="GDScript" id="GDScript_46t7p"]
 script/source = "extends Control
 
+@onready var checkbox_vsync: CheckBox = $\"CenterContainer/HBoxContainer/Checks/V-sync\"
+
 func _ready():
 	update_button_values()
+	check_plattform_disable_vsync()
 
 func _on_full_screen_toggled(button_pressed):
 	if button_pressed:
@@ -43,6 +47,15 @@ func update_button_values():
 			$\"CenterContainer/HBoxContainer/Checks/V-sync\".set_pressed_no_signal(true)
 		DisplayServer.VSYNC_DISABLED:
 			$\"CenterContainer/HBoxContainer/Checks/V-sync\".set_pressed_no_signal(false)
+
+func check_plattform_disable_vsync():
+	var platform = OS.get_name()
+	# detect unix platform which can run wayland compositors
+	if platform == \"Linux\" || platform.contains(\"BSD\"):
+		# try to detect if running wayland session
+		if OS.get_environment(\"XDG_SESSION_TYPE\") == \"wayland\" || !OS.get_environment(\"WAYLAND_DISPLAY\").is_empty():
+			# disable checkbox if diabeling vsync would cause problems.
+			checkbox_vsync.disabled = true
 "
 
 [node name="Graphics" type="Control"]
@@ -127,6 +140,7 @@ theme_override_constants/h_separation = 20
 theme_override_fonts/font = ExtResource("2_xnn1f")
 theme_override_font_sizes/font_size = 50
 theme_override_icons/checked = ExtResource("3_vdjpr")
+theme_override_icons/checked_disabled = ExtResource("5_sl48k")
 theme_override_icons/unchecked = ExtResource("4_r5ctp")
 expand_icon = true
 
