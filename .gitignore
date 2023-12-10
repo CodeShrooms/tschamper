@@ -19,3 +19,6 @@ mono_crash.*.json
 
 # ignore Godot Git plugin because of OS specific files
 # addons/godot-git-plugin
+
+# ignore windows specific .tmp Godot files
+*.tmp
