@@ -1,11 +1,11 @@
 [gd_scene load_steps=69 format=3 uid="uid://3ufc8tfftg1g"]
 
-[ext_resource type="PackedScene" uid="uid://cj2i5rtsdrvne" path="res://player.tscn" id="1_hg5f1"]
+[ext_resource type="PackedScene" uid="uid://cj2i5rtsdrvne" path="res://Player/player.tscn" id="1_hg5f1"]
 [ext_resource type="Texture2D" uid="uid://blqdxeg62yfuo" path="res://textures/background.png" id="1_jg77k"]
 [ext_resource type="Texture2D" uid="uid://sd6p1f0otlui" path="res://textures/extras.png" id="2_q28wk"]
 [ext_resource type="Texture2D" uid="uid://cjrp4g5llriwr" path="res://textures/CollisionLayer.png" id="2_w357c"]
 [ext_resource type="Texture2D" uid="uid://b6r1tposxe8a5" path="res://textures/exit_sign.png" id="4_bghr4"]
-[ext_resource type="PackedScene" uid="uid://fqeor86p4m5h" path="res://testmob.tscn" id="6_bs0iy"]
+[ext_resource type="PackedScene" uid="uid://fqeor86p4m5h" path="res://Enemy/testmob.tscn" id="6_bs0iy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a75wc"]
 texture = ExtResource("1_jg77k")

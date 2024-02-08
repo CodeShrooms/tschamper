@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 # player movement variables
 @export var speed : float = 200.0
-#acceleration between 0-1
 @export var acceleration : float = 10
 @export var deacceleration : float = 10
 @export var jump_velocity : float = -150.0

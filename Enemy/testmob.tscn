@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://fqeor86p4m5h"]
+
+[ext_resource type="Script" path="res://Enemy/testmob.gd" id="1_2cqk0"]
+[ext_resource type="Texture2D" uid="uid://dxoicvw5kj5c7" path="res://textures/tut-tut-baby-flitzer.png" id="2_hgg2a"]
+[ext_resource type="Script" path="res://states/State Machine.gd" id="3_ux8g3"]
+[ext_resource type="Script" path="res://Enemy/states/EnemyIdle.gd" id="4_dwp7o"]
+[ext_resource type="Script" path="res://Enemy/states/EnemyFollow.gd" id="5_dg6cc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n5k57"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hgg2a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_25fw4"]
+size = Vector2(29, 25.5)
+
+[node name="Testmob" type="CharacterBody2D"]
+script = ExtResource("1_2cqk0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.091931, 0.091931)
+sprite_frames = SubResource("SpriteFrames_n5k57")
+frame_progress = 0.407295
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_25fw4")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-9, 0)
+target_position = Vector2(0, 24)
+collision_mask = 6
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_ux8g3")
+initial_state = NodePath("EnemyIdle")
+
+[node name="EnemyIdle" type="Node" parent="State Machine" node_paths=PackedStringArray("RayCast", "enemy")]
+script = ExtResource("4_dwp7o")
+SPEED = 3.0
+RayCast = NodePath("../../RayCast2D")
+enemy = NodePath("../..")
+
+[node name="EnemyFollow" type="Node" parent="State Machine" node_paths=PackedStringArray("animated_sprite", "enemy")]
+script = ExtResource("5_dg6cc")
+follow_speed = 30.0
+follow_start_range = 75
+follow_max_range = 80
+animated_sprite = NodePath("../../AnimatedSprite2D")
+enemy = NodePath("../..")
