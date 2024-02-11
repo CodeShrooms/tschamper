@@ -21,8 +21,7 @@ func Physics_Update(delta: float):
 	var direction = player.global_position - enemy.global_position
 	
 	# flip sprite if player passes enemy
-	# direction.x is x-direction to player; enemy shoud face player
-	animated_sprite.flip_h = (direction.x > 0)
+	animated_sprite.flip_h = (direction.x > 0) # direction.x is x-direction to player; enemy shoud face player
 	
 	# direction.length: distance from enemy to player
 	if direction.length() < follow_start_range:
