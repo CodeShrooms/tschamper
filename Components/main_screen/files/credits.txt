@@ -1,0 +1,40 @@
+Tschumper-Game
+
+by Sharks 'n Shrooms
+
+Programming
+Thomas Klaus
+Jessica Zickgraf
+Sven Vogel
+Felix Müller
+Charlotte Bauer
+Eva Hölzl
+
+Art
+Sven Vogel
+Jessica Zickgraf
+Charlotte Bauer
+Eva Hölzl
+
+Music
+DJ Ferrari
+
+Sound Effects
+DJ Ferrari
+
+Testers
+Name 1
+Name 2
+Name 3
+
+Tools used
+Developed with Godot Engine
+https://godotengine.org/license
+
+Art created with My Favourite Art Program
+https://myfavouriteartprogram.com
+
+Special thanks
+My parents
+My friends
+My pet rabbit

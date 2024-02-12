@@ -1,0 +1,110 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1xhsttsa41tm"]
+
+[ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-Bold.ttf" id="1_khq1i"]
+
+[node name="Controls" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+use_top_left = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Labels" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 80
+
+[node name="left" type="Label" parent="CenterContainer/HBoxContainer/Labels"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("1_khq1i")
+theme_override_font_sizes/font_size = 40
+text = "left"
+vertical_alignment = 1
+
+[node name="right" type="Label" parent="CenterContainer/HBoxContainer/Labels"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_khq1i")
+theme_override_font_sizes/font_size = 40
+text = "right"
+vertical_alignment = 1
+
+[node name="up" type="Label" parent="CenterContainer/HBoxContainer/Labels"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("1_khq1i")
+theme_override_font_sizes/font_size = 40
+text = "up"
+vertical_alignment = 1
+
+[node name="down" type="Label" parent="CenterContainer/HBoxContainer/Labels"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("1_khq1i")
+theme_override_font_sizes/font_size = 40
+text = "down"
+vertical_alignment = 1
+
+[node name="Control_Buttons" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 80
+
+[node name="left" type="Label" parent="CenterContainer/HBoxContainer/Control_Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("1_khq1i")
+theme_override_font_sizes/font_size = 40
+text = "A or arrow_left"
+vertical_alignment = 1
+
+[node name="right" type="Label" parent="CenterContainer/HBoxContainer/Control_Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_khq1i")
+theme_override_font_sizes/font_size = 40
+text = "D or arrow_right"
+vertical_alignment = 1
+
+[node name="up" type="Label" parent="CenterContainer/HBoxContainer/Control_Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("1_khq1i")
+theme_override_font_sizes/font_size = 40
+text = "W or arrow_up"
+vertical_alignment = 1
+
+[node name="down" type="Label" parent="CenterContainer/HBoxContainer/Control_Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("1_khq1i")
+theme_override_font_sizes/font_size = 40
+text = "S or arrow_down"
+vertical_alignment = 1
+
+[node name="Line2D" type="Line2D" parent="CenterContainer"]
+position = Vector2(-107, -214)
+points = PackedVector2Array(0, 442, -8, -12)

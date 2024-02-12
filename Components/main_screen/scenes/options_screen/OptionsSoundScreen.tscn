@@ -1,0 +1,183 @@
+[gd_scene load_steps=7 format=3 uid="uid://dsw7vy60tqeyv"]
+
+[ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-Bold.ttf" id="2_r1juf"]
+[ext_resource type="Texture2D" uid="uid://cgf0yjbiihvxu" path="res://Assets/MainScreen/reset_to_default.png" id="3_50fx5"]
+[ext_resource type="Texture2D" uid="uid://8f1jh2cbr2hb" path="res://Assets/MainScreen/slider_grabber.png" id="4_8r5d5"]
+[ext_resource type="Texture2D" uid="uid://qs0d7cmo8srr" path="res://Assets/MainScreen/slider.png" id="5_hd13l"]
+
+[sub_resource type="GDScript" id="GDScript_teoev"]
+script/source = "extends Control
+
+# Default sound-bus volume. Used on reset to default
+const DEFAULT_VOLUME = 100
+
+# Sound-bus IDs: FIRST_BUS_ID = 0, SECOND_BUS_ID = 1, etc.
+enum {MASTER_BUS_ID, MUSIC_BUS_ID, SFX_BUS_ID}
+
+# Unique Names for the sound sliders.
+# onready because the nodes are not loaded before scene is ready.
+@onready var master_volume_slider = %MasterVolumeSlider
+@onready var music_volume_slider =%MusicVolumeSlider
+@onready var sfx_volume_slider =%SFXVolumeSlider
+
+func _ready():
+	# set slider value to current sound bus values
+	master_volume_slider.value = db_to_linear(AudioServer.get_bus_volume_db(MASTER_BUS_ID))*100
+	music_volume_slider.value = db_to_linear(AudioServer.get_bus_volume_db(MUSIC_BUS_ID))*100
+	sfx_volume_slider.value = db_to_linear(AudioServer.get_bus_volume_db(SFX_BUS_ID))*100
+
+func _on_master_default_pressed():
+	# set master volume to default value if user presses default button
+	set_default_volume(MASTER_BUS_ID, master_volume_slider)
+
+func _on_music_default_pressed():
+	# set music volume to default value if user presses default button
+	set_default_volume(MUSIC_BUS_ID, music_volume_slider)
+
+func _on_sfx_default_pressed():
+	# set music volume to default value if user presses default button
+	set_default_volume(SFX_BUS_ID, sfx_volume_slider)
+
+func _on_master_volume_slider_value_changed(volume):
+	set_volume(MASTER_BUS_ID, volume)
+
+func _on_music_volume_slider_value_changed(volume):
+	set_volume(MUSIC_BUS_ID, volume)
+
+func _on_sfx_volume_slider_value_changed(volume):
+	set_volume(SFX_BUS_ID, volume)
+
+func set_slider(slider_node, volume):
+	slider_node.value = volume
+	
+func set_volume(bus_id, volume):
+	AudioServer.set_bus_volume_db(bus_id, linear_to_db(volume/100))
+	AudioServer.set_bus_mute(bus_id, volume < .05)
+
+func set_default_volume(bus_id, slider):
+	set_volume(bus_id, DEFAULT_VOLUME)
+	set_slider(slider, DEFAULT_VOLUME)
+"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6c7yn"]
+texture = ExtResource("5_hd13l")
+texture_margin_top = 60.0
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_teoev")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+use_top_left = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Labels" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 80
+
+[node name="Master" type="Label" parent="CenterContainer/HBoxContainer/Labels"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("2_r1juf")
+theme_override_font_sizes/font_size = 40
+text = "Master"
+vertical_alignment = 1
+
+[node name="Music" type="Label" parent="CenterContainer/HBoxContainer/Labels"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_r1juf")
+theme_override_font_sizes/font_size = 40
+text = "Music"
+vertical_alignment = 1
+
+[node name="SFX" type="Label" parent="CenterContainer/HBoxContainer/Labels"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("2_r1juf")
+theme_override_font_sizes/font_size = 40
+text = "SFX"
+vertical_alignment = 1
+
+[node name="Defaults" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="Master_default" type="Button" parent="CenterContainer/HBoxContainer/Defaults"]
+layout_mode = 2
+icon = ExtResource("3_50fx5")
+
+[node name="Music_default" type="Button" parent="CenterContainer/HBoxContainer/Defaults"]
+layout_mode = 2
+icon = ExtResource("3_50fx5")
+
+[node name="SFX_default" type="Button" parent="CenterContainer/HBoxContainer/Defaults"]
+layout_mode = 2
+icon = ExtResource("3_50fx5")
+
+[node name="Slider" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 50
+
+[node name="MasterVolumeSlider" type="HSlider" parent="CenterContainer/HBoxContainer/Slider"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("4_8r5d5")
+theme_override_icons/grabber_highlight = ExtResource("4_8r5d5")
+theme_override_styles/slider = SubResource("StyleBoxTexture_6c7yn")
+value = 100.0
+
+[node name="MusicVolumeSlider" type="HSlider" parent="CenterContainer/HBoxContainer/Slider"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("4_8r5d5")
+theme_override_icons/grabber_highlight = ExtResource("4_8r5d5")
+theme_override_styles/slider = SubResource("StyleBoxTexture_6c7yn")
+value = 100.0
+
+[node name="SFXVolumeSlider" type="HSlider" parent="CenterContainer/HBoxContainer/Slider"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("4_8r5d5")
+theme_override_icons/grabber_highlight = ExtResource("4_8r5d5")
+theme_override_styles/slider = SubResource("StyleBoxTexture_6c7yn")
+value = 100.0
+
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Defaults/Master_default" to="." method="_on_master_default_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Defaults/Music_default" to="." method="_on_music_default_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Defaults/SFX_default" to="." method="_on_sfx_default_pressed"]
+[connection signal="value_changed" from="CenterContainer/HBoxContainer/Slider/MasterVolumeSlider" to="." method="_on_master_volume_slider_value_changed"]
+[connection signal="value_changed" from="CenterContainer/HBoxContainer/Slider/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
+[connection signal="value_changed" from="CenterContainer/HBoxContainer/Slider/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
