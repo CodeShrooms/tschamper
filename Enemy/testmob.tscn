@@ -40,10 +40,11 @@ collision_mask = 6
 script = ExtResource("3_ux8g3")
 initial_state = NodePath("EnemyIdle")
 
-[node name="EnemyIdle" type="Node" parent="State Machine" node_paths=PackedStringArray("RayCast", "enemy")]
+[node name="EnemyIdle" type="Node" parent="State Machine" node_paths=PackedStringArray("RayCast", "animated_sprite", "enemy")]
 script = ExtResource("4_dwp7o")
 idle_speed = 4.0
 RayCast = NodePath("../../RayCast2D")
+animated_sprite = NodePath("../../AnimatedSprite")
 enemy = NodePath("../..")
 
 [node name="EnemyFollow" type="Node" parent="State Machine" node_paths=PackedStringArray("animated_sprite", "enemy")]
