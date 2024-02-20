@@ -1,17 +1,11 @@
 [gd_scene load_steps=18 format=3 uid="uid://cj2i5rtsdrvne"]
 
-<<<<<<<< HEAD:Player/player.tscn
 [ext_resource type="Script" path="res://Player/player.gd" id="1_iu520"]
 [ext_resource type="Texture2D" uid="uid://cp5t32ypqfxsl" path="res://textures/mechanic/idle.png" id="2_k8mmg"]
 [ext_resource type="Texture2D" uid="uid://bed8y0wd5royd" path="res://textures/mechanic/walk.png" id="3_psn8v"]
 [ext_resource type="Script" path="res://states/State Machine.gd" id="4_3xdre"]
 [ext_resource type="Script" path="res://Player/states/PlayerGrounded.gd" id="5_ups8r"]
 [ext_resource type="Script" path="res://Player/states/PlayerAirborne.gd" id="6_ys6kv"]
-========
-[ext_resource type="Script" path="res://Components/player/player.gd" id="1_26m6a"]
-[ext_resource type="Texture2D" uid="uid://bpe2xlf5o4oti" path="res://textures/mechanic/idle.png" id="2_k8mmg"]
-[ext_resource type="Texture2D" uid="uid://btfiw2wjxgp0o" path="res://textures/mechanic/walk.png" id="3_psn8v"]
->>>>>>>> origin/master:Components/player/player.tscn
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ompc7"]
 atlas = ExtResource("2_k8mmg")
