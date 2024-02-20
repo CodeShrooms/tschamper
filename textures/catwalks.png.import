@@ -2,16 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<<< HEAD:Assets/MainScreen/Main_background.png.import
+uid="uid://b6wvamka4427c"
+path="res://.godot/imported/Main_background.png-b94829295b630f2ee0165f48e9c28014.ctex"
+========
 uid="uid://bmt8c2wceor4e"
 path="res://.godot/imported/catwalks.png-a49499f904eeec7c234d47695873d1bc.ctex"
+>>>>>>>> origin/master:textures/catwalks.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<<< HEAD:Assets/MainScreen/Main_background.png.import
+source_file="res://Assets/MainScreen/Main_background.png"
+dest_files=["res://.godot/imported/Main_background.png-b94829295b630f2ee0165f48e9c28014.ctex"]
+========
 source_file="res://textures/catwalks.png"
 dest_files=["res://.godot/imported/catwalks.png-a49499f904eeec7c234d47695873d1bc.ctex"]
+>>>>>>>> origin/master:textures/catwalks.png.import
 
 [params]
 

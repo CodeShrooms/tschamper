@@ -1,0 +1,150 @@
+[gd_scene load_steps=7 format=3 uid="uid://dgiuej5w02cnl"]
+
+[ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-Bold.ttf" id="2_xnn1f"]
+[ext_resource type="Texture2D" uid="uid://cgf0yjbiihvxu" path="res://Assets/MainScreen/reset_to_default.png" id="3_1k0go"]
+[ext_resource type="Texture2D" uid="uid://ce7rvx22tvxib" path="res://Assets/MainScreen/checkbox_checked.png" id="3_vdjpr"]
+[ext_resource type="Texture2D" uid="uid://dbeouhnbm20y1" path="res://Assets/MainScreen/checkbox_unchecked.png" id="4_r5ctp"]
+[ext_resource type="Texture2D" uid="uid://id4v05icw0re" path="res://Assets/MainScreen/checkbox_checked_disabled.png" id="5_sl48k"]
+
+[sub_resource type="GDScript" id="GDScript_46t7p"]
+script/source = "extends Control
+
+@onready var checkbox_vsync: CheckBox = $\"CenterContainer/HBoxContainer/Checks/V-sync\"
+
+func _ready():
+	update_button_values()
+	check_plattform_disable_vsync()
+
+func _on_full_screen_toggled(button_pressed):
+	if button_pressed:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+
+func _on_vsync_toggled(button_pressed):
+	if button_pressed:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+	else:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+
+func _on_full_screen_default_pressed():
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+	update_button_values()
+
+func _on_vsync_default_pressed():
+	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+	update_button_values()
+	
+func update_button_values():
+	#set default checkbox values//check which options are 4real currently enabled
+	match DisplayServer.window_get_mode():
+		DisplayServer.WINDOW_MODE_FULLSCREEN:
+			$CenterContainer/HBoxContainer/Checks/FullScreen.set_pressed_no_signal(true)
+		DisplayServer.WINDOW_MODE_MAXIMIZED:
+			$CenterContainer/HBoxContainer/Checks/FullScreen.set_pressed_no_signal(false)
+	match DisplayServer.window_get_vsync_mode():
+		DisplayServer.VSYNC_ENABLED:
+			$\"CenterContainer/HBoxContainer/Checks/V-sync\".set_pressed_no_signal(true)
+		DisplayServer.VSYNC_DISABLED:
+			$\"CenterContainer/HBoxContainer/Checks/V-sync\".set_pressed_no_signal(false)
+
+func check_plattform_disable_vsync():
+	var platform = OS.get_name()
+	# detect unix platform which can run wayland compositors
+	if platform == \"Linux\" || platform.contains(\"BSD\"):
+		# try to detect if running wayland session
+		if OS.get_environment(\"XDG_SESSION_TYPE\") == \"wayland\" || !OS.get_environment(\"WAYLAND_DISPLAY\").is_empty():
+			# disable checkbox if diabeling vsync would cause problems.
+			checkbox_vsync.disabled = true
+"
+
+[node name="Graphics" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_46t7p")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+use_top_left = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Labels" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 80
+
+[node name="FullScreen" type="Label" parent="CenterContainer/HBoxContainer/Labels"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("2_xnn1f")
+theme_override_font_sizes/font_size = 40
+text = "Full Screen"
+
+[node name="V-sync" type="Label" parent="CenterContainer/HBoxContainer/Labels"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_xnn1f")
+theme_override_font_sizes/font_size = 40
+text = "V-Sync"
+
+[node name="Defaults" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="FullScreen_default" type="Button" parent="CenterContainer/HBoxContainer/Defaults"]
+layout_mode = 2
+icon = ExtResource("3_1k0go")
+
+[node name="V-sync_default" type="Button" parent="CenterContainer/HBoxContainer/Defaults"]
+layout_mode = 2
+icon = ExtResource("3_1k0go")
+
+[node name="Checks" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="FullScreen" type="CheckBox" parent="CenterContainer/HBoxContainer/Checks"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_fonts/font = ExtResource("2_xnn1f")
+theme_override_font_sizes/font_size = 50
+theme_override_icons/checked = ExtResource("3_vdjpr")
+theme_override_icons/unchecked = ExtResource("4_r5ctp")
+expand_icon = true
+
+[node name="V-sync" type="CheckBox" parent="CenterContainer/HBoxContainer/Checks"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_fonts/font = ExtResource("2_xnn1f")
+theme_override_font_sizes/font_size = 50
+theme_override_icons/checked = ExtResource("3_vdjpr")
+theme_override_icons/checked_disabled = ExtResource("5_sl48k")
+theme_override_icons/unchecked = ExtResource("4_r5ctp")
+expand_icon = true
+
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Defaults/FullScreen_default" to="." method="_on_full_screen_default_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Defaults/V-sync_default" to="." method="_on_vsync_default_pressed"]
+[connection signal="toggled" from="CenterContainer/HBoxContainer/Checks/FullScreen" to="." method="_on_full_screen_toggled"]
+[connection signal="toggled" from="CenterContainer/HBoxContainer/Checks/V-sync" to="." method="_on_vsync_toggled"]

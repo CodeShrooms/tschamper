@@ -1,0 +1,118 @@
+[gd_scene load_steps=10 format=3 uid="uid://bcfv21754uprc"]
+
+[ext_resource type="Texture2D" uid="uid://c6vlrdfcajx1y" path="res://Assets/MainScreen/credits_background.jpg" id="1_uowjv"]
+[ext_resource type="Script" path="res://Components/main_screen/scripts/Background.gd" id="2_sjbf7"]
+[ext_resource type="FontFile" uid="uid://butu340vydyre" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-Bold.ttf" id="3_whp5t"]
+[ext_resource type="AudioStream" uid="uid://cfa7bq1i8wy84" path="res://Assets/Sound/Ending Song Demo 1.wav" id="4_jrsr4"]
+[ext_resource type="FontFile" uid="uid://chh381606d4a8" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-Medium.ttf" id="4_yeqo5"]
+[ext_resource type="FontFile" uid="uid://bhp44yo407br1" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-Italic.ttf" id="6_orroo"]
+[ext_resource type="Script" path="res://Components/main_screen/scripts/RichTextLabel.gd" id="7_geokp"]
+[ext_resource type="FontFile" uid="uid://dpsw4r8hh4c6r" path="res://Assets/Fonts/ChakraPetch/ChakraPetch-BoldItalic.ttf" id="7_hu06q"]
+
+[sub_resource type="GDScript" id="GDScript_3agnd"]
+script/source = "extends Node2D
+
+# Speed of scrolling.
+@export var base_scroll_speed: int = 60
+var current_scroll_speed: int = base_scroll_speed
+# Factor to increase speed when holding up/down keys.
+var speed_up_factor: int = 10
+# Is the speed currently increased?
+var speed_up: bool = false
+
+
+var main_menu_file_path: String = \"res://Components/main_screen/scenes/Menu.tscn\"
+@onready var credits_scroll_container: ScrollContainer = $CenterContainer/ScrollContainer
+
+
+func _ready():
+	# make scrollbar of ScrollContainer invisible
+	credits_scroll_container.get_v_scroll_bar().scale.x = 0
+
+func _process(_delta):
+		# Adjust scroll speed based on whether speed_up is true or false
+	current_scroll_speed = base_scroll_speed if (not speed_up) else (base_scroll_speed * speed_up_factor)
+
+func finish():
+	get_tree().change_scene_to_file(main_menu_file_path)
+	
+func _unhandled_input(event):
+	# If you press Esc return to MainScreen
+	if event.is_action_pressed(\"ui_cancel\"):
+		finish()
+	# event.is_echo() might be triggered when a key is held down, we dont want the echo behaviour.
+	if (event.is_action_pressed(\"ui_down\") || event.is_action_pressed(\"ui_up\")) and !event.is_echo():
+		speed_up = true
+	if (event.is_action_released(\"ui_down\") || event.is_action_released(\"ui_up\")) and !event.is_echo():
+		speed_up = false
+
+
+func _on_back_pressed():
+	finish()
+"
+
+[node name="CreditScreen" type="Node2D"]
+script = SubResource("GDScript_3agnd")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 7560.0
+texture = ExtResource("1_uowjv")
+script = ExtResource("2_sjbf7")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="ColorRect" type="ColorRect" parent="CenterContainer"]
+custom_minimum_size = Vector2(1180, 1080)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+color = Color(0.129412, 0.2, 0.290196, 0.552941)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(1080, 1080)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/ScrollContainer"]
+custom_minimum_size = Vector2(1080, 1080)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("4_yeqo5")
+theme_override_fonts/bold_font = ExtResource("3_whp5t")
+theme_override_fonts/italics_font = ExtResource("6_orroo")
+theme_override_fonts/bold_italics_font = ExtResource("7_hu06q")
+theme_override_font_sizes/normal_font_size = 35
+theme_override_font_sizes/bold_font_size = 35
+theme_override_font_sizes/italics_font_size = 35
+theme_override_font_sizes/bold_italics_font_size = 35
+theme_override_font_sizes/mono_font_size = 35
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+script = ExtResource("7_geokp")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Back" type="Button" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_whp5t")
+theme_override_font_sizes/font_size = 50
+text = "Back"
+
+[node name="BackgroundSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_jrsr4")
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="MarginContainer/Back" to="." method="_on_back_pressed"]
