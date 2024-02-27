@@ -32,5 +32,5 @@ func Physics_Update(delta:float):
 	enemy.velocity.x = direction * idle_speed
 
 	var distance_to_player = player.global_position - enemy.global_position
-	if distance_to_player.length() < 50:
+	if distance_to_player.length() < follow_start_range:
 		Transitioned.emit(self, "EnemyFollow")

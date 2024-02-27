@@ -2,8 +2,6 @@ class_name EnemyFollow
 extends EnemyState
 
 @export var follow_speed: float
-@export var follow_start_range: int
-@export var follow_max_range: int
 
 @export var animated_sprite : AnimatedSprite2D
 var is_sprite_flipped_initially: bool
@@ -37,7 +35,7 @@ func Physics_Update(delta: float):
 		# start following Player if they are close to Enemy
 		enemy.velocity.x = direction.normalized().x * follow_speed
 	
-	if direction.length() > follow_max_range: # FIXME: somehow max_range 80 feels MUCH MUCH bigger than start_range 75 
+	if direction.length() > follow_max_range: 
 		# distance to Player to long -> "out of range", do not follow anymore
 		Transitioned.emit(self, "EnemyIdle")
 	

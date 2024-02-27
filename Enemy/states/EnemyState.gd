@@ -15,6 +15,8 @@ extends State
 var player: Player
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+var follow_start_range: int = 50
+var follow_max_range: int = 80
 
 func exit():
 	pass

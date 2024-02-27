@@ -50,7 +50,5 @@ enemy = NodePath("../..")
 [node name="EnemyFollow" type="Node" parent="State Machine" node_paths=PackedStringArray("animated_sprite", "enemy")]
 script = ExtResource("5_dg6cc")
 follow_speed = 30.0
-follow_start_range = 75
-follow_max_range = 80
 animated_sprite = NodePath("../../AnimatedSprite")
 enemy = NodePath("../..")
