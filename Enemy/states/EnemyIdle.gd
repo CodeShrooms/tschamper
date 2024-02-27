@@ -5,7 +5,6 @@ extends EnemyState
 @export var RayCast: RayCast2D
 @export var animated_sprite : AnimatedSprite2D
 
-var move_diriction: Vector2
 var wander_time: float
 
 var direction: float

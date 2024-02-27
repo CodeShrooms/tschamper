@@ -6,20 +6,20 @@ extends EnemyState
 @export var follow_max_range: int
 
 @export var animated_sprite : AnimatedSprite2D
-var is_initial_orientation_of_animated_sprite_flipped: bool
+var is_sprite_flipped_initially: bool
 
 func enter():
 	super.enter()
 	
-	is_initial_orientation_of_animated_sprite_flipped = animated_sprite.flip_h
+	is_sprite_flipped_initially = animated_sprite.flip_h
 
 func exit():
 	super.exit()
 	
 	# reset velocity
-	enemy.velocity.x = Vector2().x
+	enemy.velocity.x = 0.0
 	# reset sprite-flipping 
-	animated_sprite.flip_h = is_initial_orientation_of_animated_sprite_flipped
+	animated_sprite.flip_h = is_sprite_flipped_initially
 
 func Physics_Update(delta: float):
 	if not enemy.is_on_floor():
