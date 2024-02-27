@@ -29,6 +29,9 @@ func Physics_Update(delta:float):
 		# flip mob sprite
 		animated_sprite.flip_h = not (animated_sprite.flip_h)
 	
+	# Sets a flat velocity.
+	# 'direction': left = negative velocity (direction = -1); right = positive velocity (direction = 1)
+	# this calculation does not involve acceleration, therefore it does not need to involve the 'delta' parameter (time between frames)
 	enemy.velocity.x = direction * idle_speed
 
 	var distance_to_player = player.global_position - enemy.global_position

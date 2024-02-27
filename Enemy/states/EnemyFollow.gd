@@ -33,6 +33,9 @@ func Physics_Update(delta: float):
 	# direction.length: distance from enemy to player
 	if direction.length() < follow_start_range:
 		# start following Player if they are close to Enemy
+		# 'direction.normalized().x' normalizes the direction (distance vector to the player, normalized to length 1); is used to flip the horizontal movement and it makes the enemy slightly faster when getting near the player
+		# 'direction': left = negative velocity (direction = -1); right = positive velocity (direction = 1)
+		# this calculation does not involve acceleration, therefore it does not need to involve the 'delta' parameter (time between frames) 
 		enemy.velocity.x = direction.normalized().x * follow_speed
 	
 	if direction.length() > follow_max_range: 
