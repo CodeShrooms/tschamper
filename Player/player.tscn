@@ -1,8 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://cj2i5rtsdrvne"]
+[gd_scene load_steps=18 format=3 uid="uid://cj2i5rtsdrvne"]
 
-[ext_resource type="Script" path="res://Components/player/player.gd" id="1_26m6a"]
+[ext_resource type="Script" path="res://Player/player.gd" id="1_iu520"]
 [ext_resource type="Texture2D" uid="uid://bpe2xlf5o4oti" path="res://textures/mechanic/idle.png" id="2_k8mmg"]
 [ext_resource type="Texture2D" uid="uid://btfiw2wjxgp0o" path="res://textures/mechanic/walk.png" id="3_psn8v"]
+[ext_resource type="Script" path="res://states/State Machine.gd" id="4_3xdre"]
+[ext_resource type="Script" path="res://Player/states/PlayerGrounded.gd" id="5_ups8r"]
+[ext_resource type="Script" path="res://Player/states/PlayerAirborne.gd" id="6_ys6kv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ompc7"]
 atlas = ExtResource("2_k8mmg")
@@ -111,17 +114,40 @@ animations = [{
 radius = 6.0
 height = 24.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(32, 164)
-script = ExtResource("1_26m6a")
+script = ExtResource("1_iu520")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 2
 scale = Vector2(0.0543852, 0.0543852)
 sprite_frames = SubResource("SpriteFrames_npxjt")
 animation = &"walk"
-frame_progress = 0.344372
+frame_progress = 0.107801
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 2)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_v1nkg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_v1nkg")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_3xdre")
+initial_state = NodePath("PlayerAirborne")
+
+[node name="PlayerGrounded" type="Node" parent="StateMachine" node_paths=PackedStringArray("animated_sprite")]
+script = ExtResource("5_ups8r")
+animated_sprite = NodePath("../../AnimatedSprite")
+
+[node name="PlayerAirborne" type="Node" parent="StateMachine" node_paths=PackedStringArray("animated_sprite")]
+script = ExtResource("6_ys6kv")
+animated_sprite = NodePath("../../AnimatedSprite")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
