@@ -18,6 +18,8 @@ var player: Player
 @export var allow_extra_jumps_without_first_jump_from_floor : bool = true
 # to set a custom gravity, change the value here (or set it in the Inspector via @export, however, ProjectSettings.get_setting doesn't work with @export)
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+@export var allow_wall_jump: bool = true
 @export_group("")
 
 func exit():

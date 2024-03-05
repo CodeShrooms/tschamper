@@ -3,6 +3,9 @@ extends PlayerState
 
 @export var animated_sprite : AnimatedSprite2D
 
+@export var wall_jump_pushback = 160
+@export var wall_jump_boost = -160
+
 func Physics_Update(delta: float):
 	# leave this state if player is on floor
 	if player.is_on_floor():
@@ -13,16 +16,27 @@ func Physics_Update(delta: float):
 
 	# Handle jump when airborne
 	if Input.is_action_just_pressed("jump"):
-			if player.current_jump_count < max_jump_count:
-				if allow_extra_jumps_without_first_jump_from_floor or player.current_jump_count >= 1:
-					if player.velocity.y > 0:
-						# y gets bigger when further down
-						player.velocity.y = extra_jump_velocity
-					else:
-						player.velocity.y += extra_jump_velocity
+		# Do a wall jump, if the player is on the wall AND pressing the Inputs to move into the wall
+		if player.is_on_wall_only():
+			# Do a normal jump (set y-Velocity) and move away from wall
+			if Input.is_action_pressed("left"):
+				player.velocity.y = wall_jump_boost
+				player.velocity.x = wall_jump_pushback
+			elif Input.is_action_pressed("right"):
+				player.velocity.y = wall_jump_boost
+				player.velocity.x = -wall_jump_pushback
+		
+		# Do a normal jump if there are jumps left
+		elif player.current_jump_count < max_jump_count:
+			if allow_extra_jumps_without_first_jump_from_floor or player.current_jump_count >= 1:
+				if player.velocity.y > 0:
+					# y gets bigger when further down
+					player.velocity.y = extra_jump_velocity
+				else:
+					player.velocity.y += extra_jump_velocity
 
-					# only add 1 to jump count if player.velocity.y has been written
-					player.current_jump_count += 1
+				# only add 1 to jump count if player.velocity.y has been written
+				player.current_jump_count += 1
 
 	handle_other_inputs()
 
