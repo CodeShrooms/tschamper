@@ -3,8 +3,8 @@ extends PlayerState
 
 @export var animated_sprite : AnimatedSprite2D
 
-@export var wall_jump_pushback = 160
-@export var wall_jump_boost = -160
+@export var wall_jump_pushback = 175
+@export var wall_jump_boost = -150
 
 func Physics_Update(delta: float):
 	# leave this state if player is on floor
@@ -16,15 +16,15 @@ func Physics_Update(delta: float):
 
 	# Handle jump when airborne
 	if Input.is_action_just_pressed("jump"):
-		# Do a wall jump, if the player is on the wall AND pressing the Inputs to move into the wall
+		# Do a wall jump, if the player is on the wall (and not colliding with something else) AND pressing the Inputs to move into the wall
 		if player.is_on_wall_only():
 			# Do a normal jump (set y-Velocity) and move away from wall
 			if Input.is_action_pressed("left"):
 				player.velocity.y = wall_jump_boost
-				player.velocity.x = wall_jump_pushback
+				player.velocity.x = wall_jump_pushback # positive pushback -> to the right
 			elif Input.is_action_pressed("right"):
 				player.velocity.y = wall_jump_boost
-				player.velocity.x = -wall_jump_pushback
+				player.velocity.x = -wall_jump_pushback # negative pushback -> to the left
 		
 		# Do a normal jump if there are jumps left
 		elif player.current_jump_count < max_jump_count:
