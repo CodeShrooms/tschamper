@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cj2i5rtsdrvne" path="res://Player/player.tscn" id="1_hg5f1"]
 [ext_resource type="Texture2D" uid="uid://blqdxeg62yfuo" path="res://textures/background.png" id="1_jg77k"]
-[ext_resource type="Texture2D" uid="uid://sd6p1f0otlui" path="res://textures/extras.png" id="2_q28wk"]
+[ext_resource type="Texture2D" uid="uid://bok8yinqhw5bj" path="res://textures/extras.png" id="2_q28wk"]
 [ext_resource type="Texture2D" uid="uid://cjrp4g5llriwr" path="res://textures/CollisionLayer.png" id="2_w357c"]
 [ext_resource type="Texture2D" uid="uid://b6r1tposxe8a5" path="res://textures/exit_sign.png" id="4_bghr4"]
 [ext_resource type="PackedScene" uid="uid://fqeor86p4m5h" path="res://Enemy/testmob.tscn" id="6_bs0iy"]
@@ -446,16 +446,11 @@ physics_layer_0/collision_layer = 4
 physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_waj07")
 
-[sub_resource type="Gradient" id="Gradient_xnokj"]
-colors = PackedColorArray(1, 1, 1, 1, 0.219501, 0.219501, 0.219501, 0.792157)
+[sub_resource type="Gradient" id="Gradient_b5uin"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_wigyk"]
-gradient = SubResource("Gradient_xnokj")
-width = 512
-height = 512
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.7, 0.5)
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ewo8e"]
+gradient = SubResource("Gradient_b5uin")
 
 [sub_resource type="Gradient" id="Gradient_pyequ"]
 colors = PackedColorArray(0, 0, 0, 1, 0.611624, 0.772373, 0.902529, 1)
@@ -526,21 +521,20 @@ layer_0/tile_data = PackedInt32Array(131070, 0, 0, 131071, 0, 0, 131069, 131072,
 [node name="Player" parent="." instance=ExtResource("1_hg5f1")]
 position = Vector2(330, 74)
 collision_mask = 4
-acceleration = 5.0
-deacceleration = 40.0
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
 
-[node name="PointLight2D" type="PointLight2D" parent="Player"]
-position = Vector2(-1, 4)
+[node name="PointLight2D2" type="PointLight2D" parent="Player"]
+position = Vector2(0, 1)
 scale = Vector2(1.33888, 1.33888)
-blend_mode = 2
-shadow_enabled = true
+energy = 0.7
+blend_mode = 1
 shadow_color = Color(0, 0, 0, 0.792157)
 shadow_filter = 1
 shadow_filter_smooth = 0.6
-texture = SubResource("GradientTexture2D_wigyk")
+texture = SubResource("GradientTexture2D_ewo8e")
+texture_scale = 11.66
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(78, 268)
