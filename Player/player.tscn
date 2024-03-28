@@ -149,5 +149,6 @@ animated_sprite = NodePath("../../AnimatedSprite")
 [node name="PlayerAirborne" type="Node" parent="StateMachine" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("6_ys6kv")
 animated_sprite = NodePath("../../AnimatedSprite")
+max_jump_count = 1
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
