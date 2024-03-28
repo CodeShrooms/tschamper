@@ -1,12 +1,12 @@
-[gd_scene load_steps=22 format=3 uid="uid://cj2i5rtsdrvne"]
+[gd_scene load_steps=20 format=3 uid="uid://cj2i5rtsdrvne"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_iu520"]
 [ext_resource type="Texture2D" uid="uid://bpe2xlf5o4oti" path="res://textures/mechanic/idle.png" id="2_k8mmg"]
 [ext_resource type="Texture2D" uid="uid://btfiw2wjxgp0o" path="res://textures/mechanic/walk.png" id="3_psn8v"]
 [ext_resource type="Script" path="res://states/State Machine.gd" id="4_3xdre"]
+[ext_resource type="Texture2D" uid="uid://banrwdneih4nh" path="res://textures/flashlight.png" id="4_sjcnq"]
 [ext_resource type="Script" path="res://Player/states/PlayerGrounded.gd" id="5_ups8r"]
 [ext_resource type="Script" path="res://Player/states/PlayerAirborne.gd" id="6_ys6kv"]
-[ext_resource type="Shader" path="res://shaders/flashlight.gdshader" id="7_3vrco"]
 [ext_resource type="Script" path="res://Player/flashlight.gd" id="7_yda4i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ompc7"]
@@ -112,14 +112,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_trjbk"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vakvk"]
-shader = ExtResource("7_3vrco")
-shader_parameter/angle = 25.0
-shader_parameter/fuzz = 50.57
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v1nkg"]
 radius = 6.0
 height = 24.0
@@ -138,28 +130,15 @@ frame_progress = 0.107801
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture_filter = 2
-position = Vector2(0, 2.00002)
+position = Vector2(-0.276749, 1.78319)
 rotation = -1.5708
-scale = Vector2(0.15, 0.15)
+scale = Vector2(0.08, 0.08)
 shadow_enabled = true
 shadow_filter = 1
-texture = SubResource("ViewportTexture_trjbk")
-offset = Vector2(0, 510)
+texture = ExtResource("4_sjcnq")
+offset = Vector2(-1.44727, 1025.18)
 texture_scale = 2.0
 script = ExtResource("7_yda4i")
-
-[node name="SubViewport" type="SubViewport" parent="."]
-disable_3d = true
-render_target_clear_mode = 1
-render_target_update_mode = 1
-
-[node name="ColorRect" type="ColorRect" parent="SubViewport"]
-material = SubResource("ShaderMaterial_vakvk")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0, 2)
