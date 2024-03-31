@@ -27,7 +27,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export_group("")
 
 var dash_speed : float = dash_speed_multiplier * movement_speed 
-@onready var dash : Node2D = %Dash
+@onready var dash : Node = %dash
 
 func exit():
 	pass

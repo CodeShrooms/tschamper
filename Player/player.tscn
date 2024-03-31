@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://states/State Machine.gd" id="4_3xdre"]
 [ext_resource type="Script" path="res://Player/states/PlayerGrounded.gd" id="5_ups8r"]
 [ext_resource type="Script" path="res://Player/states/PlayerAirborne.gd" id="6_ys6kv"]
-[ext_resource type="PackedScene" uid="uid://d0l5ft7djch8s" path="res://dash.tscn" id="7_sginl"]
+[ext_resource type="PackedScene" uid="uid://c0rh7l5oigp3a" path="res://dash.tscn" id="7_sginl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ompc7"]
 atlas = ExtResource("2_k8mmg")
@@ -139,7 +139,7 @@ shape = SubResource("CapsuleShape2D_v1nkg")
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_v1nkg")
 
-[node name="Dash" parent="." instance=ExtResource("7_sginl")]
+[node name="dash" parent="." instance=ExtResource("7_sginl")]
 unique_name_in_owner = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]

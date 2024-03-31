@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 @onready var timer : Timer = $dash_timer
 
