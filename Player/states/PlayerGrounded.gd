@@ -3,6 +3,9 @@ extends PlayerState
 
 @export var animated_sprite : AnimatedSprite2D
 
+func _ready():
+	super._ready() # Ruft die _ready-Funktion der Elternklasse auf
+
 func enter():
 	super.enter()
 

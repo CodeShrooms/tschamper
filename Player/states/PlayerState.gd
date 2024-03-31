@@ -29,12 +29,15 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var dash_speed : float = dash_speed_multiplier * movement_speed 
 @onready var dash : Node = %dash
 
+func _ready():
+	pass
+
 func exit():
 	pass
 
 # if this function is overridden, call super.enter() !
 func enter():
-	player = get_tree().get_first_node_in_group("player")
+	player = get_parent().get_parent()
 
 func Update(_delta: float):
 	pass

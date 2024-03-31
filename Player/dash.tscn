@@ -1,9 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://c0rh7l5oigp3a"]
 
-[ext_resource type="Script" path="res://dash.gd" id="1_esbdl"]
+[ext_resource type="Script" path="res://Player/dash.gd" id="1_k8d8x"]
 
 [node name="dash" type="Node"]
-script = ExtResource("1_esbdl")
+script = ExtResource("1_k8d8x")
 
 [node name="dash_timer" type="Timer" parent="."]
+unique_name_in_owner = true
 one_shot = true
