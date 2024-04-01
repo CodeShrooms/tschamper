@@ -8,6 +8,8 @@ var player: Player
 # Exports
 @export_group("Player Movement Variables")
 @export var movement_speed : float = 50.0
+# default speed is normal movement speed
+var speed : float = movement_speed
 # dash speed should be min 120x normal speed
 @export var dash_speed_multiplier : float = 250.0
 # if you make the dash-speed-multiplier higher, usually the duration should be lowered
@@ -23,6 +25,7 @@ var player: Player
 # to set a custom gravity, change the value here (or set it in the Inspector via @export, however, ProjectSettings.get_setting doesn't work with @export)
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+@export var allow_dash: bool = true
 @export var allow_wall_jump: bool = true
 @export_group("")
 
@@ -51,13 +54,7 @@ func Physics_Update(_delta: float):
 func handle_other_inputs():
 	# Handle other inputs
 	
-	# check if the player is dashing and adjust the player speed accordingly
-	var speed = dash_speed if dash.is_dashing() else movement_speed
-	
-	# Check if the player does a dash - for every state a dash is possible
-	if Input.is_action_just_pressed("dash"):
-		if dash.is_dash_cooldown_over():
-			dash.start_dash(dash_duration, dash_cooldown)
+	handle_dash_input()
 	
 	# Get the input direction and handle the movement/deceleration.
 	player.direction = Input.get_vector("left", "right", "jump", "down") # FIXME: why is here "jump"
@@ -70,3 +67,15 @@ func handle_other_inputs():
 
 func update_facing_direction():
 	player.animated_sprite.flip_h = (player.direction.x < 0)
+
+func handle_dash_input():
+	# Check if the player does a dash - for every state a dash is possible
+	if allow_dash:
+		if Input.is_action_just_pressed("dash") and dash.is_dash_cooldown_over():
+			dash.start_dash(dash_duration, dash_cooldown)
+		# check if the player is dashing and adjust the player speed accordingly
+		speed = dash_speed if dash.is_dashing() else movement_speed
+	else:
+		# if the dash is disabled while we are dashing, we still need to reset dash speed to default
+		speed = movement_speed
+	

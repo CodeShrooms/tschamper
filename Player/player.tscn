@@ -149,9 +149,11 @@ initial_state = NodePath("PlayerAirborne")
 
 [node name="PlayerGrounded" type="Node" parent="StateMachine"]
 script = ExtResource("5_ups8r")
+allow_dash = false
 
 [node name="PlayerAirborne" type="Node" parent="StateMachine"]
 script = ExtResource("6_ys6kv")
 max_jump_count = 1
+allow_dash = false
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
