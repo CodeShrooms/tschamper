@@ -3,9 +3,6 @@ extends PlayerState
 
 @onready var animated_sprite = %AnimatedSprite
 
-func _ready():
-	super._ready() # Ruft die _ready-Funktion der Elternklasse auf
-
 func enter():
 	super.enter()
 

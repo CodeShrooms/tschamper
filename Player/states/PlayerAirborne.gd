@@ -4,10 +4,6 @@ extends PlayerState
 @export var wall_jump_pushback = 175
 @export var wall_jump_boost = -150
 
-func _ready():
-	super._ready() # Ruft die _ready-Funktion der Elternklasse auf
-
-
 func Physics_Update(delta: float):
 	# leave this state if player is on floor
 	if player.is_on_floor():
