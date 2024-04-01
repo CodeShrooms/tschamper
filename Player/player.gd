@@ -3,6 +3,12 @@ extends CharacterBody2D
 
 var current_jump_count : int = 0
 
+#variable for current and max life
+@export var max_life : int = 100
+var current_life : int = 100
+#signal for other nodes
+signal update_lives(lives, max_lives)
+
 # Onreadys
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite
 
@@ -23,10 +29,25 @@ func _unhandled_key_input(event):
 		saved_position = self.position
 		
 
-# wenn irgendein Objekt aus den Collision Masks die Area betritt, wird der Spieler gelöscht
-func _on_area_2d_body_entered(_body):
-	die()
+
 	
-#was passieren soll, wenn der Player "stirbt". wird zurück zu einem gespeicherten Ort gesetzt
+#TODO maybe später was anderes, wird gerade nicht verwendet
 func die():
+	respawn()
+
+func respawn():
 	self.position = saved_position
+	current_life = max_life
+	
+
+# function to take damage / update the current life based on damage
+func take_damage(damage: int):
+	if current_life > 0:
+		current_life = current_life - damage
+		# send a signal so other nodes can react to it
+		update_lives.emit(current_life, max_life)
+		print(current_life)
+		# if taken to much damage the die function is called
+	if current_life <= 0:
+		respawn()
+	
