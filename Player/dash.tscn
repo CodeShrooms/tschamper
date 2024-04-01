@@ -5,6 +5,10 @@
 [node name="dash" type="Node"]
 script = ExtResource("1_k8d8x")
 
-[node name="dash_timer" type="Timer" parent="."]
+[node name="dash_duration_timer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="dash_cooldown_timer" type="Timer" parent="."]
 unique_name_in_owner = true
 one_shot = true

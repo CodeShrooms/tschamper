@@ -11,7 +11,8 @@ var player: Player
 # dash speed should be min 120x normal speed
 @export var dash_speed_multiplier : float = 250.0
 # if you make the dash-speed-multiplier higher, usually the duration should be lowered
-@export var dash_duration :float = .2
+@export var dash_duration : float = .2
+@export var dash_cooldown : float = .75
 @export var acceleration : float = 20
 @export var deacceleration : float = 20
 @export var jump_velocity : float = -150.0
@@ -55,7 +56,8 @@ func handle_other_inputs():
 	
 	# Check if the player does a dash - for every state a dash is possible
 	if Input.is_action_just_pressed("dash"):
-		dash.start_dash(dash_duration)
+		if dash.is_dash_cooldown_over():
+			dash.start_dash(dash_duration, dash_cooldown)
 	
 	# Get the input direction and handle the movement/deceleration.
 	player.direction = Input.get_vector("left", "right", "jump", "down") # FIXME: why is here "jump"
