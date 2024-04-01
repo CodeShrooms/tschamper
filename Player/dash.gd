@@ -1,6 +1,6 @@
 extends Node
 
-# % is a specific unique identifier for the variable
+# timer nodes
 @onready var dash_duration_timer : Timer = %dash_duration_timer
 @onready var dash_cooldown_timer : Timer = %dash_cooldown_timer
 
