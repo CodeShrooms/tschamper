@@ -7,4 +7,4 @@ func start_dash(duration):
 	timer.start()
 	
 func is_dashing():
-	return timer.is_stopped()
+	return !timer.is_stopped()

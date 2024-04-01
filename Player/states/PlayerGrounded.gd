@@ -1,7 +1,7 @@
 class_name PlayerGrounded
 extends PlayerState
 
-@export var animated_sprite : AnimatedSprite2D
+@onready var animated_sprite = %AnimatedSprite
 
 func _ready():
 	super._ready() # Ruft die _ready-Funktion der Elternklasse auf

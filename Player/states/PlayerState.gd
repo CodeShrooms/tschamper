@@ -7,13 +7,13 @@ var player: Player
 
 # Exports
 @export_group("Player Movement Variables")
-@export var movement_speed : float = 200.0
+@export var movement_speed : float = 50.0
 # dash speed sollte min 12x normaler speed sein
-@export var dash_speed_multiplier : float = 12
+@export var dash_speed_multiplier : float = 250.0
 # je hoeher der dash speed ist, desto niedriger muss die duration hier sein
-@export var dash_duration :float = .05
-@export var acceleration : float = 10
-@export var deacceleration : float = 10
+@export var dash_duration :float = .2
+@export var acceleration : float = 20
+@export var deacceleration : float = 20
 
 @export var jump_velocity : float = -150.0
 @export var extra_jump_velocity : float = -100
@@ -50,11 +50,13 @@ func Physics_Update(_delta: float):
 func handle_other_inputs():
 	# Handle other inputs
 	
+	var speed = dash_speed if dash.is_dashing() else movement_speed
+	
 	# Check if the player does a dash - for every state a dash is possible
 	if Input.is_action_just_pressed("dash"):
 		dash.start_dash(dash_duration)
 		
-	var speed = dash_speed if dash.is_dashing() else movement_speed
+
 	
 	# Get the input direction and handle the movement/deceleration.
 	player.direction = Input.get_vector("left", "right", "jump", "down") # FIXME: why is here "jump"

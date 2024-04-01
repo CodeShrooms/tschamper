@@ -120,6 +120,7 @@ position = Vector2(32, 164)
 script = ExtResource("1_iu520")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
 texture_filter = 2
 scale = Vector2(0.0543852, 0.0543852)
 sprite_frames = SubResource("SpriteFrames_npxjt")
@@ -148,20 +149,9 @@ initial_state = NodePath("PlayerAirborne")
 
 [node name="PlayerGrounded" type="Node" parent="StateMachine"]
 script = ExtResource("5_ups8r")
-movement_speed = null
-dash_speed_multiplier = null
-dash_duration = null
-acceleration = null
-deacceleration = null
-jump_velocity = null
-extra_jump_velocity = null
-max_jump_count = null
-allow_extra_jumps_without_first_jump_from_floor = null
-allow_wall_jump = null
 
-[node name="PlayerAirborne" type="Node" parent="StateMachine" node_paths=PackedStringArray("animated_sprite")]
+[node name="PlayerAirborne" type="Node" parent="StateMachine"]
 script = ExtResource("6_ys6kv")
-animated_sprite = NodePath("../../AnimatedSprite")
 max_jump_count = 1
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
