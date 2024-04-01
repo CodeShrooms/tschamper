@@ -8,13 +8,12 @@ var player: Player
 # Exports
 @export_group("Player Movement Variables")
 @export var movement_speed : float = 50.0
-# dash speed sollte min 12x normaler speed sein
+# dash speed should be min 120x normal speed
 @export var dash_speed_multiplier : float = 250.0
-# je hoeher der dash speed ist, desto niedriger muss die duration hier sein
+# if you make the dash-speed-multiplier higher, usually the duration should be lowered
 @export var dash_duration :float = .2
 @export var acceleration : float = 20
 @export var deacceleration : float = 20
-
 @export var jump_velocity : float = -150.0
 @export var extra_jump_velocity : float = -100
 @export var max_jump_count : int = 3
@@ -26,6 +25,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var allow_wall_jump: bool = true
 @export_group("")
 
+# calculate the dash speed
 var dash_speed : float = dash_speed_multiplier * movement_speed 
 @onready var dash : Node = %dash
 
@@ -37,7 +37,7 @@ func exit():
 
 # if this function is overridden, call super.enter() !
 func enter():
-	player = get_parent().get_parent()
+	player = get_tree().get_first_node_in_group("player")
 
 func Update(_delta: float):
 	pass
@@ -50,13 +50,12 @@ func Physics_Update(_delta: float):
 func handle_other_inputs():
 	# Handle other inputs
 	
+	# check if the player is dashing and adjust the player speed accordingly
 	var speed = dash_speed if dash.is_dashing() else movement_speed
 	
 	# Check if the player does a dash - for every state a dash is possible
 	if Input.is_action_just_pressed("dash"):
 		dash.start_dash(dash_duration)
-		
-
 	
 	# Get the input direction and handle the movement/deceleration.
 	player.direction = Input.get_vector("left", "right", "jump", "down") # FIXME: why is here "jump"
@@ -66,8 +65,6 @@ func handle_other_inputs():
 	else:
 		# no (longer) horizontal direction (player not (any longer) pressing button(s))
 		player.velocity.x = move_toward(player.velocity.x, 0, deacceleration)
-
-	
 
 func update_facing_direction():
 	player.animated_sprite.flip_h = (player.direction.x < 0)
