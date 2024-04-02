@@ -20,5 +20,4 @@ func _process(delta: float):
 	# transform vector between flashlight and mouse into polar angle
 	# and apply rotation
 	self.rotation = atan2(dist.y, dist.x) - PI * 0.5
-	
-	pass
+
