@@ -4,8 +4,8 @@ extends CharacterBody2D
 var current_jump_count : int = 0
 
 #variable for current and max life
-@export var max_life : int = 100
-var current_life : int = 100
+@export var max_life : int 
+var current_life : int 
 #signal for other nodes
 signal update_lives(lives, max_lives)
 
@@ -29,7 +29,6 @@ func _unhandled_key_input(event):
 		saved_position = self.position
 		
 
-
 	
 #TODO maybe später was anderes, wird gerade nicht verwendet
 func die():
@@ -43,11 +42,16 @@ func respawn():
 # function to take damage / update the current life based on damage
 func take_damage(damage: int):
 	if current_life > 0:
+		print("player got hit with " ,damage, " damage")
 		current_life = current_life - damage
 		# send a signal so other nodes can react to it
 		update_lives.emit(current_life, max_life)
-		print(current_life)
 		# if taken to much damage the die function is called
 	if current_life <= 0:
+		print("player has 0 life points")
 		respawn()
 	
+# set life to max_life on stard_up
+func _ready():
+	current_life = max_life
+

@@ -2,6 +2,17 @@ class_name Enemy
 extends CharacterBody2D
 
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite
+@export var damage : int = 10
+
+#true = links
+var is_looking_left = true: set = turn
+
+#turns the whole node with sprite and box
+func turn(new_direction):
+	self.scale.x = self.scale.x * -1
+	is_looking_left = new_direction
+	print(new_direction)
+
 
 # Movement of Enemy
 func _physics_process(_delta):
@@ -10,7 +21,7 @@ func _physics_process(_delta):
 
 func _on_area_2d_body_entered(body):
 	# If the enemy collides with the player, disable spawning
-	print("AAAAAAAA")
 	if body.name == "Player":
+		print("player entered damage zone")
 		#deal damage
-		body.take_damage(10)
+		body.take_damage(damage)
