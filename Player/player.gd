@@ -4,7 +4,7 @@ extends CharacterBody2D
 var current_jump_count : int = 0
 
 # Onreadys
-@onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite
+@onready var animated_sprite : AnimatedSprite2D = %AnimatedSprite
 
 var direction : Vector2 = Vector2.ZERO
 var saved_position : Vector2

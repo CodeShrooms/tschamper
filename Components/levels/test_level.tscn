@@ -1,7 +1,8 @@
-[gd_scene load_steps=69 format=3 uid="uid://3ufc8tfftg1g"]
+[gd_scene load_steps=70 format=3 uid="uid://3ufc8tfftg1g"]
 
 [ext_resource type="PackedScene" uid="uid://cj2i5rtsdrvne" path="res://Player/player.tscn" id="1_hg5f1"]
 [ext_resource type="Texture2D" uid="uid://blqdxeg62yfuo" path="res://textures/background.png" id="1_jg77k"]
+[ext_resource type="Script" path="res://scripts/camera_motion.gd" id="2_kp7tm"]
 [ext_resource type="Texture2D" uid="uid://bok8yinqhw5bj" path="res://textures/extras.png" id="2_q28wk"]
 [ext_resource type="Texture2D" uid="uid://cjrp4g5llriwr" path="res://textures/CollisionLayer.png" id="2_w357c"]
 [ext_resource type="Texture2D" uid="uid://b6r1tposxe8a5" path="res://textures/exit_sign.png" id="4_bghr4"]
@@ -503,6 +504,8 @@ process_callback = 0
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+script = ExtResource("2_kp7tm")
+mouse_panning_distance = 60.0
 
 [node name="Extras" type="TileMap" parent="."]
 scale = Vector2(0.092, 0.092)

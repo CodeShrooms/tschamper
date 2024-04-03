@@ -1,8 +1,6 @@
 class_name PlayerGrounded
 extends PlayerState
 
-@export var animated_sprite : AnimatedSprite2D
-
 func enter():
 	super.enter()
 
@@ -23,13 +21,12 @@ func Physics_Update(_delta: float):
 
 	handle_other_inputs()
 
-
 	# update direction of sprite
 	update_facing_direction()
 
 	# update animation
 	if player.direction.x != 0:
-		animated_sprite.play("walk")
+		player.animated_sprite.play("walk")
 	else:
-		animated_sprite.play("idle")
+		player.animated_sprite.play("idle")
 
