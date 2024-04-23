@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://3ufc8tfftg1g"]
+[gd_scene load_steps=71 format=3 uid="uid://3ufc8tfftg1g"]
 
 [ext_resource type="PackedScene" uid="uid://cj2i5rtsdrvne" path="res://Player/player.tscn" id="1_hg5f1"]
 [ext_resource type="Texture2D" uid="uid://blqdxeg62yfuo" path="res://textures/background.png" id="1_jg77k"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cjrp4g5llriwr" path="res://textures/CollisionLayer.png" id="2_w357c"]
 [ext_resource type="Texture2D" uid="uid://b6r1tposxe8a5" path="res://textures/exit_sign.png" id="4_bghr4"]
 [ext_resource type="PackedScene" uid="uid://byjkldgjetc2q" path="res://Enemy/Babyflitzer/testmob.tscn" id="7_yxnaq"]
+[ext_resource type="PackedScene" uid="uid://2tau215gx3my" path="res://Enemy/OrangeNPC/orange_npc.tscn" id="8_f2u44"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a75wc"]
 texture = ExtResource("1_jg77k")
@@ -523,7 +524,7 @@ layer_0/tile_data = PackedInt32Array(131070, 0, 0, 131071, 0, 0, 131069, 131072,
 
 [node name="Player" parent="." instance=ExtResource("1_hg5f1")]
 position = Vector2(330, 74)
-collision_mask = 4
+collision_mask = 12
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
@@ -588,3 +589,8 @@ position = Vector2(585, 218)
 
 [node name="Testmob2" parent="." instance=ExtResource("7_yxnaq")]
 position = Vector2(462, 100)
+
+[node name="orange_npc" parent="." instance=ExtResource("8_f2u44")]
+position = Vector2(370, 92)
+collision_layer = 8
+collision_mask = 5

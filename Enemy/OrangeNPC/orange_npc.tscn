@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://2tau215gx3my"]
+
+[ext_resource type="Script" path="res://Enemy/OrangeNPC/orange_npc.gd" id="1_jrdbf"]
+[ext_resource type="Texture2D" uid="uid://463tl0q54qsj" path="res://textures/Enemys/OrangeNPC/sonnenbomber_ohne_Hintergrund.png" id="2_d3is0"]
+[ext_resource type="Texture2D" uid="uid://br813nqrcaiof" path="res://textures/Enemys/OrangeNPC/sonnenbomber_ohne_Hintergrund_gedreht.png" id="3_haqrs"]
+[ext_resource type="Script" path="res://states/State Machine.gd" id="4_3vdfv"]
+[ext_resource type="Script" path="res://Enemy/OrangeNPC/states/npcIdle.gd" id="5_pjsvq"]
+[ext_resource type="Script" path="res://Enemy/OrangeNPC/states/npcFollow.gd" id="6_y6sku"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ye7da"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_d3is0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_haqrs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_githr"]
+radius = 20.0
+height = 40.0
+
+[node name="orange_npc" type="CharacterBody2D"]
+script = ExtResource("1_jrdbf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_ye7da")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 3)
+shape = SubResource("CapsuleShape2D_githr")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_3vdfv")
+initial_state = NodePath("npcIdle")
+
+[node name="npcIdle" type="Node" parent="State Machine"]
+script = ExtResource("5_pjsvq")
+
+[node name="npcFollow" type="Node" parent="State Machine"]
+script = ExtResource("6_y6sku")
