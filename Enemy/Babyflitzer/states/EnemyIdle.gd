@@ -5,8 +5,6 @@ extends EnemyState
 @export var RayCast: RayCast2D
 @export var animated_sprite : AnimatedSprite2D
 
-var wander_time: float
-
 var direction: float
 
 func enter():

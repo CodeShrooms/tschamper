@@ -17,8 +17,16 @@ animations = [{
 "texture": ExtResource("3_haqrs")
 }],
 "loop": true,
-"name": &"default",
-"speed": 5.0
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_d3is0")
+}],
+"loop": true,
+"name": &"talking",
+"speed": 1.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_githr"]
@@ -31,19 +39,22 @@ script = ExtResource("1_jrdbf")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_ye7da")
+animation = &"talking"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 3)
 shape = SubResource("CapsuleShape2D_githr")
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-
 [node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_3vdfv")
 initial_state = NodePath("npcIdle")
 
-[node name="npcIdle" type="Node" parent="State Machine"]
+[node name="npcIdle" type="Node" parent="State Machine" node_paths=PackedStringArray("animated_sprite", "npc")]
 script = ExtResource("5_pjsvq")
+animated_sprite = NodePath("../../AnimatedSprite2D")
+npc = NodePath("../..")
 
-[node name="npcFollow" type="Node" parent="State Machine"]
+[node name="npcIsTalking" type="Node" parent="State Machine" node_paths=PackedStringArray("animated_sprite", "npc")]
 script = ExtResource("6_y6sku")
+animated_sprite = NodePath("../../AnimatedSprite2D")
+npc = NodePath("../..")
