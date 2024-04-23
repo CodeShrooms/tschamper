@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bok8yinqhw5bj" path="res://textures/extras.png" id="2_q28wk"]
 [ext_resource type="Texture2D" uid="uid://cjrp4g5llriwr" path="res://textures/CollisionLayer.png" id="2_w357c"]
 [ext_resource type="Texture2D" uid="uid://b6r1tposxe8a5" path="res://textures/exit_sign.png" id="4_bghr4"]
-[ext_resource type="PackedScene" uid="uid://fqeor86p4m5h" path="res://Enemy/testmob.tscn" id="6_bs0iy"]
+[ext_resource type="PackedScene" uid="uid://byjkldgjetc2q" path="res://Enemy/Babyflitzer/testmob.tscn" id="7_yxnaq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a75wc"]
 texture = ExtResource("1_jg77k")
@@ -583,12 +583,8 @@ shadow_enabled = true
 shadow_filter = 2
 texture = SubResource("GradientTexture2D_xpcfd")
 
-[node name="Testmob" parent="." instance=ExtResource("6_bs0iy")]
-position = Vector2(543, 219)
-collision_layer = 2
-collision_mask = 4
+[node name="Testmob" parent="." instance=ExtResource("7_yxnaq")]
+position = Vector2(585, 218)
 
-[node name="Testmob2" parent="." instance=ExtResource("6_bs0iy")]
-position = Vector2(483, 98)
-collision_layer = 2
-collision_mask = 4
+[node name="Testmob2" parent="." instance=ExtResource("7_yxnaq")]
+position = Vector2(462, 100)

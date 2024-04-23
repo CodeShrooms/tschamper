@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://fqeor86p4m5h"]
+[gd_scene load_steps=8 format=3 uid="uid://byjkldgjetc2q"]
 
-[ext_resource type="Script" path="res://Enemy/testmob.gd" id="1_2cqk0"]
-[ext_resource type="Texture2D" uid="uid://dxoicvw5kj5c7" path="res://textures/tut-tut-baby-flitzer.png" id="2_hgg2a"]
+[ext_resource type="Script" path="res://Enemy/Babyflitzer/testmob.gd" id="1_ae130"]
+[ext_resource type="Texture2D" uid="uid://dxoicvw5kj5c7" path="res://textures/Enemys/Babyflitzer/tut-tut-baby-flitzer.png" id="2_hgg2a"]
 [ext_resource type="Script" path="res://states/State Machine.gd" id="3_ux8g3"]
-[ext_resource type="Script" path="res://Enemy/states/EnemyIdle.gd" id="4_dwp7o"]
-[ext_resource type="Script" path="res://Enemy/states/EnemyFollow.gd" id="5_dg6cc"]
+[ext_resource type="Script" path="res://Enemy/Babyflitzer/states/EnemyIdle.gd" id="4_i4h7x"]
+[ext_resource type="Script" path="res://Enemy/Babyflitzer/states/EnemyFollow.gd" id="5_3uinm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_n5k57"]
 animations = [{
@@ -21,7 +21,9 @@ animations = [{
 size = Vector2(29, 25.5)
 
 [node name="Testmob" type="CharacterBody2D"]
-script = ExtResource("1_2cqk0")
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_ae130")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.091931, 0.091931)
@@ -41,14 +43,14 @@ script = ExtResource("3_ux8g3")
 initial_state = NodePath("EnemyIdle")
 
 [node name="EnemyIdle" type="Node" parent="State Machine" node_paths=PackedStringArray("RayCast", "animated_sprite", "enemy")]
-script = ExtResource("4_dwp7o")
+script = ExtResource("4_i4h7x")
 idle_speed = 4.0
 RayCast = NodePath("../../RayCast2D")
 animated_sprite = NodePath("../../AnimatedSprite")
 enemy = NodePath("../..")
 
 [node name="EnemyFollow" type="Node" parent="State Machine" node_paths=PackedStringArray("animated_sprite", "enemy")]
-script = ExtResource("5_dg6cc")
-follow_speed = 30.0
+script = ExtResource("5_3uinm")
+follow_speed = 10.0
 animated_sprite = NodePath("../../AnimatedSprite")
 enemy = NodePath("../..")
