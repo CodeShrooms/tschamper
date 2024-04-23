@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxoicvw5kj5c7"
-path="res://.godot/imported/tut-tut-baby-flitzer.png-0f89e7697f7252e9f6fbba1ccda30bd2.ctex"
+uid="uid://463tl0q54qsj"
+path="res://.godot/imported/sonnenbomber_ohne_Hintergrund.png-51f8c79fb61ebd42ac00035d55baa669.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/tut-tut-baby-flitzer.png"
-dest_files=["res://.godot/imported/tut-tut-baby-flitzer.png-0f89e7697f7252e9f6fbba1ccda30bd2.ctex"]
+source_file="res://textures/Enemys/OrangeNPC/sonnenbomber_ohne_Hintergrund.png"
+dest_files=["res://.godot/imported/sonnenbomber_ohne_Hintergrund.png-51f8c79fb61ebd42ac00035d55baa669.ctex"]
 
 [params]
 
