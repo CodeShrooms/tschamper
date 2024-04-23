@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cj2i5rtsdrvne"]
+[gd_scene load_steps=19 format=3 uid="uid://cj2i5rtsdrvne"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_iu520"]
 [ext_resource type="Texture2D" uid="uid://bpe2xlf5o4oti" path="res://textures/mechanic/idle.png" id="2_k8mmg"]
@@ -110,6 +110,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q40bp"]
+size = Vector2(20, 6.99999)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v1nkg"]
 radius = 6.0
 height = 24.0
@@ -127,12 +130,12 @@ frame_progress = 0.107801
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0, 2)
-collision_layer = 0
-collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CapsuleShape2D_v1nkg")
+position = Vector2(4.5, -1.52588e-05)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_q40bp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
@@ -151,4 +154,5 @@ script = ExtResource("6_ys6kv")
 animated_sprite = NodePath("../../AnimatedSprite")
 max_jump_count = 1
 
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
