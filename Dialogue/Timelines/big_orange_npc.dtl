@@ -1,4 +1,4 @@
-#join big_orange_npc 1
+# #join big_orange_npc 1
 set {choices_counter} = 0
 big_orange_npc: Howdy, du Orangenfresser >\:|
 big_orange_npc: Wie kannst du es wagen, mich hier zu stören, du Orangenfresser! Grrrrr, rawrrrrrr!
@@ -44,3 +44,4 @@ big_orange_npc: Hast du noch letzte Worte?
 	big_orange_npc: Dafür wirst du bezahlen >\:$
 - Kämpfe gegen Mega Orange !!
 	big_orange_npc: Diesen Kampf wirst du nicht gewinnen >\:$
+[signal arg="end_dialogue"]

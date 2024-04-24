@@ -8,10 +8,6 @@ extends State
 @export_group("NPC Variables")
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-@export var npc: NPC # needs to be selected on each enemy state node
-
-@export_group("")
-
 var player: Player
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 

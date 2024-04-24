@@ -38,3 +38,12 @@ func on_child_transition(state, new_state_name):
 	new_state.enter()
 	
 	current_state = new_state
+	
+func get_current_state():
+	return current_state
+
+func get_current_state_name():
+	return current_state.name
+
+func force_state(state_name):
+	current_state.Transitioned.emit(current_state, state_name)

@@ -79,3 +79,4 @@ func handle_dash_input():
 		# if the dash is disabled while we are dashing, we still need to reset dash speed to default
 		speed = movement_speed
 	
+

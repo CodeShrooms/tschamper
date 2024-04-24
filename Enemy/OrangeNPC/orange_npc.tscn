@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://br813nqrcaiof" path="res://textures/Enemys/OrangeNPC/sonnenbomber_ohne_Hintergrund_gedreht.png" id="3_haqrs"]
 [ext_resource type="Script" path="res://states/State Machine.gd" id="4_3vdfv"]
 [ext_resource type="Script" path="res://Enemy/OrangeNPC/states/npcIdle.gd" id="5_pjsvq"]
-[ext_resource type="Script" path="res://Enemy/OrangeNPC/states/npcFollow.gd" id="6_y6sku"]
+[ext_resource type="Script" path="res://Enemy/OrangeNPC/states/npcIsTalking.gd" id="6_1ffvq"]
 [ext_resource type="Texture2D" uid="uid://coalynxlsf5d3" path="res://textures/Enemys/OrangeNPC/press_e_to_interact.png" id="7_6d5yf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ye7da"]
@@ -30,13 +30,11 @@ animations = [{
 "speed": 1.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_o83oq"]
-radius = 42.0119
+[sub_resource type="CircleShape2D" id="CircleShape2D_orx13"]
+radius = 39.0128
 
-[node name="orange_npc" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite", "hintPressE")]
+[node name="orange_npc" type="CharacterBody2D"]
 script = ExtResource("1_jrdbf")
-animated_sprite = NodePath("AnimatedSprite2D")
-hintPressE = NodePath("PressEToInteract")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
@@ -50,20 +48,14 @@ polygon = PackedVector2Array(10, 19, 13, 19, 15, 17, 15, 15, 14, 13, 12, 12, 14,
 script = ExtResource("4_3vdfv")
 initial_state = NodePath("npcIdle")
 
-[node name="npcIdle" type="Node" parent="State Machine" node_paths=PackedStringArray("animated_sprite", "npc")]
+[node name="npcIdle" type="Node" parent="State Machine" node_paths=PackedStringArray("animated_sprite", "hintPressE")]
 script = ExtResource("5_pjsvq")
 animated_sprite = NodePath("../../AnimatedSprite2D")
-npc = NodePath("../..")
+hintPressE = NodePath("../../PressEToInteract")
 
-[node name="npcIsTalking" type="Node" parent="State Machine" node_paths=PackedStringArray("animated_sprite", "npc")]
-script = ExtResource("6_y6sku")
+[node name="npcIsTalking" type="Node" parent="State Machine" node_paths=PackedStringArray("animated_sprite")]
+script = ExtResource("6_1ffvq")
 animated_sprite = NodePath("../../AnimatedSprite2D")
-npc = NodePath("../..")
-
-[node name="NPCChatDetection" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NPCChatDetection"]
-shape = SubResource("CircleShape2D_o83oq")
 
 [node name="PressEToInteract" type="TextureRect" parent="."]
 visible = false
@@ -74,5 +66,10 @@ offset_bottom = 119.0
 scale = Vector2(0.07, 0.07)
 texture = ExtResource("7_6d5yf")
 
-[connection signal="body_entered" from="NPCChatDetection" to="." method="_on_npc_chat_detection_body_entered"]
-[connection signal="body_exited" from="NPCChatDetection" to="." method="_on_npc_chat_detection_body_exited"]
+[node name="NPCChatDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPCChatDetection"]
+shape = SubResource("CircleShape2D_orx13")
+
+[connection signal="body_entered" from="NPCChatDetection" to="State Machine/npcIdle" method="_on_npc_chat_detection_body_entered"]
+[connection signal="body_exited" from="NPCChatDetection" to="State Machine/npcIdle" method="_on_npc_chat_detection_body_exited"]

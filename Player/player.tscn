@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cj2i5rtsdrvne"]
+[gd_scene load_steps=23 format=3 uid="uid://cj2i5rtsdrvne"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_iu520"]
 [ext_resource type="Texture2D" uid="uid://bpe2xlf5o4oti" path="res://textures/mechanic/idle.png" id="2_k8mmg"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Player/states/PlayerGrounded.gd" id="5_ups8r"]
 [ext_resource type="Script" path="res://Player/states/PlayerAirborne.gd" id="6_ys6kv"]
 [ext_resource type="Script" path="res://Player/flashlight.gd" id="7_yda4i"]
+[ext_resource type="Script" path="res://Player/states/PlayerTalking.gd" id="10_qdvvx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ompc7"]
 atlas = ExtResource("2_k8mmg")
@@ -21,6 +22,10 @@ region = Rect2(512, 0, 512, 512)
 [sub_resource type="AtlasTexture" id="AtlasTexture_axflv"]
 atlas = ExtResource("2_k8mmg")
 region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7npeb"]
+atlas = ExtResource("2_k8mmg")
+region = Rect2(0, 0, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_38fgx"]
 atlas = ExtResource("3_psn8v")
@@ -91,6 +96,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_7npeb")
+}],
+"loop": true,
+"name": &"talking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_38fgx")
 }, {
 "duration": 0.5,
@@ -127,8 +140,8 @@ light_mask = 0
 texture_filter = 2
 scale = Vector2(0.0543852, 0.0543852)
 sprite_frames = SubResource("SpriteFrames_npxjt")
-animation = &"walk"
-frame_progress = 0.107801
+animation = &"talking"
+frame_progress = 0.585007
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture_filter = 2
@@ -167,5 +180,9 @@ script = ExtResource("5_ups8r")
 
 [node name="PlayerAirborne" type="Node" parent="StateMachine"]
 script = ExtResource("6_ys6kv")
+
+[node name="PlayerTalking" type="Node" parent="StateMachine" node_paths=PackedStringArray("animated_sprite")]
+script = ExtResource("10_qdvvx")
+animated_sprite = NodePath("../../AnimatedSprite")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
