@@ -1,0 +1,46 @@
+join big_orange_npc 1
+set {choices_counter} = 0
+big_orange_npc: Howdy, du Orangenfresser >\:|
+big_orange_npc: Wie kannst du es wagen, mich hier zu stören, du Orangenfresser! Grrrrr, rawrrrrrr!
+label first_jump
+- Wer bist du denn überhaupt??? [if {choice_1} == false][else="hide"]
+	set {choice_1} = true
+	set {choices_counter} += 1
+	big_orange_npc: Ich bin der Ur-Ur-Ur-UrGroßvater aller Orangen, der Wächter dieses uralten Kellers.
+	big_orange_npc: Seit Jahrhunderten herrsche ich hier, ungestört von der Außenwelt.
+	big_orange_npc: Und nun kommst du, ein unerwünschter orangenfressender Eindringling, und wagst es, meine Ruhe zu stören... ^_-
+	if {choices_counter} < 2:
+		jump first_jump
+- Orangenfresser? [if {choice_2} == false][else="hide"]
+	set {choice_2} = true
+	set {choices_counter} += 1
+	big_orange_npc: Meine treuen Diener, die in allen Ritzen dieser alten Mauern lauern, haben jeden deiner Schritte beobachtet. ╰*°▽°*)╯
+	big_orange_npc: Ruffy, Fluff, Karl, Agathe, Rabaukeli und Sibille.... Ihnen allen hast du Schmerzen bereitet!
+	big_orange_npc: Die waren dir wohl alle egal \:'(
+	big_orange_npc: Schlurf, Schluck, Mhhhmmm, NomNomNom...
+	big_orange_npc: so klangst du, Freveler!
+	big_orange_npc: Als du meine orangenen Kinder, meine Töchter und Söhne, verschlungen hast!
+	big_orange_npc: Du hast sie alle gegessen, meine süßen Orangenfreunde... \:'(
+	big_orange_npc: ... \:'(
+	big_orange_npc: Oh Ähm...
+	if {choices_counter} < 2:
+		jump first_jump
+set {choices_counter} = 0
+set {choice_1} = false
+set {choice_2} = false
+
+big_orange_npc: Ich werde dich töten, du Orangenfresser >\:)
+
+- Versuch es doch!
+- Oh äh...Ich geh dann mal wieder..
+	big_orange_npc: Vergessen, dass wir hier eingesperrt sind Kollegah? ;)
+
+big_orange_npc: Du hast nicht nur meine Freunde gegessen, du hast meine Familie verschlungen…
+big_orange_npc: Wie konntest du nur ???
+big_orange_npc: Hast du noch letzte Worte?
+- You: Ich lasse deine Orangenfreunde wiederauferstehen
+	big_orange_npc: ...
+	big_orange_npc: Funktioniert nicht, oder?
+	big_orange_npc: Dafür wirst du bezahlen >\:$
+- Kämpfe gegen Mega Orange !!
+	big_orange_npc: Diesen Kampf wirst du nicht gewinnen >\:$
