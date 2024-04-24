@@ -30,3 +30,6 @@ func _on_area_2d_body_entered(_body):
 #was passieren soll, wenn der Player "stirbt". wird zurück zu einem gespeicherten Ort gesetzt
 func die():
 	self.position = saved_position
+
+func player():
+	pass
