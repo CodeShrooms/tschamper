@@ -141,7 +141,7 @@ texture_filter = 2
 scale = Vector2(0.0543852, 0.0543852)
 sprite_frames = SubResource("SpriteFrames_npxjt")
 animation = &"talking"
-frame_progress = 0.585007
+frame_progress = 0.101662
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture_filter = 2

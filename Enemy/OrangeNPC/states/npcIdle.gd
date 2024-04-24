@@ -17,8 +17,6 @@ func _process(_delta):
 			player.force_state("PlayerTalking")
 			Transitioned.emit(self, "npcIsTalking") # another State if we talk to npc
 
-
-
 func _on_npc_chat_detection_body_entered(body):
 	if body.name == "Player":
 		hintPressE.visible = true
