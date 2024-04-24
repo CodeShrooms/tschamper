@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://states/State Machine.gd" id="4_3vdfv"]
 [ext_resource type="Script" path="res://Enemy/OrangeNPC/states/npcIdle.gd" id="5_pjsvq"]
 [ext_resource type="Script" path="res://Enemy/OrangeNPC/states/npcFollow.gd" id="6_y6sku"]
+[ext_resource type="Texture2D" uid="uid://coalynxlsf5d3" path="res://textures/Enemys/OrangeNPC/press_e_to_interact.png" id="7_6d5yf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ye7da"]
 animations = [{
@@ -29,24 +30,21 @@ animations = [{
 "speed": 1.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_githr"]
-radius = 19.0
-height = 38.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_o83oq"]
 radius = 42.0119
 
-[node name="orange_npc" type="CharacterBody2D"]
+[node name="orange_npc" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite", "hintPressE")]
 script = ExtResource("1_jrdbf")
+animated_sprite = NodePath("AnimatedSprite2D")
+hintPressE = NodePath("PressEToInteract")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_ye7da")
 animation = &"talking"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 4)
-shape = SubResource("CapsuleShape2D_githr")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(10, 19, 13, 19, 15, 17, 15, 15, 14, 13, 12, 12, 14, 10, 15, 6, 15, 2, 16, 0, 18, -2, 20, -4, 20, -6, 19, -8, 17, -8, 15, -6, 15, -4, 14, -3, 12, -6, 10, -9, 7, -11, 4, -12, 3, -13, 2, -13, 3, -14, 2, -15, 0, -15, -1, -13, -2, -13, -4, -11, -7, -10, -8, -9, -9, -7, -10, -5, -11, -3, -12, 0, -14, 0, -15, -1, -15, -2, -16, -3, -17, -3, -18, -2, -18, -1, -19, 0, -20, 1, -20, 2, -19, 4, -17, 5, -15, 6, -14, 5, -13, 6, -12, 6, -11, 7, -10, 9, -9, 11, -9, 12, -9, 14, -10, 14, -11, 16, -12, 17, -12, 19, -10, 20, -7, 20, -5, 20, -4, 18, -2, 17, -2, 16, 0, 17, 2, 17, 4, 17, 6, 16, 7, 16, 8, 17, 8, 18, 9, 19)
 
 [node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_3vdfv")
@@ -65,8 +63,16 @@ npc = NodePath("../..")
 [node name="NPCChatDetection" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPCChatDetection"]
-visible = false
 shape = SubResource("CircleShape2D_o83oq")
+
+[node name="PressEToInteract" type="TextureRect" parent="."]
+visible = false
+offset_left = 9.0
+offset_top = -21.0
+offset_right = 527.0
+offset_bottom = 119.0
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("7_6d5yf")
 
 [connection signal="body_entered" from="NPCChatDetection" to="." method="_on_npc_chat_detection_body_entered"]
 [connection signal="body_exited" from="NPCChatDetection" to="." method="_on_npc_chat_detection_body_exited"]
