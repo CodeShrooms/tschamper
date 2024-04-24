@@ -32,6 +32,5 @@ func _on_npc_chat_detection_body_exited(body):
 		npc_in_range = false
 
 func run_dialogue(dialogue_name):
-	# stop animation und so
 	Dialogic.start(dialogue_name)
 	
