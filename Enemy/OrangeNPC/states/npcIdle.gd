@@ -1,5 +1,5 @@
-class_name npcIdle
-extends npcState
+class_name NpcIdle
+extends NpcState
 
 @export var animated_sprite : AnimatedSprite2D
 @export var hintPressE : TextureRect
@@ -14,7 +14,7 @@ func enter():
 func _process(_delta):
 	if npc_in_range and Input.is_action_just_pressed("interact"):
 			player.force_state("PlayerTalking")
-			Transitioned.emit(self, "npcIsTalking") # another State if we talk to npc
+			Transitioned.emit(self, "NpcTalking") # another State if we talk to npc
 
 func _on_npc_chat_detection_body_entered(body):
 	if body.name == "Player":

@@ -1,5 +1,5 @@
 class_name npcIsTalking
-extends npcState
+extends NpcState
 
 @export var animated_sprite : AnimatedSprite2D
 
@@ -24,4 +24,4 @@ func run_dialogue(dialogue_name):
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	player.force_state("PlayerGrounded")
-	Transitioned.emit(self, "npcIdle") # another State if we talk to npc
+	Transitioned.emit(self, "NpcIdle") # another State if we talk to npc

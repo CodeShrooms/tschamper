@@ -1,4 +1,4 @@
-class_name npcState
+class_name NpcState
 extends State
 
 # variables that need to access nodes below npc or runtime variables CANNOT be put here: PlayerState does not really get instantiated!
