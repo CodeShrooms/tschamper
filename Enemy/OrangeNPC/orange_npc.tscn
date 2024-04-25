@@ -1,6 +1,5 @@
-[gd_scene load_steps=10 format=3 uid="uid://2tau215gx3my"]
+[gd_scene load_steps=9 format=3 uid="uid://2tau215gx3my"]
 
-[ext_resource type="Script" path="res://Enemy/OrangeNPC/orange_npc.gd" id="1_jrdbf"]
 [ext_resource type="Texture2D" uid="uid://463tl0q54qsj" path="res://textures/Enemys/OrangeNPC/sonnenbomber_ohne_Hintergrund.png" id="2_d3is0"]
 [ext_resource type="Texture2D" uid="uid://br813nqrcaiof" path="res://textures/Enemys/OrangeNPC/sonnenbomber_ohne_Hintergrund_gedreht.png" id="3_haqrs"]
 [ext_resource type="Script" path="res://states/State Machine.gd" id="4_3vdfv"]
@@ -34,7 +33,6 @@ animations = [{
 radius = 39.0128
 
 [node name="orange_npc" type="CharacterBody2D"]
-script = ExtResource("1_jrdbf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
