@@ -12,8 +12,7 @@ func enter():
 	animated_sprite.play("idle")
 
 func _process(_delta):
-	if npc_in_range:
-		if Input.is_action_just_pressed("interact"):
+	if npc_in_range and Input.is_action_just_pressed("interact"):
 			player.force_state("PlayerTalking")
 			Transitioned.emit(self, "npcIsTalking") # another State if we talk to npc
 
