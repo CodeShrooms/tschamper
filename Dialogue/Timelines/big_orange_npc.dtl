@@ -27,7 +27,7 @@ label first_jump
 	big_orange_npc: Oh Ähm...
 	if {choices_counter} < 2:
 		jump first_jump
-		
+
 set {choices_counter} = 0
 set {choice_1} = false
 set {choice_2} = false
