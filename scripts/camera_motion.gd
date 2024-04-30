@@ -12,7 +12,7 @@ func _input(_event: InputEvent):
 	var rect = get_viewport().get_visible_rect().size
 	
 	# convert screen relative coordinates to viewport relative coordinates
-    # transforms viewport relative coordinates from [0, view_width] into range [-1, 1]
+	# transforms viewport relative coordinates from [0, view_width] into range [-1, 1]
 	target_offset.x = pos.x / rect.x * 2.0 - 1.0
 	target_offset.y = pos.y / rect.y * 2.0 - 1.0
 	# scale coordinates up
@@ -33,9 +33,9 @@ func _process(delta: float):
 	
 	# compute maximum linear extrusion factor
 	var max_len = sqrt(mouse_panning_distance * mouse_panning_distance * 2.0)
-    # normalize extrusion factor by maximum length
+	# normalize extrusion factor by maximum length
 	var curve = delta_offset.length() / max_len
-    # smooth out camera motion by transforming linear to cubic curve
+	# smooth out camera motion by transforming linear to cubic curve
 	curve = clamp(cubic_ease_in_out(curve), 0.0, 1.0)
 	
 	# ease out animation and correct by delta frame time
