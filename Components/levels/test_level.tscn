@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://3ufc8tfftg1g"]
+[gd_scene load_steps=11 format=3 uid="uid://3ufc8tfftg1g"]
 
 [ext_resource type="PackedScene" uid="uid://cj2i5rtsdrvne" path="res://Player/player.tscn" id="1_hg5f1"]
 [ext_resource type="PackedScene" uid="uid://f4hmyaop271r" path="res://Components/levels/level_1.tscn" id="2_25ik6"]
@@ -11,27 +11,6 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ewo8e"]
 gradient = SubResource("Gradient_b5uin")
-
-[sub_resource type="Gradient" id="Gradient_pyequ"]
-colors = PackedColorArray(0, 0, 0, 1, 0.611624, 0.772373, 0.902529, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_mpxha"]
-gradient = SubResource("Gradient_pyequ")
-width = 128
-height = 128
-fill_from = Vector2(1, 0.5)
-fill_to = Vector2(0, 0.5)
-
-[sub_resource type="Gradient" id="Gradient_f7w2y"]
-offsets = PackedFloat32Array(0, 0.540323, 0.556452)
-colors = PackedColorArray(0, 0, 0, 1, 0.934908, 0.773113, 0.594624, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_n4fdl"]
-gradient = SubResource("Gradient_f7w2y")
-width = 128
-height = 128
-fill_from = Vector2(0, 0.5)
-fill_to = Vector2(1, 0.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tw4sf"]
 size = Vector2(266.667, 133.333)
@@ -80,24 +59,6 @@ shadow_filter = 1
 shadow_filter_smooth = 0.6
 texture = SubResource("GradientTexture2D_ewo8e")
 texture_scale = 11.66
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(78, 268)
-rotation = -1.57079
-scale = Vector2(2.83072, 2.77735)
-energy = 2.2
-shadow_enabled = true
-shadow_filter = 2
-texture = SubResource("GradientTexture2D_mpxha")
-
-[node name="PointLight2D2" type="PointLight2D" parent="."]
-position = Vector2(145, -60)
-rotation = -1.57079
-scale = Vector2(2.32583, 1.87767)
-energy = 1.82
-shadow_enabled = true
-shadow_filter = 2
-texture = SubResource("GradientTexture2D_n4fdl")
 
 [node name="lamp" type="RigidBody2D" parent="."]
 position = Vector2(41, -1)
