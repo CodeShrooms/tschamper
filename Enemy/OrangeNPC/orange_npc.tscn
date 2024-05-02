@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://2tau215gx3my"]
+
+[ext_resource type="Texture2D" uid="uid://463tl0q54qsj" path="res://textures/Enemys/OrangeNPC/sonnenbomber_ohne_Hintergrund.png" id="2_d3is0"]
+[ext_resource type="Texture2D" uid="uid://br813nqrcaiof" path="res://textures/Enemys/OrangeNPC/sonnenbomber_ohne_Hintergrund_gedreht.png" id="3_haqrs"]
+[ext_resource type="Script" path="res://states/State Machine.gd" id="4_3vdfv"]
+[ext_resource type="Script" path="res://Enemy/OrangeNPC/states/NpcIdle.gd" id="5_pjsvq"]
+[ext_resource type="Script" path="res://Enemy/OrangeNPC/states/NpcTalking.gd" id="6_1ffvq"]
+[ext_resource type="Texture2D" uid="uid://coalynxlsf5d3" path="res://textures/Enemys/OrangeNPC/press_e_to_interact.png" id="7_6d5yf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ye7da"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_d3is0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_haqrs")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_d3is0")
+}],
+"loop": true,
+"name": &"talking",
+"speed": 1.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_orx13"]
+radius = 34.0
+
+[node name="orange_npc" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_ye7da")
+animation = &"talking"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(10, 19, 13, 19, 15, 17, 15, 15, 14, 13, 12, 12, 14, 10, 15, 6, 15, 2, 16, 0, 18, -2, 20, -4, 20, -6, 19, -8, 17, -8, 15, -6, 15, -4, 14, -3, 12, -6, 10, -9, 7, -11, 4, -12, 3, -13, 2, -13, 3, -14, 2, -15, 0, -15, -1, -13, -2, -13, -4, -11, -7, -10, -8, -9, -9, -7, -10, -5, -11, -3, -12, 0, -14, 0, -15, -1, -15, -2, -16, -3, -17, -3, -18, -2, -18, -1, -19, 0, -20, 1, -20, 2, -19, 4, -17, 5, -15, 6, -14, 5, -13, 6, -12, 6, -11, 7, -10, 9, -9, 11, -9, 12, -9, 14, -10, 14, -11, 16, -12, 17, -12, 19, -10, 20, -7, 20, -5, 20, -4, 18, -2, 17, -2, 16, 0, 17, 2, 17, 4, 17, 6, 16, 7, 16, 8, 17, 8, 18, 9, 19)
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_3vdfv")
+initial_state = NodePath("NpcIdle")
+
+[node name="NpcIdle" type="Node" parent="State Machine" node_paths=PackedStringArray("animated_sprite", "hintPressE")]
+script = ExtResource("5_pjsvq")
+animated_sprite = NodePath("../../AnimatedSprite2D")
+hintPressE = NodePath("../../PressEToInteract")
+
+[node name="NpcTalking" type="Node" parent="State Machine" node_paths=PackedStringArray("animated_sprite")]
+script = ExtResource("6_1ffvq")
+animated_sprite = NodePath("../../AnimatedSprite2D")
+
+[node name="PressEToInteract" type="TextureRect" parent="."]
+visible = false
+offset_left = 9.0
+offset_top = -21.0
+offset_right = 527.0
+offset_bottom = 119.0
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("7_6d5yf")
+
+[node name="NPCChatDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPCChatDetection"]
+position = Vector2(-5, 7)
+shape = SubResource("CircleShape2D_orx13")
+
+[connection signal="body_entered" from="NPCChatDetection" to="State Machine/NpcIdle" method="_on_npc_chat_detection_body_entered"]
+[connection signal="body_exited" from="NPCChatDetection" to="State Machine/NpcIdle" method="_on_npc_chat_detection_body_exited"]

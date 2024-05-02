@@ -3,7 +3,6 @@ extends CharacterBody2D
 
 var current_jump_count : int = 0
 
-# Onreadys
 @onready var animated_sprite : AnimatedSprite2D = %AnimatedSprite
 
 var direction : Vector2 = Vector2.ZERO
@@ -30,3 +29,7 @@ func _on_area_2d_body_entered(_body):
 #was passieren soll, wenn der Player "stirbt". wird zurück zu einem gespeicherten Ort gesetzt
 func die():
 	self.position = saved_position
+
+# Weiterleitung eines Befehls in die Player StateMachine
+func force_state(state_name):
+	$StateMachine.force_state(state_name)

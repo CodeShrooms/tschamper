@@ -1,7 +1,7 @@
 extends Node2D
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float):   
+func _process(_delta: float):   
 	 
 	var mouse = get_viewport().get_mouse_position()	# mouse position in view space
 	var rect = get_viewport_rect()					# size of configured viewport
