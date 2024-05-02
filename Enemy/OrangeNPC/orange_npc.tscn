@@ -33,6 +33,8 @@ animations = [{
 radius = 34.0
 
 [node name="orange_npc" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
