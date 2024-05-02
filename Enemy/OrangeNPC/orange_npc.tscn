@@ -30,7 +30,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_orx13"]
-radius = 39.0128
+radius = 34.0
 
 [node name="orange_npc" type="CharacterBody2D"]
 
@@ -67,6 +67,7 @@ texture = ExtResource("7_6d5yf")
 [node name="NPCChatDetection" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPCChatDetection"]
+position = Vector2(-5, 7)
 shape = SubResource("CircleShape2D_orx13")
 
 [connection signal="body_entered" from="NPCChatDetection" to="State Machine/NpcIdle" method="_on_npc_chat_detection_body_entered"]

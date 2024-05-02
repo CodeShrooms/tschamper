@@ -1,7 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://f4hmyaop271r"]
+[gd_scene load_steps=14 format=3 uid="uid://bjf3tb11pto0d"]
 
-[ext_resource type="Texture2D" uid="uid://ca5au2d46kye" path="res://textures/isometric_tiles.png" id="1_bq4ao"]
-[ext_resource type="Texture2D" uid="uid://s1plyeb2dpfd" path="res://textures/isometric_tiles_tinted.png" id="1_lwedw"]
+[ext_resource type="Texture2D" path="res://textures/isometric_tiles.png" id="1_bq4ao"]
+[ext_resource type="Texture2D" path="res://textures/isometric_tiles_tinted.png" id="1_lwedw"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ou2fu"]
 polygon = PackedVector2Array(-256, -128, 256, -128, 256, -256, -256, -256)
