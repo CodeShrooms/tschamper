@@ -1,27 +1,2 @@
 # Godot 4+ specific ignores
 .godot/
-
-# IntelliJ specific ignores
-.idea/
-
-# Godot-specific ignores
-.import/
-export.cfg
-export_presets.cfg
-
-# Imported translations (automatically generated from CSV files)
-*.translation
-
-# Mono-specific ignores
-.mono/
-data_*/
-mono_crash.*.json
-
-# ignore Godot Git plugin because of OS specific files
-# addons/godot-git-plugin
-
-# ignore windows specific .tmp Godot files
-*.tmp
-
-# ignore win specific Godot git plugin dll
-addons/godot-git-plugin/win64/~libgit_plugin.windows.editor.x86_64.dll

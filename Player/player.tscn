@@ -134,6 +134,9 @@ height = 24.0
 position = Vector2(32, 164)
 script = ExtResource("1_iu520")
 
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(4, 3)
+
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 light_mask = 0

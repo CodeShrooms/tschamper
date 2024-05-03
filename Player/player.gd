@@ -2,7 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 var current_jump_count : int = 0
-
+ 
 @onready var animated_sprite : AnimatedSprite2D = %AnimatedSprite
 
 var direction : Vector2 = Vector2.ZERO
@@ -13,6 +13,7 @@ func _physics_process(_delta):
 	# the State Machine alters direction and velocity, updates animation
 	# implicit return made explicit
 	var _body_collided = move_and_slide()
+	getInput()
 
 
 # Functions that deal with the player dying
@@ -33,3 +34,12 @@ func die():
 # Weiterleitung eines Befehls in die Player StateMachine
 func force_state(state_name):
 	$StateMachine.force_state(state_name)
+	
+func shoot():
+	var b = preload("res://Player/weapons/tacker/tacker.tscn").instantiate()
+	owner.add_child(b)
+	b.transform = $Muzzle.global_transform
+ 
+func getInput():
+	if Input.is_action_just_pressed("shoot"):
+		shoot()   	
