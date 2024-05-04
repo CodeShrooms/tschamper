@@ -7,6 +7,7 @@ var current_jump_count : int = 0
 
 var direction : Vector2 = Vector2.ZERO
 var saved_position : Vector2
+@export var speed = 200
 
 
 func _physics_process(_delta):
@@ -36,10 +37,11 @@ func force_state(state_name):
 	$StateMachine.force_state(state_name)
 	
 func shoot():
-	var b = preload("res://Player/weapons/tacker/tacker.tscn").instantiate()
-	owner.add_child(b)
+	var b = preload("res://weapons/tacker.tscn").instantiate()
+	get_tree().root.add_child(b)
 	b.transform = $Muzzle.global_transform
  
 func getInput():
 	if Input.is_action_just_pressed("shoot"):
 		shoot()   	
+
