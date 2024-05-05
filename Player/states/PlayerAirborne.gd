@@ -1,8 +1,6 @@
 class_name PlayerAirborne
 extends PlayerState
 
-@export var animated_sprite : AnimatedSprite2D
-
 @export var wall_jump_pushback = 175
 @export var wall_jump_boost = -150
 

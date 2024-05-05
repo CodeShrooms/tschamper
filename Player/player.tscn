@@ -3,9 +3,13 @@
 [ext_resource type="Script" path="res://Player/player.gd" id="1_iu520"]
 [ext_resource type="Texture2D" uid="uid://bpe2xlf5o4oti" path="res://textures/mechanic/idle.png" id="2_k8mmg"]
 [ext_resource type="Texture2D" uid="uid://btfiw2wjxgp0o" path="res://textures/mechanic/walk.png" id="3_psn8v"]
+[ext_resource type="PackedScene" uid="uid://c0rh7l5oigp3a" path="res://Player/dash.tscn" id="4_1s46o"]
 [ext_resource type="Script" path="res://states/State Machine.gd" id="4_3xdre"]
+[ext_resource type="Texture2D" uid="uid://banrwdneih4nh" path="res://textures/flashlight.png" id="4_sjcnq"]
 [ext_resource type="Script" path="res://Player/states/PlayerGrounded.gd" id="5_ups8r"]
 [ext_resource type="Script" path="res://Player/states/PlayerAirborne.gd" id="6_ys6kv"]
+[ext_resource type="Script" path="res://Player/flashlight.gd" id="7_yda4i"]
+[ext_resource type="Script" path="res://Player/states/PlayerTalking.gd" id="10_qdvvx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ompc7"]
 atlas = ExtResource("2_k8mmg")
@@ -18,6 +22,10 @@ region = Rect2(512, 0, 512, 512)
 [sub_resource type="AtlasTexture" id="AtlasTexture_axflv"]
 atlas = ExtResource("2_k8mmg")
 region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7npeb"]
+atlas = ExtResource("2_k8mmg")
+region = Rect2(0, 0, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_38fgx"]
 atlas = ExtResource("3_psn8v")
@@ -88,6 +96,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_7npeb")
+}],
+"loop": true,
+"name": &"talking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_38fgx")
 }, {
 "duration": 0.5,
@@ -122,11 +138,25 @@ position = Vector2(32, 164)
 script = ExtResource("1_iu520")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+light_mask = 0
 texture_filter = 2
 scale = Vector2(0.0543852, 0.0543852)
 sprite_frames = SubResource("SpriteFrames_npxjt")
-animation = &"walk"
-frame_progress = 0.107801
+animation = &"talking"
+frame_progress = 0.101662
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture_filter = 2
+position = Vector2(-0.276749, 1.78319)
+rotation = -1.5708
+scale = Vector2(0.08, 0.08)
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("4_sjcnq")
+offset = Vector2(-1.44727, 1025.18)
+texture_scale = 2.0
+script = ExtResource("7_yda4i")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0, 2)
@@ -141,18 +171,22 @@ shape = SubResource("RectangleShape2D_q40bp")
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_v1nkg")
 
+[node name="dash" parent="." instance=ExtResource("4_1s46o")]
+unique_name_in_owner = true
+
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_3xdre")
 initial_state = NodePath("PlayerAirborne")
 
-[node name="PlayerGrounded" type="Node" parent="StateMachine" node_paths=PackedStringArray("animated_sprite")]
+[node name="PlayerGrounded" type="Node" parent="StateMachine"]
 script = ExtResource("5_ups8r")
-animated_sprite = NodePath("../../AnimatedSprite")
 
-[node name="PlayerAirborne" type="Node" parent="StateMachine" node_paths=PackedStringArray("animated_sprite")]
+[node name="PlayerAirborne" type="Node" parent="StateMachine"]
 script = ExtResource("6_ys6kv")
+
+[node name="PlayerTalking" type="Node" parent="StateMachine" node_paths=PackedStringArray("animated_sprite")]
+script = ExtResource("10_qdvvx")
 animated_sprite = NodePath("../../AnimatedSprite")
-max_jump_count = 1
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

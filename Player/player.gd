@@ -4,15 +4,15 @@ extends CharacterBody2D
 var current_jump_count : int = 0
 
 #variable for current and max life
-@export var max_life : int 
-@onready var current_life: int = max_life 
+@export var max_life : int
+@onready var current_life: int = max_life
 #signal for other nodes
 signal update_lives(lives, max_lives)
 
 @export var damage : int = 10
 
 # Onreadys
-@onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite
+@onready var animated_sprite : AnimatedSprite2D = %AnimatedSprite
 
 var direction : Vector2 = Vector2.ZERO
 var saved_position : Vector2
@@ -39,7 +39,7 @@ func die():
 func respawn():
 	self.position = saved_position
 	current_life = max_life
-	
+
 
 # function to take damage / update the current life based on damage
 func take_damage(hit_damage: int):
@@ -50,3 +50,7 @@ func take_damage(hit_damage: int):
 		# if taken to much damage the die function is called
 	if current_life <= 0:
 		respawn()
+
+# Weiterleitung eines Befehls in die Player StateMachine
+func force_state(state_name):
+	$StateMachine.force_state(state_name)

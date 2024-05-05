@@ -22,3 +22,6 @@ mono_crash.*.json
 
 # ignore windows specific .tmp Godot files
 *.tmp
+
+# ignore win specific Godot git plugin dll
+addons/godot-git-plugin/win64/~libgit_plugin.windows.editor.x86_64.dll
