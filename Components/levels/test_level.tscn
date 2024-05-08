@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://3ufc8tfftg1g"]
+[gd_scene load_steps=13 format=3 uid="uid://3ufc8tfftg1g"]
 
+[ext_resource type="Script" path="res://Components/levels/save_game.gd" id="1_adbq8"]
 [ext_resource type="PackedScene" uid="uid://cj2i5rtsdrvne" path="res://Player/player.tscn" id="1_hg5f1"]
 [ext_resource type="PackedScene" uid="uid://bjf3tb11pto0d" path="res://Components/levels/level_1.tscn" id="2_25ik6"]
 [ext_resource type="Script" path="res://scripts/camera_motion.gd" id="2_kp7tm"]
@@ -28,6 +29,7 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.495726)
 
 [node name="TestLevel" type="Node2D"]
+script = ExtResource("1_adbq8")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(706, 111)
@@ -43,7 +45,7 @@ mouse_panning_distance = 60.0
 position = Vector2(270, 116)
 scale = Vector2(0.02, 0.02)
 
-[node name="Player" parent="." instance=ExtResource("1_hg5f1")]
+[node name="Player" parent="." groups=["persist"] instance=ExtResource("1_hg5f1")]
 position = Vector2(706, 111)
 collision_mask = 12
 
@@ -87,10 +89,10 @@ shadow_enabled = true
 shadow_filter = 2
 texture = SubResource("GradientTexture2D_xpcfd")
 
-[node name="Testmob" parent="." instance=ExtResource("5_c5tkh")]
+[node name="Testmob" parent="." groups=["persist"] instance=ExtResource("5_c5tkh")]
 position = Vector2(552, 228)
 
-[node name="Testmob2" parent="." instance=ExtResource("5_c5tkh")]
+[node name="Testmob2" parent="." groups=["persist"] instance=ExtResource("5_c5tkh")]
 position = Vector2(315, 236)
 
 [node name="orange_npc" parent="." instance=ExtResource("6_2qgm2")]

@@ -33,3 +33,13 @@ func die():
 # Weiterleitung eines Befehls in die Player StateMachine
 func force_state(state_name):
 	$StateMachine.force_state(state_name)
+	
+func save():
+	var data = {
+		"position": self.position,
+		"current_state": $StateMachine.current_state_name
+	}
+	
+	# position, [looking direction NICHT, default geht eh nach rechts, ODER?)
+	# state (darin: welche Variablen?), dash-cooldown
+	return data

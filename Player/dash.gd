@@ -1,3 +1,4 @@
+class_name Dash
 extends Node
 
 # timer nodes
