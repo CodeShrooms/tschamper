@@ -37,7 +37,6 @@ func die():
 	respawn()
 
 func respawn():
-	print(respawn_marker.position)
 	self.position = respawn_marker.position
 	current_life = max_life
 
