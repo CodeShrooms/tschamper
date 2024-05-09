@@ -12,6 +12,7 @@ signal update_lives(lives, max_lives)
 
 
 #for the sprite looking direction: true = left
+# calls the function turn when the variable is set 
 var is_looking_left = true: set = turn
 
 
