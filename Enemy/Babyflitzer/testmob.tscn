@@ -36,15 +36,15 @@ scale = Vector2(0.091931, 0.091931)
 sprite_frames = SubResource("SpriteFrames_n5k57")
 frame_progress = 0.407295
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="DamageArea" type="Area2D" parent="."]
 position = Vector2(0, -21)
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
 position = Vector2(-10, 21.25)
 shape = SubResource("RectangleShape2D_df2f3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionBody" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_25fw4")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
@@ -81,4 +81,4 @@ theme_override_font_sizes/font_size = 33
 script = ExtResource("6_sykyl")
 
 [connection signal="update_lives" from="." to="ProgressBar" method="_on_testmob_update_lives"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_area_2d_body_entered"]

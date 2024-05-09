@@ -11,7 +11,7 @@ extends CharacterBody2D
 signal update_lives(lives, max_lives)
 
 
-#for the sprite looking direction: true = links
+#for the sprite looking direction: true = left
 var is_looking_left = true: set = turn
 
 
@@ -45,7 +45,7 @@ func die():
 
 #Attack
 func _on_area_2d_body_entered(body):
-	# If the enemy collides with the player, disable spawning
+	# If the enemy collides with the player, both taking damage 
 	if body.name == "Player":
 		#deal damage
 		body.take_damage(damage)
