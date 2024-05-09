@@ -101,4 +101,4 @@ max_life = 70
 position = Vector2(709, 168)
 
 [node name="RespawnMarker" type="Marker2D" parent="."]
-position = Vector2(715, 66)
+position = Vector2(705, 111)
