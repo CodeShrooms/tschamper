@@ -10,12 +10,12 @@ var current_jump_count : int = 0
 signal update_lives(lives, max_lives)
 
 @export var damage : int = 10
+@export var respawn_marker : Marker2D 
 
 # Onreadys
 @onready var animated_sprite : AnimatedSprite2D = %AnimatedSprite
 
 var direction : Vector2 = Vector2.ZERO
-var saved_position : Vector2
 
 
 func _physics_process(_delta):
@@ -28,16 +28,17 @@ func _physics_process(_delta):
 
 func _unhandled_key_input(event):
 	if event.is_action_pressed("save_position"):
-		saved_position = self.position
+		respawn_marker.position = self.position
 		
 
 	
-#TODO maybe später was anderes, wird gerade nicht verwendet
+#TODO what to do when the player dies
 func die():
 	respawn()
 
 func respawn():
-	self.position = saved_position
+	print(respawn_marker.position)
+	self.position = respawn_marker.position
 	current_life = max_life
 
 
@@ -49,7 +50,7 @@ func take_damage(hit_damage: int):
 		update_lives.emit(current_life, max_life)
 		# if taken to much damage the die function is called
 	if current_life <= 0:
-		respawn()
+		die()
 
 # Weiterleitung eines Befehls in die Player StateMachine
 func force_state(state_name):

@@ -43,10 +43,11 @@ mouse_panning_distance = 60.0
 position = Vector2(270, 116)
 scale = Vector2(0.02, 0.02)
 
-[node name="Player" parent="." instance=ExtResource("1_hg5f1")]
+[node name="Player" parent="." node_paths=PackedStringArray("respawn_marker") instance=ExtResource("1_hg5f1")]
 position = Vector2(706, 111)
 collision_mask = 12
 max_life = 50
+respawn_marker = NodePath("../RespawnMarker")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
@@ -98,3 +99,6 @@ max_life = 70
 
 [node name="orange_npc" parent="." instance=ExtResource("6_2qgm2")]
 position = Vector2(709, 168)
+
+[node name="RespawnMarker" type="Marker2D" parent="."]
+position = Vector2(715, 66)
