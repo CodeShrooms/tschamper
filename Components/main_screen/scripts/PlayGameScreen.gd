@@ -19,12 +19,17 @@ func _on_slot_3_button_pressed():
 func start_game(slot : int):
 	print("starting game of slot %d" % slot)
 	#TODO let the player name their Slot and save Slot Name
-	var level_node: Node = first_level_preloaded.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
-	
-	load_game(slot, level_node)
+	var level_node = first_level_preloaded.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 	level_node.set("current_slot", slot)
+	
+	#load_game(slot, level_node)
+	remove_nodes_from_group_below_node(level_node, "persist")# debug
+	
+	
 	var wrapper_scene: PackedScene = PackedScene.new()
+	#get_tree().change_scene_to_packed(level_node)
 	wrapper_scene.pack(level_node)
+	print("\nnow just before switching scene!\n")
 	get_tree().change_scene_to_packed(wrapper_scene)
 
 
@@ -82,21 +87,26 @@ func load_game(slot: int, level_node: Node):
 		# Create Object, add to correct parent, set position
 		var new_object = load(node_data["filename"]).instantiate()
 		#level_node.get_node(node_data["parent"]).add_child(new_object)
-		level_node.add_child(new_object)
 		new_object.position = Vector2(node_data["position_x"], node_data["position_y"])
-		print("position of %s: %s" % [new_object.name, Vector2(node_data["position_x"], node_data["position_y"])])
+		print("%s in load_game(): %s" % [new_object.name, new_object])
+		print("position of %s: %s" % [new_object.name, new_object.position])
 		
 		#new_object.set_position(Vector2(node_data["position_x"], node_data["position_y"]))
 		
 		# remove variables from node_data, so the rest can be set more easily
 		node_data.erase("filename")
 		node_data.erase("parent")
-		node_data.erase("position")
+		node_data.erase("position_x")
+		node_data.erase("position_y")
 		
 		# Set the remaining variables.
 		for node_variable in node_data.keys():
 			new_object.set(node_variable, node_data[node_variable])
-			
+		
+		# add to level_node as child
+		level_node.add_child(new_object)
+	
+	return level_node
 
 func remove_nodes_from_group_below_node(node: Node, group_name: String):
 	# recursively looks below 'node' for nodes in 'group_name' and queue_free's them

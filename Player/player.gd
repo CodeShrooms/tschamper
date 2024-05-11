@@ -8,6 +8,9 @@ var current_jump_count : int = 0
 var direction : Vector2 = Vector2.ZERO
 var saved_position : Vector2
 
+func _ready():
+	print("player in _ready(): %s" % self)
+	print("position of Player in _ready(): %s" % self.position)
 
 func _physics_process(_delta):
 	# the State Machine alters direction and velocity, updates animation

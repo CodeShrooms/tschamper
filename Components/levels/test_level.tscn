@@ -53,7 +53,7 @@ collision_mask = 12
 remote_path = NodePath("../../Camera2D")
 
 [node name="PointLight2D2" type="PointLight2D" parent="Player"]
-position = Vector2(0, 1)
+position = Vector2(29, 5)
 scale = Vector2(1.33888, 1.33888)
 energy = 0.7
 blend_mode = 1
