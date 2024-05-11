@@ -80,3 +80,4 @@ func handle_dash_input():
 		speed = movement_speed
 	
 
+# TODO: implement save funciton here to be called via super.save() in sub states that put this save() function together with their's

@@ -31,3 +31,5 @@ func Update(_delta: float):
 
 func Physics_Update(_delta: float):
 	pass
+
+# TODO: implement save funciton here to be called via super.save() in sub states that put this save() function together with their's

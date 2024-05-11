@@ -22,8 +22,8 @@ func start_game(slot : int):
 	var level_node = first_level_preloaded.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 	level_node.set("current_slot", slot)
 	
-	#load_game(slot, level_node)
-	remove_nodes_from_group_below_node(level_node, "persist")# debug
+	load_game(slot, level_node)
+	#remove_nodes_from_group_below_node(level_node, "persist")# debug
 	
 	
 	var wrapper_scene: PackedScene = PackedScene.new()
@@ -58,7 +58,9 @@ func load_game(slot: int, level_node: Node):
 	var path = "user://savegame%d.save"
 	if not FileAccess.file_exists(path % slot):
 		print("no save for slot %d!" % slot)
-		return # Error! We don't have a save to load.
+		# Error! We don't have a save to load.
+		# load default config instead
+		return load_default_persist_configuration(level_node)
 	
 	print("Save for slot %d exists!" % slot)
 	
@@ -123,3 +125,50 @@ func find_node_descendants_in_group(node: Node, group_name: String) -> Array:
 			descendantsInGroup.append(child)
 		descendantsInGroup += find_node_descendants_in_group(child, group_name)
 	return descendantsInGroup
+
+
+func load_default_persist_configuration(level_node: Node):
+	var path = "user://default_persist.conf"
+	
+	var save_file = FileAccess.open(path, FileAccess.READ)
+	# go through save_file:
+	while save_file.get_position() < save_file.get_length():
+		#====Parse-Line====
+		var json_string = save_file.get_line()
+		
+		# Check if there is any error while parsing the JSON string, skip in case of failure
+		var parse_result = JSON.parse_string(json_string)
+		if parse_result == null:
+			print("JSON Parse Error when loading %s", path)
+			continue
+		
+		# result is of this structure: e.g. { "Player": {Dictionary(size 4)}}
+		# this needs to be unpacked to get the inner Dictionary
+		var node_data: Dictionary
+		for node in parse_result:
+			node_data = parse_result[node]
+		
+		#====Use-parsed-line====
+		# Create Object, add to correct parent, set position
+		var new_object = load(node_data["filename"]).instantiate()
+		#level_node.get_node(node_data["parent"]).add_child(new_object)
+		new_object.position = Vector2(node_data["position_x"], node_data["position_y"])
+		print("%s in load_default_persist_configuration(): %s" % [new_object.name, new_object])
+		print("position of %s: %s" % [new_object.name, new_object.position])
+		
+		#new_object.set_position(Vector2(node_data["position_x"], node_data["position_y"]))
+		
+		# remove variables from node_data, so the rest can be set more easily
+		node_data.erase("filename")
+		node_data.erase("parent")
+		node_data.erase("position_x")
+		node_data.erase("position_y")
+		
+		# Set the remaining variables.
+		for node_variable in node_data.keys():
+			new_object.set(node_variable, node_data[node_variable])
+		
+		# add to level_node as child
+		level_node.add_child(new_object)
+	
+	return level_node

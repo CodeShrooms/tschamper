@@ -38,14 +38,10 @@ func force_state(state_name):
 	$StateMachine.force_state(state_name)
 	
 func save():
-	var data = {
+	return {
 		"filename":		get_scene_file_path(),
 		"parent":		get_parent().get_path(),
 		"position_x":	self.position.x,
 		"position_y":	self.position.y,
 		"current_state": $StateMachine.current_state_name
 	}
-	
-	# position, [looking direction NICHT, default geht eh nach rechts, ODER?)
-	# state (darin: welche Variablen?), dash-cooldown
-	return data

@@ -9,12 +9,12 @@ func _physics_process(_delta):
 	var _body_collided = move_and_slide() # implicit return made explicit
 
 func save():
-	var data = {
+	return {
 		"filename":			get_scene_file_path(),
 		"parent":			get_path_to(get_parent()),
 		"position_x":		self.position.x,
 		"position_y":		self.position.y,
 		"current_state":	$"State Machine".current_state_name,
+		"direction":		self.direction,
 	}
 	# looking direction, state (welche variablen darin?), health, maxhealth
-	return data
