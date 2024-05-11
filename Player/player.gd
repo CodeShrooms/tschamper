@@ -36,7 +36,10 @@ func force_state(state_name):
 	
 func save():
 	var data = {
-		"position": self.position,
+		"filename":		get_scene_file_path(),
+		"parent":		get_parent().get_path(),
+		"position_x":	self.position.x,
+		"position_y":	self.position.y,
 		"current_state": $StateMachine.current_state_name
 	}
 	
