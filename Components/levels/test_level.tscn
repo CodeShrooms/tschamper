@@ -30,8 +30,8 @@ fill_to = Vector2(1, 0.495726)
 [node name="TestLevel" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(706, 111)
-zoom = Vector2(3.855, 3.855)
+position = Vector2(358, 230)
+zoom = Vector2(10, 10)
 process_callback = 0
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
@@ -44,7 +44,7 @@ position = Vector2(270, 116)
 scale = Vector2(0.02, 0.02)
 
 [node name="Player" parent="." instance=ExtResource("1_hg5f1")]
-position = Vector2(706, 111)
+position = Vector2(358, 230)
 collision_mask = 12
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
@@ -91,7 +91,7 @@ texture = SubResource("GradientTexture2D_xpcfd")
 position = Vector2(552, 228)
 
 [node name="Testmob2" parent="." instance=ExtResource("5_c5tkh")]
-position = Vector2(315, 236)
+position = Vector2(516, 74)
 
 [node name="orange_npc" parent="." instance=ExtResource("6_2qgm2")]
 position = Vector2(709, 168)

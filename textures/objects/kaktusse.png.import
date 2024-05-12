@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkxgg0euno4he"
-path="res://.godot/imported/kaktusse.png-2567a8e1e83ba2de2099daf6d0289d79.ctex"
+uid="uid://mnyexm28lvmc"
+path="res://.godot/imported/Kaktusse.png-cbff55af4a5618b6a03475bb75f1ce17.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/objects/kaktusse.png"
-dest_files=["res://.godot/imported/kaktusse.png-2567a8e1e83ba2de2099daf6d0289d79.ctex"]
+source_file="res://textures/objects/Kaktusse.png"
+dest_files=["res://.godot/imported/Kaktusse.png-cbff55af4a5618b6a03475bb75f1ce17.ctex"]
 
 [params]
 

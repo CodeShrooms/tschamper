@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://huxvc57537v1"
-path="res://.godot/imported/wachbecken.png-66d320928ceef06fa970cf1046791bef.ctex"
+uid="uid://b2kq00hspvaqb"
+path="res://.godot/imported/Waschbecken.png-386819d398e13ab10e5b596a97f460c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/objects/wachbecken.png"
-dest_files=["res://.godot/imported/wachbecken.png-66d320928ceef06fa970cf1046791bef.ctex"]
+source_file="res://textures/objects/Waschbecken.png"
+dest_files=["res://.godot/imported/Waschbecken.png-386819d398e13ab10e5b596a97f460c3.ctex"]
 
 [params]
 

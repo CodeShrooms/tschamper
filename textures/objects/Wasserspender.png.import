@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1k37ms1bhhs8"
-path="res://.godot/imported/Wasserspender-20240425-090608.png-d62700ccfd9086a90e95a182f7edc305.ctex"
+uid="uid://durjf5p6dcpym"
+path="res://.godot/imported/Wasserspender.png-25afd95ef7183e3632fcad075eae2a2a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/objects/Wasserspender-20240425-090608.png"
-dest_files=["res://.godot/imported/Wasserspender-20240425-090608.png-d62700ccfd9086a90e95a182f7edc305.ctex"]
+source_file="res://textures/objects/Wasserspender.png"
+dest_files=["res://.godot/imported/Wasserspender.png-25afd95ef7183e3632fcad075eae2a2a.ctex"]
 
 [params]
 

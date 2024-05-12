@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b64ihnw2coyo0"
-path="res://.godot/imported/Stuhl-20240506-172453.png-8a5a7672dda70ecb60a4860fb9f03a09.ctex"
+uid="uid://dtvye7x2ewd6p"
+path="res://.godot/imported/Karton1.png-0f55ceba44eb532c7753e5e9b08a9b7f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/objects/Stuhl-20240506-172453.png"
-dest_files=["res://.godot/imported/Stuhl-20240506-172453.png-8a5a7672dda70ecb60a4860fb9f03a09.ctex"]
+source_file="res://textures/objects/Karton1.png"
+dest_files=["res://.godot/imported/Karton1.png-0f55ceba44eb532c7753e5e9b08a9b7f.ctex"]
 
 [params]
 
