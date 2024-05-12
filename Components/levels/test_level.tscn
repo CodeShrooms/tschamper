@@ -30,7 +30,7 @@ fill_to = Vector2(1, 0.495726)
 [node name="TestLevel" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(358, 230)
+position = Vector2(266, 72)
 zoom = Vector2(10, 10)
 process_callback = 0
 position_smoothing_enabled = true
@@ -44,7 +44,7 @@ position = Vector2(270, 116)
 scale = Vector2(0.02, 0.02)
 
 [node name="Player" parent="." instance=ExtResource("1_hg5f1")]
-position = Vector2(358, 230)
+position = Vector2(266, 72)
 collision_mask = 12
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
