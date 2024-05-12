@@ -30,8 +30,8 @@ fill_to = Vector2(1, 0.495726)
 [node name="TestLevel" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(266, 72)
-scale = Vector2(0.05, 0.05)
+position = Vector2(262, 80)
+scale = Vector2(0.025, 0.025)
 zoom = Vector2(10, 10)
 process_callback = 0
 position_smoothing_enabled = true
@@ -45,15 +45,16 @@ position = Vector2(270, 116)
 scale = Vector2(0.02, 0.02)
 
 [node name="Player" parent="." instance=ExtResource("1_hg5f1")]
-position = Vector2(266, 72)
+position = Vector2(262, 80)
+scale = Vector2(0.025, 0.025)
 collision_mask = 12
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
 
 [node name="PointLight2D2" type="PointLight2D" parent="Player"]
-position = Vector2(1480, 460)
-scale = Vector2(11.9533, 7.66509)
+position = Vector2(3775, 1362.5)
+scale = Vector2(30.4862, 21.3403)
 energy = 0.7
 blend_mode = 1
 shadow_color = Color(0, 0, 0, 0.792157)

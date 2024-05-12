@@ -17,7 +17,7 @@ var speed : float = movement_speed
 @export var dash_cooldown : float = 2
 @export var acceleration : float = 15
 @export var deacceleration : float = 20
-@export var jump_velocity : float = -125
+@export var jump_velocity : float = -137
 @export var extra_jump_velocity : float = -80
 @export var max_jump_count : int = 1
 # allows jumping while falling (to dampen fall) without havin jumped from a floor

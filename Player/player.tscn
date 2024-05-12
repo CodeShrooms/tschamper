@@ -128,7 +128,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_04o4i"]
 radius = 100.0
-height = 400.0
+height = 430.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(0, -1)
@@ -161,12 +161,13 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-20, 58)
+position = Vector2(-25, 48)
 shape = SubResource("CapsuleShape2D_04o4i")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
 scale = Vector2(1, 1)
-polygon = PackedVector2Array(-40, -157, -55, -152, -70, -142, -75, -127, -80, -112, -80, -97, -80, -72, -95, -62, -105, -52, -120, -37, -125, -27, -120, -17, -115, 68, -120, 93, -120, 113, -120, 138, -120, 148, -115, 178, -110, 188, -75, 253, -60, 253, 10, 253, 75, 253, 85, 248, 80, 143, 80, 133, 85, 98, 90, 48, 90, 28, 55, -7, 55, -37, 65, -62, 65, -87, 55, -102, 50, -132, 40, -142, 20, -152, 10, -162, -5, -162, -30, -162)
+polygon = PackedVector2Array(-40, -157, -55, -152, -70, -142, -75, -127, -80, -112, -80, -97, -80, -72, -95, -62, -105, -52, -120, -37, -125, -27, -120, -17, -115, 68, -120, 93, -120, 113, -120, 138, -120, 148, -115, 178, -110, 188, -75, 253, -60, 253, 10, 253, 75, 253, 85, 248, 80, 143, 80, 133, 85, 98, 90, 48, 90, 28, 65, -62, 65, -87, 50, -132, 40, -142, 20, -152, 10, -162, -5, -162, -30, -162)
 
 [node name="dash" parent="." instance=ExtResource("4_1s46o")]
 unique_name_in_owner = true
