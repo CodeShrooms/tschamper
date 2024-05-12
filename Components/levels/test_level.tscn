@@ -91,9 +91,11 @@ texture = SubResource("GradientTexture2D_xpcfd")
 
 [node name="Testmob" parent="." instance=ExtResource("5_c5tkh")]
 position = Vector2(552, 228)
+scale = Vector2(0.5, 0.5)
 
 [node name="Testmob2" parent="." instance=ExtResource("5_c5tkh")]
 position = Vector2(516, 74)
+scale = Vector2(0.5, 0.5)
 
 [node name="orange_npc" parent="." instance=ExtResource("6_2qgm2")]
 position = Vector2(709, 168)

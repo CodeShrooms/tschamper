@@ -6,7 +6,8 @@ var current_jump_count : int = 0
 @onready var animated_sprite : AnimatedSprite2D = %AnimatedSprite
 
 var direction : Vector2 = Vector2.ZERO
-var saved_position : Vector2
+var saved_position : Vector2 = Vector2(262, 84.07057)
+
 
 
 func _physics_process(_delta):
