@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cy77jspvy1p8i"
-path="res://.godot/imported/Stuhl.png-cd84ae5f3a32dec00bc73769da942579.ctex"
+uid="uid://dea368usbkts3"
+path="res://.godot/imported/Wachbecken.png-79cdcf870c2568981c6cd247501401c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/objects/Stuhl.png"
-dest_files=["res://.godot/imported/Stuhl.png-cd84ae5f3a32dec00bc73769da942579.ctex"]
+source_file="res://textures/objects/Wachbecken.png"
+dest_files=["res://.godot/imported/Wachbecken.png-79cdcf870c2568981c6cd247501401c8.ctex"]
 
 [params]
 

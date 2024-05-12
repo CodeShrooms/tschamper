@@ -1,15 +1,7 @@
-[gd_scene load_steps=31 format=3 uid="uid://bjf3tb11pto0d"]
+[gd_scene load_steps=14 format=3 uid="uid://bjf3tb11pto0d"]
 
 [ext_resource type="Texture2D" uid="uid://ca5au2d46kye" path="res://textures/isometric_tiles.png" id="1_bq4ao"]
 [ext_resource type="Texture2D" uid="uid://s1plyeb2dpfd" path="res://textures/isometric_tiles_tinted.png" id="1_lwedw"]
-[ext_resource type="Texture2D" uid="uid://dtvye7x2ewd6p" path="res://textures/objects/Karton1.png" id="3_x6ibg"]
-[ext_resource type="Texture2D" uid="uid://cy77jspvy1p8i" path="res://textures/objects/Stuhl.png" id="4_mgxfm"]
-[ext_resource type="Texture2D" uid="uid://5tsqqltdumsw" path="res://textures/objects/Tisch.png" id="5_0mdq3"]
-[ext_resource type="Texture2D" uid="uid://b2kq00hspvaqb" path="res://textures/objects/Waschbecken.png" id="6_hln78"]
-[ext_resource type="Texture2D" uid="uid://durjf5p6dcpym" path="res://textures/objects/Wasserspender.png" id="7_xg6gi"]
-[ext_resource type="Texture2D" uid="uid://3dlx8rtpuluk" path="res://textures/objects/Aed.png" id="8_fjh64"]
-[ext_resource type="Texture2D" uid="uid://bkxy8cmidu46s" path="res://textures/objects/Beamer.png" id="9_hyvub"]
-[ext_resource type="Texture2D" uid="uid://mnyexm28lvmc" path="res://textures/objects/Kaktusse.png" id="10_selg1"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ou2fu"]
 polygon = PackedVector2Array(-256, -128, 256, -128, 256, -256, -256, -256)
@@ -232,82 +224,6 @@ physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_ylli6")
 sources/1 = SubResource("TileSetAtlasSource_po2mu")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hc7bs"]
-texture = ExtResource("3_x6ibg")
-texture_region_size = Vector2i(512, 512)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-1:0/0 = 0
-1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:0/0/physics_layer_0/angular_velocity = 0.0
-0:1/0 = 0
-0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:1/0/physics_layer_0/angular_velocity = 0.0
-1:1/0 = 0
-1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:1/0/physics_layer_0/angular_velocity = 0.0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q2tbg"]
-texture = ExtResource("4_mgxfm")
-texture_region_size = Vector2i(512, 512)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dfp1q"]
-texture = ExtResource("5_0mdq3")
-texture_region_size = Vector2i(512, 512)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4ib5f"]
-texture = ExtResource("6_hln78")
-texture_region_size = Vector2i(512, 512)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1qvil"]
-texture = ExtResource("7_xg6gi")
-texture_region_size = Vector2i(188, 512)
-0:0/size_in_atlas = Vector2i(3, 2)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-79, -463, -285, -265, -283, 509, 71, 511, 279, 307, 277, -465)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3s1c5"]
-texture = ExtResource("8_fjh64")
-texture_region_size = Vector2i(295, 768)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(17.6777, -386.787, -146.371, -232.638, -140.714, 381.131, -19.0919, 382.545, 142.128, 232.638, 146.371, -385.373)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ny2fv"]
-texture = ExtResource("9_hyvub")
-texture_region_size = Vector2i(512, 439)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45.9619, -119.501, -98.2878, -119.501, -99.7021, -94.0452, -170.413, -61.5183, -210.011, -38.8909, -212.839, -16.2635, -219.91, -0.707092, -256, 13.435, -243.952, 30.4056, -256, 164.756, -256, 185.969, -105.359, 197.283, -105.359, 205.768, -2.12131, 205.768, 38.8909, 178.898, 126.572, 180.312, 256, 58.6899, 256, -55.8614, 214.253, -82.7315, 207.182, -98.2878, 201.525, -149.2, 71.4178, -133.643, 64.3467, -178.898, 47.3762, -183.141, 21.9203, -170.413, 10.6066, -208.597, -9.19238, -219.91, -23.3345, -210.011, -40.3051, -204.354, -33.234, -183.141, -41.7193, -183.141)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lekup"]
-texture = ExtResource("10_selg1")
-texture_region_size = Vector2i(512, 512)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:1/0 = 0
-0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:1/0/physics_layer_0/angular_velocity = 0.0
-
-[sub_resource type="TileSet" id="TileSet_d0j3w"]
-tile_size = Vector2i(64, 512)
-physics_layer_0/collision_layer = 4
-physics_layer_0/collision_mask = 11
-sources/6 = SubResource("TileSetAtlasSource_1qvil")
-sources/7 = SubResource("TileSetAtlasSource_3s1c5")
-sources/8 = SubResource("TileSetAtlasSource_ny2fv")
-sources/9 = SubResource("TileSetAtlasSource_lekup")
-sources/10 = SubResource("TileSetAtlasSource_hc7bs")
-sources/11 = SubResource("TileSetAtlasSource_q2tbg")
-sources/12 = SubResource("TileSetAtlasSource_dfp1q")
-sources/13 = SubResource("TileSetAtlasSource_4ib5f")
-
 [node name="Level1" type="Node2D"]
 
 [node name="Hintergrund" type="TileMap" parent="."]
@@ -321,11 +237,6 @@ layer_0/tile_data = PackedInt32Array(720893, 327681, 1, 589821, 327681, 1, 52428
 tile_set = SubResource("TileSet_1tc07")
 format = 2
 layer_0/tile_data = PackedInt32Array(786428, 327681, 2, 851964, 327680, 2, 786429, 327681, 2, 851965, 327680, 2, 786430, 327681, 2, 851966, 327680, 2, 720901, 327681, 2, 786437, 327680, 2, 720902, 327681, 2, 786438, 327680, 2, 720903, 327681, 2, 786439, 327680, 2, 720900, 327681, 2, 786436, 327680, 2, 720899, 327681, 2, 786435, 327680, 2, 720898, 327681, 2, 786434, 327680, 2, 720897, 327681, 2, 786433, 327680, 2, 720896, 327681, 2, 786432, 327680, 2, 786431, 327681, 2, 851967, 327680, 2, 851972, 327681, 2, 851973, 327681, 2, 851971, 327681, 2, 851963, 262144, 2, 917499, 327681, 2, 917500, 327681, 2, 917501, 327681, 2, 917502, 327681, 2, 917503, 327681, 2, 917507, 262145, 3, 917508, 262145, 3, 917509, 262145, 3, 851970, 327681, 2, 917506, 262145, 3, 851969, 327681, 2, 917505, 262145, 3, 851968, 327681, 2, 917504, 262145, 3, 983039, 262145, 3, 983038, 262145, 3, 983037, 262145, 3, 983036, 262145, 3, 983035, 262145, 3, 917498, 327681, 2, 983034, 262145, 3, 851978, 327681, 2, 917514, 262145, 3, 851979, 327681, 2, 917515, 262145, 3, 786444, 327680, 2, 720908, 327681, 2, 720909, 327681, 2, 786445, 327680, 2, 851980, 327681, 2, 786443, 327680, 2, 720907, 327681, 2, 720906, 327681, 2, 720905, 327681, 2, 720904, 327681, 2, 786441, 327680, 2, 786442, 327680, 2, 786440, 327680, 2, 851976, 327681, 2, 851977, 327681, 2, 917513, 262145, 3, 917512, 262145, 3, 917511, 262145, 3, 917510, 262145, 3, 851975, 327681, 2, 851974, 327681, 2, 917516, 262145, 3, 851981, 327681, 2, 917517, 262145, 3, 851982, 327681, 2, 917518, 262145, 3, 851983, 327681, 2, 917519, 262145, 3, 851984, 327681, 2, 917520, 262145, 3, 851985, 327681, 2, 917521, 262145, 3, 851986, 327681, 2, 917522, 262145, 3, 851987, 327681, 2, 917523, 262145, 3, 851988, 327681, 2, 917524, 262145, 3, 851989, 327681, 2, 917525, 262145, 3, 786446, 327680, 2, 786447, 327680, 2, 786448, 327680, 2, 786449, 327680, 2, 786450, 327680, 2, 786451, 327680, 2, 786452, 327680, 2, 786453, 327680, 2, 720917, 327681, 2, 720916, 327681, 2, 720915, 327681, 2, 720914, 327681, 2, 720913, 327681, 2, 720912, 327681, 2, 720911, 327681, 2, 720910, 327681, 2, 720918, 327681, 2, 720919, 327681, 2, 786455, 327680, 2, 786456, 327680, 2, 786457, 327680, 2, 786458, 327680, 2, 720921, 327681, 2, 720920, 327681, 2, 720922, 327681, 2, 851994, 327681, 2, 851993, 327681, 2, 851992, 327681, 2, 786454, 327680, 2, 851990, 327681, 2, 851991, 327681, 2, 851995, 327681, 2, 786459, 327680, 2, 720923, 327681, 2, 917526, 262145, 3, 917527, 262145, 3, 917528, 262145, 3, 917529, 262145, 3, 917530, 262145, 3, 917531, 262145, 3, 851996, 327681, 2, 917532, 262145, 3, 786461, 327680, 2, 851997, 327681, 2, 720926, 327681, 2, 786462, 327680, 2, 786460, 327680, 2, 720924, 327681, 2, 720925, 327681, 2, 720930, 393216, 2, 786466, 393216, 3, 786465, 393216, 2, 852001, 393216, 3, 852000, 393216, 2, 917536, 393216, 3, 917534, 262145, 3, 917535, 262145, 3, 917533, 262145, 3, 851998, 327681, 2, 851999, 327681, 2, 786463, 327680, 2, 720927, 327681, 2, 720928, 327681, 2, 786464, 327680, 2, 720929, 327680, 2)
-
-[node name="Objects" type="TileMap" parent="Keller"]
-tile_set = SubResource("TileSet_d0j3w")
-format = 2
-layer_0/tile_data = PackedInt32Array(46, 7, 0, 24, 6, 0, -131037, 8, 0, 655406, 6, 0, 655454, 7, 0, 524356, 8, 0)
 
 [node name="Wände" type="TileMap" parent="Keller"]
 tile_set = SubResource("TileSet_1tc07")
