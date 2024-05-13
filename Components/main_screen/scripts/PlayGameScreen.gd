@@ -28,8 +28,8 @@ func start_game(slot : int):
 	
 	print("persist nodes in TestLevel before: ", find_node_descendants_in_group(level_node_without_persist_nodes, "persist"))
 	
-	#load_game(slot, level_node)
-	load_game_via_scene_files(slot, level_node_without_persist_nodes)
+	load_game(slot, level_node_without_persist_nodes)
+	#load_game_via_scene_files(slot, level_node_without_persist_nodes)
 	
 	#remove_nodes_from_group_below_node(level_node, "persist")# debug
 	
@@ -75,7 +75,7 @@ func load_game(slot: int, level_node: Node):
 	print("Save for slot %d exists!" % slot)
 	
 	# remove 'persist' nodes to only load those specified in the save_file
-	remove_nodes_from_group_below_node(level_node, "persist")
+	#remove_nodes_from_group_below_node(level_node, "persist")
 	
 	print("\n after removing \n")
 	var save_file = FileAccess.open(path % slot, FileAccess.READ)
