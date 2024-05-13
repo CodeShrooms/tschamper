@@ -6,6 +6,7 @@ var first_game_scene_file_path = "res://Components/levels/test_level.tscn"
 @onready var mainMenuScreen = %MenuScreen
 @onready var currentScreen = $"."
 @onready var first_level_preloaded : PackedScene = preload("res://Components/levels/test_level.tscn")
+@onready var first_level_without_persist_nodes : PackedScene = preload("res://Components/levels/test_level_without_persist_nodes.tscn")
 
 func _on_slot_1_button_pressed():
 	start_game(1)
@@ -22,8 +23,17 @@ func start_game(slot : int):
 	var level_node = first_level_preloaded.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 	level_node.set("current_slot", slot)
 	
-	load_game(slot, level_node)
+	var level_node_without_persist_nodes = first_level_without_persist_nodes.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
+	level_node_without_persist_nodes.set("current_slot", slot)
+	
+	print("persist nodes in TestLevel before: ", find_node_descendants_in_group(level_node_without_persist_nodes, "persist"))
+	
+	#load_game(slot, level_node)
+	load_game_via_scene_files(slot, level_node_without_persist_nodes)
+	
 	#remove_nodes_from_group_below_node(level_node, "persist")# debug
+	
+	print("persist nodes in TestLevel after: ", find_node_descendants_in_group(level_node, "persist"))
 	
 	
 	var wrapper_scene: PackedScene = PackedScene.new()
@@ -67,6 +77,7 @@ func load_game(slot: int, level_node: Node):
 	# remove 'persist' nodes to only load those specified in the save_file
 	remove_nodes_from_group_below_node(level_node, "persist")
 	
+	print("\n after removing \n")
 	var save_file = FileAccess.open(path % slot, FileAccess.READ)
 	# go through save_file:
 	while save_file.get_position() < save_file.get_length():
@@ -90,6 +101,7 @@ func load_game(slot: int, level_node: Node):
 		var new_object = load(node_data["filename"]).instantiate()
 		#level_node.get_node(node_data["parent"]).add_child(new_object)
 		new_object.position = Vector2(node_data["position_x"], node_data["position_y"])
+		new_object.add_to_group("persist")
 		print("%s in load_game(): %s" % [new_object.name, new_object])
 		print("position of %s: %s" % [new_object.name, new_object.position])
 		
@@ -107,14 +119,21 @@ func load_game(slot: int, level_node: Node):
 		
 		# add to level_node as child
 		level_node.add_child(new_object)
+		
+		print("%s.get_children(): " % new_object.name, new_object.get_children())
 	
 	return level_node
 
 func remove_nodes_from_group_below_node(node: Node, group_name: String):
+	#print("persist nodes in node before removing: ", find_node_descendants_in_group(node, "persist"))
 	# recursively looks below 'node' for nodes in 'group_name' and queue_free's them
 	for n in find_node_descendants_in_group(node, group_name):
-		print("removing node %s" % n.name)
-		n.queue_free()
+		#print("removing node %s" % n.name)
+		print("%s.get_children(): " % n.name, n.get_children())
+		node.remove_child(n)
+		n.free() # immidiately frees the node
+	
+	#print("persist nodes in node after removing: ", find_node_descendants_in_group(node, "persist"))
 
 func find_node_descendants_in_group(node: Node, group_name: String) -> Array:
 	# recursively looks below 'node' for nodes in 'group_name' and returns them
@@ -126,6 +145,27 @@ func find_node_descendants_in_group(node: Node, group_name: String) -> Array:
 		descendantsInGroup += find_node_descendants_in_group(child, group_name)
 	return descendantsInGroup
 
+func load_game_via_scene_files(slot: int, level_node: Node):
+	# remove 'persist' nodes to only load those specified in the save_file
+	#remove_nodes_from_group_below_node(level_node, "persist")
+	# TODO: only if the save for this slot exists!
+	
+	var path = "user://game_saves/slot%d" % slot
+	
+	var saved_files = DirAccess.get_files_at(path)
+	
+	for file_name in saved_files:
+		print(file_name)
+		var saved_packed_scene: PackedScene = load(path + "/%s" % file_name)
+		
+		var node = saved_packed_scene.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
+		
+		level_node.add_child(node)
+		
+		print("%s.get_children(): " % node.name, node.get_children())
+		
+		
+	
 
 func load_default_persist_configuration(level_node: Node):
 	var path = "user://default_persist.conf"
@@ -153,6 +193,7 @@ func load_default_persist_configuration(level_node: Node):
 		var new_object = load(node_data["filename"]).instantiate()
 		#level_node.get_node(node_data["parent"]).add_child(new_object)
 		new_object.position = Vector2(node_data["position_x"], node_data["position_y"])
+		new_object.add_to_group("persist")
 		print("%s in load_default_persist_configuration(): %s" % [new_object.name, new_object])
 		print("position of %s: %s" % [new_object.name, new_object.position])
 		

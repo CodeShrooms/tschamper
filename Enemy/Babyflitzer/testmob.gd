@@ -15,6 +15,6 @@ func save():
 		"position_x":		self.position.x,
 		"position_y":		self.position.y,
 		"current_state":	$"State Machine".current_state_name,
-		"direction":		self.direction,
+		#"direction":		self.direction,
 	}
 	# looking direction, state (welche variablen darin?), health, maxhealth

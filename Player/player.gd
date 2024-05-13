@@ -27,7 +27,8 @@ func _unhandled_key_input(event):
 
 # wenn irgendein Objekt aus den Collision Masks die Area betritt, wird der Spieler gelöscht
 func _on_area_2d_body_entered(_body):
-	die()
+	#die()
+	pass
 	
 #was passieren soll, wenn der Player "stirbt". wird zurück zu einem gespeicherten Ort gesetzt
 func die():
