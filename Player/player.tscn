@@ -329,7 +329,7 @@ position = Vector2(1, 9)
 scale = Vector2(0.013, 0.013)
 sprite_frames = SubResource("SpriteFrames_npxjt")
 animation = &"walk"
-frame_progress = 0.187512
+frame_progress = 0.687517
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture_filter = 2
