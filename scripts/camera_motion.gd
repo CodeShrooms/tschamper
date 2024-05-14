@@ -3,7 +3,7 @@ extends Camera2D
 var target_offset = Vector2(0.0, 0.0)
 var current_offset = Vector2(0.0, 0.0)
 
-@export var mouse_panning_distance: float = 30.0
+@export var mouse_panning_distance: float = 15.0
 @export var acceleration_factor: float = 1.0
 @export var mouse_panning_enabled: bool = true
 

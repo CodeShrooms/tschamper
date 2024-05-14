@@ -7,17 +7,17 @@ var player: Player
 
 # Exports
 @export_group("Player Movement Variables")
-@export var movement_speed : float = 30.0
+@export var movement_speed : float = 20.0
 # default speed is normal movement speed
 var speed : float = movement_speed
 # dash speed should be min 120x normal speed
-@export var dash_speed_multiplier : float = 250.0
+@export var dash_speed_multiplier : float = 120.0
 # if you make the dash-speed-multiplier higher, usually the duration should be lowered
 @export var dash_duration : float = .2
 @export var dash_cooldown : float = 2
 @export var acceleration : float = 15
 @export var deacceleration : float = 20
-@export var jump_velocity : float = -137
+@export var jump_velocity : float = -110
 @export var extra_jump_velocity : float = -80
 @export var max_jump_count : int = 1
 # allows jumping while falling (to dampen fall) without havin jumped from a floor
@@ -26,7 +26,7 @@ var speed : float = movement_speed
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @export var allow_dash: bool = true
-@export var allow_wall_jump: bool = true
+@export var allow_wall_jump: bool = false
 @export_group("")
 
 # calculate the dash speed

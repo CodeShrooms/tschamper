@@ -1,7 +1,7 @@
 class_name PlayerAirborne
 extends PlayerState
 
-@export var wall_jump_pushback = 175
+@export var wall_jump_pushback = 100
 @export var wall_jump_boost = -150
 
 func Physics_Update(delta: float):
