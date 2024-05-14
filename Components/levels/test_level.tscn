@@ -30,7 +30,7 @@ fill_to = Vector2(1, 0.495726)
 [node name="TestLevel" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(262, 79)
+position = Vector2(262, 69)
 scale = Vector2(0.047952, 0.047952)
 zoom = Vector2(10, 10)
 process_callback = 0
@@ -45,7 +45,7 @@ position = Vector2(270, 116)
 scale = Vector2(0.02, 0.02)
 
 [node name="Player" parent="." instance=ExtResource("1_hg5f1")]
-position = Vector2(262, 79)
+position = Vector2(262, 69)
 scale = Vector2(0.047952, 0.047952)
 collision_mask = 12
 
