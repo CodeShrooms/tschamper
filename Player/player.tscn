@@ -326,8 +326,8 @@ script = ExtResource("1_iu520")
 unique_name_in_owner = true
 light_mask = 0
 texture_filter = 2
-position = Vector2(1, 9)
-scale = Vector2(0.013, 0.013)
+position = Vector2(3.8147e-06, 150)
+scale = Vector2(0.201613, 0.21936)
 sprite_frames = SubResource("SpriteFrames_npxjt")
 animation = &"walk"
 frame_progress = 0.687517
@@ -336,7 +336,7 @@ frame_progress = 0.687517
 texture_filter = 2
 position = Vector2(0, 1)
 rotation = -1.60977
-scale = Vector2(0.08, 0.08)
+scale = Vector2(0.5, 0.5)
 shadow_enabled = true
 shadow_filter = 1
 texture = ExtResource("4_sjcnq")
@@ -356,7 +356,6 @@ shape = SubResource("CapsuleShape2D_04o4i")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false
-scale = Vector2(1, 1)
 polygon = PackedVector2Array(-40, -157, -55, -152, -70, -142, -75, -127, -80, -112, -80, -97, -80, -72, -95, -62, -105, -52, -120, -37, -125, -27, -120, -17, -115, 68, -120, 93, -120, 113, -120, 138, -120, 148, -115, 178, -110, 188, -75, 253, -60, 253, 10, 253, 75, 253, 85, 248, 80, 143, 80, 133, 85, 98, 90, 48, 90, 28, 65, -62, 65, -87, 50, -132, 40, -142, 20, -152, 10, -162, -5, -162, -30, -162)
 
 [node name="dash" parent="." instance=ExtResource("4_1s46o")]
