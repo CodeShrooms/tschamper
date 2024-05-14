@@ -66,7 +66,7 @@ func handle_other_inputs():
 		player.velocity.x = move_toward(player.velocity.x, 0, deacceleration)
 
 func update_facing_direction():
-	player.animated_sprite.flip_h = (player.direction.x < 0)
+	player.animated_sprite.flip_h = (player.direction.x > 0)
 
 func handle_dash_input():
 	# Check if the player does a dash - for every state a dash is possible
