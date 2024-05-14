@@ -17,8 +17,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_25fw4"]
-size = Vector2(29, 25.5)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uqivk"]
+radius = 16.0
+height = 32.0
 
 [node name="Testmob" type="CharacterBody2D"]
 collision_layer = 2
@@ -31,7 +32,7 @@ sprite_frames = SubResource("SpriteFrames_n5k57")
 frame_progress = 0.407295
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_25fw4")
+shape = SubResource("CapsuleShape2D_uqivk")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(-9, 0)
@@ -44,13 +45,13 @@ initial_state = NodePath("EnemyIdle")
 
 [node name="EnemyIdle" type="Node" parent="State Machine" node_paths=PackedStringArray("RayCast", "animated_sprite", "enemy")]
 script = ExtResource("4_i4h7x")
-idle_speed = 4.0
+idle_speed = 3.0
 RayCast = NodePath("../../RayCast2D")
 animated_sprite = NodePath("../../AnimatedSprite")
 enemy = NodePath("../..")
 
 [node name="EnemyFollow" type="Node" parent="State Machine" node_paths=PackedStringArray("animated_sprite", "enemy")]
 script = ExtResource("5_3uinm")
-follow_speed = 30.0
+follow_speed = 15.0
 animated_sprite = NodePath("../../AnimatedSprite")
 enemy = NodePath("../..")
