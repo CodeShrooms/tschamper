@@ -4,7 +4,7 @@ extends CharacterBody2D
 var current_jump_count : int = 0
 
 #variable for current and max life
-@export var max_life : int
+@export var max_life : int = 100
 @onready var current_life: int = max_life
 #signal for other nodes
 signal update_lives(lives, max_lives)

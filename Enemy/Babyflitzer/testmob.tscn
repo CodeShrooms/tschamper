@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://byjkldgjetc2q"]
+[gd_scene load_steps=12 format=3 uid="uid://byjkldgjetc2q"]
 
 [ext_resource type="Script" path="res://Enemy/Babyflitzer/testmob.gd" id="1_ae130"]
 [ext_resource type="Texture2D" uid="uid://dxoicvw5kj5c7" path="res://textures/Enemys/Babyflitzer/tut-tut-baby-flitzer.png" id="2_hgg2a"]
@@ -24,7 +24,15 @@ size = Vector2(49, 25.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_25fw4"]
 size = Vector2(29, 25.5)
 
-[sub_resource type="Theme" id="Theme_m2s5w"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6cvu"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_h62eu"]
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_o6cvu")
 
 [node name="Testmob" type="CharacterBody2D"]
 collision_layer = 2
@@ -76,7 +84,7 @@ offset_right = 108.0
 offset_bottom = 14.0
 scale = Vector2(0.195, 0.195)
 pivot_offset = Vector2(108.923, 9.1282)
-theme = SubResource("Theme_m2s5w")
+theme = SubResource("Theme_h62eu")
 theme_override_font_sizes/font_size = 33
 script = ExtResource("6_sykyl")
 

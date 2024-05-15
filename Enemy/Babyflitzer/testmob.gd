@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var damage : int = 10
 
 #variable for current and max life
-@export var max_life : int 
+@export var max_life : int  = 100
 @onready var current_life: int = max_life 
 #signal for other nodes
 signal update_lives(lives, max_lives)
