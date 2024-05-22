@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://byjkldgjetc2q"]
+[gd_scene load_steps=12 format=3 uid="uid://byjkldgjetc2q"]
 
 [ext_resource type="Script" path="res://Enemy/Babyflitzer/testmob.gd" id="1_ae130"]
 [ext_resource type="Texture2D" uid="uid://dxoicvw5kj5c7" path="res://textures/Enemys/Babyflitzer/tut-tut-baby-flitzer.png" id="2_hgg2a"]
 [ext_resource type="Script" path="res://states/State Machine.gd" id="3_ux8g3"]
 [ext_resource type="Script" path="res://Enemy/Babyflitzer/states/EnemyIdle.gd" id="4_i4h7x"]
 [ext_resource type="Script" path="res://Enemy/Babyflitzer/states/EnemyFollow.gd" id="5_3uinm"]
+[ext_resource type="Script" path="res://Enemy/ProgressBar.gd" id="6_sykyl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_n5k57"]
 animations = [{
@@ -17,8 +18,21 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_df2f3"]
+size = Vector2(49, 25.5)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_25fw4"]
 size = Vector2(29, 25.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6cvu"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_h62eu"]
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_o6cvu")
 
 [node name="Testmob" type="CharacterBody2D"]
 collision_layer = 2
@@ -30,7 +44,15 @@ scale = Vector2(0.091931, 0.091931)
 sprite_frames = SubResource("SpriteFrames_n5k57")
 frame_progress = 0.407295
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="DamageArea" type="Area2D" parent="."]
+position = Vector2(0, -21)
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(-10, 21.25)
+shape = SubResource("RectangleShape2D_df2f3")
+
+[node name="CollisionBody" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_25fw4")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
@@ -54,3 +76,17 @@ script = ExtResource("5_3uinm")
 follow_speed = 30.0
 animated_sprite = NodePath("../../AnimatedSprite")
 enemy = NodePath("../..")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -109.0
+offset_top = -36.0
+offset_right = 108.0
+offset_bottom = 14.0
+scale = Vector2(0.195, 0.195)
+pivot_offset = Vector2(108.923, 9.1282)
+theme = SubResource("Theme_h62eu")
+theme_override_font_sizes/font_size = 33
+script = ExtResource("6_sykyl")
+
+[connection signal="update_lives" from="." to="ProgressBar" method="_on_testmob_update_lives"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_area_2d_body_entered"]

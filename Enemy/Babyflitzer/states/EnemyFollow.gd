@@ -6,9 +6,9 @@ extends EnemyState
 @export var animated_sprite : AnimatedSprite2D
 var is_sprite_flipped_initially: bool
 
+
 func enter():
 	super.enter()
-	
 	is_sprite_flipped_initially = animated_sprite.flip_h
 
 func exit():
@@ -28,7 +28,13 @@ func Physics_Update(delta: float):
 	
 	# flip sprite if player passes enemy
 	# direction.x is x-distance to player; enemy should face player
-	animated_sprite.flip_h = (direction.x > 0)
+	
+	
+	
+	if enemy.is_looking_left != (direction.x < 0):
+		enemy.is_looking_left = not enemy.is_looking_left
+		
+	
 	
 	# direction.length: distance from enemy to player
 	if direction.length() < follow_start_range:
