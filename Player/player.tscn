@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://cj2i5rtsdrvne"]
+[gd_scene load_steps=74 format=3 uid="uid://cj2i5rtsdrvne"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_iu520"]
 [ext_resource type="Texture2D" uid="uid://c4s8rctmymgf3" path="res://textures/mechanic/idel/frame0002.png" id="2_6s76g"]
@@ -69,8 +69,6 @@
 [ext_resource type="Texture2D" uid="uid://clqumv70fwrxg" path="res://textures/mechanic/walk/frame0041.png" id="55_1f8p5"]
 [ext_resource type="Texture2D" uid="uid://gmc2ofgi44s6" path="res://textures/mechanic/walk/frame0042.png" id="56_rwkw3"]
 [ext_resource type="Texture2D" uid="uid://b75php7pqicg3" path="res://textures/mechanic/walk/frame0043.png" id="57_wdoj4"]
-[ext_resource type="Texture2D" uid="uid://daitwk3ycs4wk" path="res://textures/mechanic/walk/frame0044.png" id="58_c1ycs"]
-[ext_resource type="Texture2D" uid="uid://b8j6ubg6leddj" path="res://textures/mechanic/walk/frame0045.png" id="59_mgjwn"]
 [ext_resource type="Texture2D" uid="uid://bkn8lgoq1ebd6" path="res://textures/mechanic/walk/frame0046.png" id="60_nls4w"]
 [ext_resource type="Texture2D" uid="uid://cdstuhdc3bemc" path="res://textures/mechanic/walk/frame0002.png" id="62_2f6ny"]
 
@@ -328,12 +326,6 @@ animations = [{
 "texture": ExtResource("57_wdoj4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("58_c1ycs")
-}, {
-"duration": 1.0,
-"texture": ExtResource("59_mgjwn")
-}, {
-"duration": 1.0,
 "texture": ExtResource("60_nls4w")
 }],
 "loop": true,
@@ -356,8 +348,8 @@ texture_filter = 2
 position = Vector2(0, 2)
 scale = Vector2(0.013, 0.013)
 sprite_frames = SubResource("SpriteFrames_npxjt")
-animation = &"talking"
-frame_progress = 0.904948
+animation = &"walk"
+frame_progress = 0.570393
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture_filter = 2
