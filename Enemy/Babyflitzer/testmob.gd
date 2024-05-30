@@ -50,4 +50,9 @@ func _on_area_2d_body_entered(body):
 	if body.name == "Player":
 		#deal damage
 		body.take_damage(damage)
+		
 	take_damage(damage)
+	if body.name == "Weapon":
+		take_damage(damage)
+	 
+
