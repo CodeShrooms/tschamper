@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cj2i5rtsdrvne"]
+[gd_scene load_steps=24 format=3 uid="uid://cj2i5rtsdrvne"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_iu520"]
 [ext_resource type="Texture2D" uid="uid://bpe2xlf5o4oti" path="res://textures/mechanic/idle.png" id="2_k8mmg"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://states/State Machine.gd" id="4_3xdre"]
 [ext_resource type="Texture2D" uid="uid://banrwdneih4nh" path="res://textures/flashlight.png" id="4_sjcnq"]
 [ext_resource type="Script" path="res://Player/states/PlayerGrounded.gd" id="5_ups8r"]
+[ext_resource type="Script" path="res://Player/Muzzle.gd" id="6_bcnvj"]
 [ext_resource type="Script" path="res://Player/states/PlayerAirborne.gd" id="6_ys6kv"]
 [ext_resource type="Script" path="res://Player/flashlight.gd" id="7_yda4i"]
 [ext_resource type="Script" path="res://Player/states/PlayerTalking.gd" id="10_qdvvx"]
@@ -158,6 +159,10 @@ script = ExtResource("7_yda4i")
 [node name="CollisionBody" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_v1nkg")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(6, 3)
+script = ExtResource("6_bcnvj")
 
 [node name="dash" parent="." instance=ExtResource("4_1s46o")]
 unique_name_in_owner = true
