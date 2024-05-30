@@ -19,7 +19,7 @@ var direction : Vector2 = Vector2.ZERO
 
 #Shooting
 @export var speed = 200
-var shootvar= 1    
+var shootenabler= 1    #to activate (1) and deactivate shooting 
 
 func _physics_process(_delta):
 	# the State Machine alters direction and velocity, updates animation
@@ -57,12 +57,12 @@ func take_damage(hit_damage: int):
 		
 #shoot & input 
 func shoot():
-	var b = preload("res://weapon/tacker.tscn").instantiate()
-	get_tree().root.add_child(b)
-	b.transform = $Muzzle.global_transform
+	var bullet = preload("res://Weapon/tacker.tscn").instantiate()
+	get_tree().root.add_child(bullet)
+	bullet.transform = $Muzzle.global_transform
  
 func getInput():
-	if (shootvar==1):
+	if (shootenabler==1):
 		if Input.is_action_just_pressed("shoot"):
 			shoot()
 
