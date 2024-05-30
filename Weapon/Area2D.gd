@@ -17,6 +17,4 @@ func _on_area_shape_entered(area_rid, area, area_shape_index, local_shape_index)
 		queue_free()  # Waffe verschwindet nach dem Treffer (optional)
 
 func _on_body_entered(body):
-	if body.is_in_group("Enemy"):
-		queue_free()
 	queue_free()
