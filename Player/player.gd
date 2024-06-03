@@ -19,7 +19,7 @@ var direction : Vector2 = Vector2.ZERO
 
 #Shooting
 @export var speed = 200
-var shootvar= 1    
+var is_shooting_enabled = true    
 
 func _physics_process(_delta):
 	# the State Machine alters direction and velocity, updates animation
@@ -62,7 +62,7 @@ func shoot():
 	b.transform = $Muzzle.global_transform
  
 func getInput():
-	if (shootvar==1):
+	if (is_shooting_enabled):
 		if Input.is_action_just_pressed("shoot"):
 			shoot()
 

@@ -14,7 +14,7 @@ func _physics_process(delta):
 func _on_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	if area is Enemy:
 		area.take_damage(damage)
-		queue_free()  # Waffe verschwindet nach dem Treffer (optional)
+		queue_free()  # Bullet dissapers when hit 
 
 func _on_body_entered(body):
 	queue_free()
