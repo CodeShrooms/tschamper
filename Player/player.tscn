@@ -575,7 +575,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_shoot",
-"speed": 20.0
+"speed": 39.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v1nkg"]
@@ -593,8 +593,8 @@ texture_filter = 2
 position = Vector2(-0.712158, 1.5)
 scale = Vector2(0.0141146, 0.0126704)
 sprite_frames = SubResource("SpriteFrames_npxjt")
-animation = &"shhot stand"
-frame_progress = 0.0353557
+animation = &"walk_shoot"
+frame_progress = 0.840544
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture_filter = 2
