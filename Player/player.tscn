@@ -360,7 +360,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"shoot_walk",
-"speed": 20.0
+"speed": 38.0
 }, {
 "frames": [{
 "duration": 2.2,
@@ -583,7 +583,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 20.0
+"speed": 35.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v1nkg"]
@@ -601,7 +601,7 @@ texture_filter = 2
 position = Vector2(-1, 1.5)
 scale = Vector2(0.026616, 0.0224607)
 sprite_frames = SubResource("SpriteFrames_npxjt")
-animation = &"shoot_stand"
+animation = &"walk"
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture_filter = 2
