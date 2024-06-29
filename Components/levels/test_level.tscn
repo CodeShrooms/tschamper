@@ -31,7 +31,7 @@ fill_to = Vector2(1, 0.495726)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(706, 111)
-zoom = Vector2(3.855, 3.855)
+zoom = Vector2(12, 12)
 process_callback = 0
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
