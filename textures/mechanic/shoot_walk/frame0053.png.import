@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2owvl358b6on"
-path="res://.godot/imported/frame0001.png-3b548288edc25772ce60755aff43a179.ctex"
+uid="uid://c01gblf6lq3l6"
+path="res://.godot/imported/frame0053.png-174de0955e0a0c973dd04fc2160db92a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/mechanic/shoot_walk/frame0001.png"
-dest_files=["res://.godot/imported/frame0001.png-3b548288edc25772ce60755aff43a179.ctex"]
+source_file="res://textures/mechanic/shoot_walk/frame0053.png"
+dest_files=["res://.godot/imported/frame0053.png-174de0955e0a0c973dd04fc2160db92a.ctex"]
 
 [params]
 
