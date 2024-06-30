@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://3ufc8tfftg1g"]
+[gd_scene load_steps=16 format=3 uid="uid://3ufc8tfftg1g"]
 
 [ext_resource type="PackedScene" uid="uid://cj2i5rtsdrvne" path="res://Player/player.tscn" id="1_hg5f1"]
 [ext_resource type="PackedScene" uid="uid://bjf3tb11pto0d" path="res://Components/levels/level_1.tscn" id="2_25ik6"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://byjkldgjetc2q" path="res://Enemy/Babyflitzer/testmob.tscn" id="5_c5tkh"]
 [ext_resource type="PackedScene" uid="uid://2tau215gx3my" path="res://Enemy/OrangeNPC/orange_npc.tscn" id="6_2qgm2"]
 [ext_resource type="Texture2D" uid="uid://bvemn6gxnvkn4" path="res://textures/objects/waschbecken.png" id="7_xa63k"]
+[ext_resource type="Texture2D" uid="uid://jyoextbnruw6" path="res://textures/objects/kaktusse_abgebrochener_teil.png" id="8_w6ojj"]
+[ext_resource type="Texture2D" uid="uid://blryf2biqyigv" path="res://textures/objects/wasser_pfuetze.png" id="9_jhu38"]
+[ext_resource type="Texture2D" uid="uid://bgveibccvsejp" path="res://textures/objects/wandregal.png" id="10_dkfsn"]
 
 [sub_resource type="Gradient" id="Gradient_b5uin"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -108,14 +111,14 @@ position = Vector2(346, 69)
 [node name="objects" type="Node2D" parent="."]
 
 [node name="waschbecken" type="RigidBody2D" parent="objects"]
-position = Vector2(-153, 1)
+position = Vector2(-153, 6)
 collision_layer = 4
 collision_mask = 4
 mass = 10.0
 gravity_scale = 0.0
 freeze_mode = 1
 
-[node name="waschbecken" type="Sprite2D" parent="objects/waschbecken"]
+[node name="Sprite2D" type="Sprite2D" parent="objects/waschbecken"]
 light_mask = 0
 position = Vector2(383, 123)
 scale = Vector2(0.0515577, 0.0474603)
@@ -124,3 +127,53 @@ texture = ExtResource("7_xa63k")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="objects/waschbecken"]
 position = Vector2(1, -2)
 polygon = PackedVector2Array(383, 121, 379, 123, 380, 124, 383, 126, 387, 125, 389, 123, 390, 121, 389, 118, 387, 119)
+
+[node name="kaktus_abgebrochen" type="RigidBody2D" parent="objects"]
+position = Vector2(-100, 8)
+collision_layer = 4
+collision_mask = 4
+mass = 10.0
+gravity_scale = 0.0
+freeze_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="objects/kaktus_abgebrochen"]
+light_mask = 0
+position = Vector2(408, 117)
+scale = Vector2(0.0150576, 0.0159329)
+texture = ExtResource("8_w6ojj")
+
+[node name="pfuetze" type="RigidBody2D" parent="objects"]
+position = Vector2(-200, 16)
+collision_layer = 4
+collision_mask = 4
+mass = 10.0
+gravity_scale = 0.0
+freeze_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="objects/pfuetze"]
+light_mask = 0
+position = Vector2(510, 157)
+scale = Vector2(0.0350877, 0.0302144)
+texture = ExtResource("9_jhu38")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="objects/pfuetze"]
+position = Vector2(1, -2)
+polygon = PackedVector2Array(490, 169, 485, 179, 516, 180, 529, 173, 522, 169, 497, 168)
+
+[node name="regal" type="RigidBody2D" parent="objects"]
+position = Vector2(-400, 32)
+collision_layer = 4
+collision_mask = 4
+mass = 10.0
+gravity_scale = 0.0
+freeze_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="objects/regal"]
+light_mask = 0
+position = Vector2(709, 141)
+scale = Vector2(0.0268031, 0.0243665)
+texture = ExtResource("10_dkfsn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="objects/regal"]
+position = Vector2(1, -2)
+polygon = PackedVector2Array(692, 136, 688, 138, 721, 138, 725, 136)
