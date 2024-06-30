@@ -45,7 +45,7 @@ fill_to = Vector2(1, 0.495726)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(346, 78)
 scale = Vector2(0.3, 0.3)
-zoom = Vector2(12, 12)
+zoom = Vector2(22, 22)
 process_callback = 0
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
@@ -81,6 +81,7 @@ polygon = PackedVector2Array(383, 121, 379, 123, 380, 124, 383, 126, 387, 125, 3
 position = Vector2(-100, 8)
 collision_layer = 4
 collision_mask = 4
+gravity_scale = 0.0
 freeze_mode = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="objects/kaktus_abgebrochen"]
@@ -111,6 +112,7 @@ polygon = PackedVector2Array(481, 104, 480, 103, 478, 102, 476, 103, 476, 106, 4
 position = Vector2(-200, 16)
 collision_layer = 2
 collision_mask = 4
+mass = 1000.0
 gravity_scale = 0.0
 freeze_mode = 1
 
@@ -165,6 +167,7 @@ position = Vector2(-800, 64)
 collision_layer = 4
 collision_mask = 4
 mass = 10.0
+gravity_scale = 0.0
 freeze_mode = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="objects/rollwagen"]
@@ -178,34 +181,35 @@ position = Vector2(274.611, -187.902)
 scale = Vector2(1.18243, 2.70838)
 polygon = PackedVector2Array(691.277, 136.946, 720.031, 136.946, 716.649, 138.054, 687.049, 138.054)
 
-[node name="box1" type="RigidBody2D" parent="objects/rollwagen"]
+[node name="boxen_auf_wagen" type="RigidBody2D" parent="objects/rollwagen"]
 position = Vector2(-800, 64)
 collision_layer = 4
 collision_mask = 4
 mass = 10.0
+gravity_scale = 0.0
 freeze_mode = 1
 
-[node name="Sprite2D2" type="Sprite2D" parent="objects/rollwagen/box1"]
+[node name="Sprite2D2" type="Sprite2D" parent="objects/rollwagen/boxen_auf_wagen"]
 light_mask = 0
 position = Vector2(1907, 116)
 scale = Vector2(0.0133888, 0.0126377)
 texture = ExtResource("12_gd26y")
 
-[node name="Sprite2D" type="Sprite2D" parent="objects/rollwagen/box1"]
+[node name="Sprite2D" type="Sprite2D" parent="objects/rollwagen/boxen_auf_wagen"]
 light_mask = 0
 position = Vector2(1919, 116)
 scale = Vector2(0.0164666, 0.0144996)
 texture = ExtResource("12_gd26y")
 
-[node name="Sprite2D3" type="Sprite2D" parent="objects/rollwagen/box1"]
+[node name="Sprite2D3" type="Sprite2D" parent="objects/rollwagen/boxen_auf_wagen"]
 light_mask = 0
 position = Vector2(1905, 107)
 scale = Vector2(0.00988712, 0.0087314)
 texture = ExtResource("12_gd26y")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="objects/rollwagen/box1/Sprite2D3"]
-position = Vector2(-80564.9, -39458.7)
-scale = Vector2(119.593, 310.189)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="objects/rollwagen/boxen_auf_wagen"]
+position = Vector2(1108.44, -237.53)
+scale = Vector2(1.18243, 2.70838)
 polygon = PackedVector2Array(668.584, 125.363, 674.504, 125.363, 675.35, 125.363, 675.35, 127.578, 686.344, 127.578, 688.035, 127.209, 688.035, 130.901, 684.652, 132.009, 666.892, 132.009, 666.892, 128.316, 666.892, 125.732)
 
 [node name="regal_unten" type="RigidBody2D" parent="objects"]
@@ -390,9 +394,8 @@ respawn_marker = NodePath("../RespawnMarker")
 remote_path = NodePath("../../Camera2D")
 
 [node name="PointLight2D2" type="PointLight2D" parent="Player"]
-visible = false
-position = Vector2(0, 1)
-scale = Vector2(1.33888, 1.33888)
+position = Vector2(740, 235)
+scale = Vector2(5.36021, 3.30099)
 energy = 0.7
 blend_mode = 1
 shadow_color = Color(0, 0, 0, 0.792157)
@@ -401,20 +404,43 @@ shadow_filter_smooth = 0.6
 texture = SubResource("GradientTexture2D_ewo8e")
 texture_scale = 11.66
 
-[node name="lamp" type="RigidBody2D" parent="."]
+[node name="exit_sign" type="RigidBody2D" parent="."]
 position = Vector2(41, -1)
 collision_layer = 4
 collision_mask = 4
 freeze_mode = 1
 
-[node name="ExitSign" type="Sprite2D" parent="lamp"]
+[node name="ExitSign" type="Sprite2D" parent="exit_sign"]
 light_mask = 0
 position = Vector2(425.41, 46.33)
 scale = Vector2(0.043672, 0.0417187)
 texture = ExtResource("4_bghr4")
 
-[node name="PointLight2D3" type="PointLight2D" parent="lamp"]
+[node name="PointLight2D3" type="PointLight2D" parent="exit_sign"]
 position = Vector2(426, 47)
+rotation = -1.57079
+scale = Vector2(0.114621, 0.212525)
+energy = 1.25
+shadow_enabled = true
+shadow_filter = 2
+texture = SubResource("GradientTexture2D_xpcfd")
+
+[node name="exit_sign2" type="RigidBody2D" parent="."]
+position = Vector2(82, -2)
+collision_layer = 4
+collision_mask = 4
+gravity_scale = 0.0
+freeze_mode = 1
+
+[node name="ExitSign" type="Sprite2D" parent="exit_sign2"]
+light_mask = 0
+position = Vector2(264.012, 54.6658)
+scale = Vector2(0.043672, 0.0417187)
+texture = ExtResource("4_bghr4")
+flip_h = true
+
+[node name="PointLight2D3" type="PointLight2D" parent="exit_sign2"]
+position = Vector2(264.602, 55.3358)
 rotation = -1.57079
 scale = Vector2(0.114621, 0.212525)
 energy = 1.25
