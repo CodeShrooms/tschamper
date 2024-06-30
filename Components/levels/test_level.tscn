@@ -85,7 +85,7 @@ freeze_mode = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="objects/kaktus_abgebrochen"]
 light_mask = 0
-position = Vector2(408, 117)
+position = Vector2(410, 119)
 scale = Vector2(0.0150576, 0.0159329)
 texture = ExtResource("8_w6ojj")
 
@@ -427,7 +427,7 @@ position = Vector2(771, 70)
 max_life = 70
 
 [node name="Testmob2" parent="." instance=ExtResource("5_c5tkh")]
-position = Vector2(725, 71)
+position = Vector2(266, 79)
 max_life = 70
 
 [node name="orange_npc" parent="." instance=ExtResource("6_2qgm2")]

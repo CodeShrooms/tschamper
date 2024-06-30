@@ -1,7 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://byjkldgjetc2q"]
+[gd_scene load_steps=11 format=3 uid="uid://byjkldgjetc2q"]
 
 [ext_resource type="Script" path="res://Enemy/Babyflitzer/testmob.gd" id="1_ae130"]
-[ext_resource type="Texture2D" uid="uid://dxoicvw5kj5c7" path="res://textures/Enemys/Babyflitzer/tut-tut-baby-flitzer.png" id="2_hgg2a"]
+[ext_resource type="Texture2D" uid="uid://6vnxnd250j7q" path="res://textures/Enemys/Ratte/rat_without_background.png" id="2_ey7h5"]
 [ext_resource type="Script" path="res://states/State Machine.gd" id="3_ux8g3"]
 [ext_resource type="Script" path="res://Enemy/Babyflitzer/states/EnemyIdle.gd" id="4_i4h7x"]
 [ext_resource type="Script" path="res://Enemy/Babyflitzer/states/EnemyFollow.gd" id="5_3uinm"]
@@ -11,18 +11,15 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_hgg2a")
+"texture": ExtResource("2_ey7h5")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 1.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_df2f3"]
 size = Vector2(49, 25.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_25fw4"]
-size = Vector2(29, 25.5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6cvu"]
 bg_color = Color(1, 0, 0, 1)
@@ -52,8 +49,8 @@ monitorable = false
 position = Vector2(-10, 21.25)
 shape = SubResource("RectangleShape2D_df2f3")
 
-[node name="CollisionBody" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_25fw4")
+[node name="CollisionBody" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-3, -4, -4, -3, -5, -1, -6, 1, -7, 2, -8, 3, -8, 4, -7, 4, -3, 3, -2, 3, -3, 4, -1, 4, 0, 3, 1, 3, 3, 3, 5, 2, 7, 2, 6, 3, 1, 4, 2, 5, 6, 5, 8, 3, 8, 2, 7, 1, 5, -1, 2, -4, -1, -4)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(-9, 0)
