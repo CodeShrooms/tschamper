@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://3ufc8tfftg1g"]
+[gd_scene load_steps=13 format=3 uid="uid://3ufc8tfftg1g"]
 
 [ext_resource type="PackedScene" uid="uid://cj2i5rtsdrvne" path="res://Player/player.tscn" id="1_hg5f1"]
 [ext_resource type="PackedScene" uid="uid://bjf3tb11pto0d" path="res://Components/levels/level_1.tscn" id="2_25ik6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b6r1tposxe8a5" path="res://textures/exit_sign.png" id="4_bghr4"]
 [ext_resource type="PackedScene" uid="uid://byjkldgjetc2q" path="res://Enemy/Babyflitzer/testmob.tscn" id="5_c5tkh"]
 [ext_resource type="PackedScene" uid="uid://2tau215gx3my" path="res://Enemy/OrangeNPC/orange_npc.tscn" id="6_2qgm2"]
+[ext_resource type="Texture2D" uid="uid://bvemn6gxnvkn4" path="res://textures/objects/waschbecken.png" id="7_xa63k"]
 
 [sub_resource type="Gradient" id="Gradient_b5uin"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -30,7 +31,7 @@ fill_to = Vector2(1, 0.495726)
 [node name="TestLevel" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(706, 111)
+position = Vector2(348, 71)
 zoom = Vector2(12, 12)
 process_callback = 0
 position_smoothing_enabled = true
@@ -44,7 +45,7 @@ position = Vector2(270, 116)
 scale = Vector2(0.02, 0.02)
 
 [node name="Player" parent="." node_paths=PackedStringArray("respawn_marker") instance=ExtResource("1_hg5f1")]
-position = Vector2(706, 111)
+position = Vector2(348, 71)
 collision_mask = 12
 max_life = 50
 respawn_marker = NodePath("../RespawnMarker")
@@ -102,4 +103,24 @@ max_life = 70
 position = Vector2(709, 168)
 
 [node name="RespawnMarker" type="Marker2D" parent="."]
-position = Vector2(705, 111)
+position = Vector2(346, 69)
+
+[node name="objects" type="Node2D" parent="."]
+
+[node name="waschbecken" type="RigidBody2D" parent="objects"]
+position = Vector2(-153, 1)
+collision_layer = 4
+collision_mask = 4
+mass = 10.0
+gravity_scale = 0.0
+freeze_mode = 1
+
+[node name="waschbecken" type="Sprite2D" parent="objects/waschbecken"]
+light_mask = 0
+position = Vector2(383, 123)
+scale = Vector2(0.0515577, 0.0474603)
+texture = ExtResource("7_xa63k")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="objects/waschbecken"]
+position = Vector2(1, -2)
+polygon = PackedVector2Array(383, 121, 379, 123, 380, 124, 383, 126, 387, 125, 389, 123, 390, 121, 389, 118, 387, 119)
