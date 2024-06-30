@@ -423,11 +423,11 @@ shadow_filter = 2
 texture = SubResource("GradientTexture2D_xpcfd")
 
 [node name="Testmob" parent="." instance=ExtResource("5_c5tkh")]
-position = Vector2(771, 70)
+position = Vector2(583, 78)
 max_life = 70
 
 [node name="Testmob2" parent="." instance=ExtResource("5_c5tkh")]
-position = Vector2(266, 79)
+position = Vector2(536, 240)
 max_life = 70
 
 [node name="orange_npc" parent="." instance=ExtResource("6_2qgm2")]
