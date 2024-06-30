@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://3ufc8tfftg1g"]
+[gd_scene load_steps=25 format=3 uid="uid://3ufc8tfftg1g"]
 
 [ext_resource type="PackedScene" uid="uid://cj2i5rtsdrvne" path="res://Player/player.tscn" id="1_hg5f1"]
 [ext_resource type="PackedScene" uid="uid://bjf3tb11pto0d" path="res://Components/levels/level_1.tscn" id="2_25ik6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b6r1tposxe8a5" path="res://textures/exit_sign.png" id="4_bghr4"]
 [ext_resource type="PackedScene" uid="uid://byjkldgjetc2q" path="res://Enemy/Babyflitzer/testmob.tscn" id="5_c5tkh"]
 [ext_resource type="PackedScene" uid="uid://2tau215gx3my" path="res://Enemy/OrangeNPC/orange_npc.tscn" id="6_2qgm2"]
+[ext_resource type="Texture2D" uid="uid://d0tict7jeeg1i" path="res://textures/objects/schild_achtung_rutschgefahr.png" id="7_d45sl"]
 [ext_resource type="Texture2D" uid="uid://bvemn6gxnvkn4" path="res://textures/objects/waschbecken.png" id="7_xa63k"]
 [ext_resource type="Texture2D" uid="uid://jyoextbnruw6" path="res://textures/objects/kaktusse_abgebrochener_teil.png" id="8_w6ojj"]
 [ext_resource type="Texture2D" uid="uid://blryf2biqyigv" path="res://textures/objects/wasser_pfuetze.png" id="9_jhu38"]
@@ -16,7 +17,11 @@
 [ext_resource type="Texture2D" uid="uid://7visdbsrahbl" path="res://textures/objects/stuhl.png" id="13_lkot5"]
 [ext_resource type="Texture2D" uid="uid://b3vyqsubrejif" path="res://textures/objects/Tisch.png" id="14_7qv6w"]
 [ext_resource type="Texture2D" uid="uid://dw8xtit7mx3lt" path="res://textures/objects/wasserspender.png" id="15_7j72m"]
+[ext_resource type="Texture2D" uid="uid://ch16rhw07kyfe" path="res://textures/objects/schild_wilkommen_informatik.png" id="15_iuyns"]
 [ext_resource type="Texture2D" uid="uid://82gndhh41l5j" path="res://textures/objects/whiteboard.png" id="16_tai57"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_djm7w"]
+size = Vector2(36, 12)
 
 [sub_resource type="Gradient" id="Gradient_b5uin"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -72,29 +77,10 @@ texture = ExtResource("7_xa63k")
 position = Vector2(1, -2)
 polygon = PackedVector2Array(383, 121, 379, 123, 380, 124, 383, 126, 387, 125, 389, 123, 390, 121, 389, 118, 387, 119)
 
-[node name="schild_pfuetze" type="RigidBody2D" parent="objects"]
-position = Vector2(-200, 16)
-collision_layer = 4
-collision_mask = 4
-mass = 10.0
-gravity_scale = 0.0
-freeze_mode = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="objects/schild_pfuetze"]
-light_mask = 0
-position = Vector2(408, 117)
-scale = Vector2(0.0150576, 0.0159329)
-texture = ExtResource("8_w6ojj")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="objects/schild_pfuetze"]
-position = Vector2(1, -2)
-
 [node name="kaktus_abgebrochen" type="RigidBody2D" parent="objects"]
 position = Vector2(-100, 8)
 collision_layer = 4
 collision_mask = 4
-mass = 10.0
-gravity_scale = 0.0
 freeze_mode = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="objects/kaktus_abgebrochen"]
@@ -102,10 +88,6 @@ light_mask = 0
 position = Vector2(408, 117)
 scale = Vector2(0.0150576, 0.0159329)
 texture = ExtResource("8_w6ojj")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="objects/kaktus_abgebrochen"]
-position = Vector2(1, -2)
-polygon = PackedVector2Array(381, 112, 379, 111, 378, 110, 376, 111, 376, 113, 377, 115, 382, 117, 383, 127, 381, 128, 380, 129, 381, 131, 382, 136, 384, 137, 387, 137, 389, 136, 390, 130, 391, 128, 389, 127, 389, 118, 391, 117, 390, 113, 389, 113, 389, 109, 388, 107, 387, 106, 386, 104, 385, 104, 383, 105, 382, 107, 383, 108, 382, 110)
 
 [node name="kaktusse" type="RigidBody2D" parent="objects"]
 position = Vector2(-200, 16)
@@ -123,12 +105,12 @@ texture = ExtResource("9_xem4x")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="objects/kaktusse"]
 position = Vector2(1, -2)
+polygon = PackedVector2Array(481, 104, 480, 103, 478, 102, 476, 103, 476, 106, 478, 108, 482, 109, 483, 119, 481, 120, 480, 121, 481, 123, 482, 129, 484, 129, 489, 129, 491, 122, 491, 120, 489, 119, 489, 110, 491, 109, 491, 105, 489, 105, 489, 101, 488, 99, 487, 98, 486, 96, 485, 96, 483, 97, 482, 100, 482, 104)
 
 [node name="pfuetze" type="RigidBody2D" parent="objects"]
 position = Vector2(-200, 16)
-collision_layer = 4
+collision_layer = 2
 collision_mask = 4
-mass = 10.0
 gravity_scale = 0.0
 freeze_mode = 1
 
@@ -137,6 +119,28 @@ light_mask = 0
 position = Vector2(510, 157)
 scale = Vector2(0.0350877, 0.0302144)
 texture = ExtResource("9_jhu38")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="objects/pfuetze"]
+position = Vector2(507, 174)
+shape = SubResource("RectangleShape2D_djm7w")
+
+[node name="schild_pfuetze" type="RigidBody2D" parent="objects"]
+position = Vector2(-200, 16)
+collision_layer = 4
+collision_mask = 4
+mass = 10.0
+gravity_scale = 0.0
+freeze_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="objects/schild_pfuetze"]
+light_mask = 0
+position = Vector2(524, 156)
+scale = Vector2(0.0300802, 0.0322483)
+texture = ExtResource("7_d45sl")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="objects/schild_pfuetze"]
+position = Vector2(1, -2)
+polygon = PackedVector2Array(514, 175, 517, 166, 522, 165, 524, 174, 519, 176, 519, 174)
 
 [node name="regal" type="RigidBody2D" parent="objects"]
 position = Vector2(-400, 32)
@@ -254,21 +258,21 @@ position = Vector2(1996, 115)
 scale = Vector2(0.0195586, 0.0170439)
 texture = ExtResource("12_gd26y")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="objects/boxenturm"]
-position = Vector2(878.7, -50.4025)
-polygon = PackedVector2Array(1088.3, 158.403, 1076.3, 158.403, 1074.3, 159.403, 1074.3, 170.403, 1116.3, 170.403, 1121.3, 166.403, 1120.3, 140.403, 1120.3, 131.403, 1118.3, 133.403, 1106.3, 133.403, 1105.3, 134.403, 1105.3, 141.403, 1102.3, 144.403, 1101.3, 145.403, 1092.3, 145.403, 1091.3, 146.403, 1090.3, 155.403)
-
 [node name="Sprite2D2" type="Sprite2D" parent="objects/boxenturm"]
 light_mask = 0
 position = Vector2(1996, 102)
 scale = Vector2(0.0191598, 0.0174984)
 texture = ExtResource("12_gd26y")
 
-[node name="Sprite2D2" type="Sprite2D" parent="objects/boxenturm/Sprite2D2"]
+[node name="Sprite2D6" type="Sprite2D" parent="objects/boxenturm"]
 light_mask = 0
-position = Vector2(3.8147e-05, -685.778)
-scale = Vector2(0.793013, 0.774339)
+position = Vector2(1996, 90)
+scale = Vector2(0.015194, 0.0135497)
 texture = ExtResource("12_gd26y")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="objects/boxenturm"]
+position = Vector2(878.7, -50.4025)
+polygon = PackedVector2Array(1088.3, 158.403, 1076.3, 158.403, 1074.3, 159.403, 1074.3, 170.403, 1116.3, 170.403, 1121.3, 166.403, 1120.3, 140.403, 1120.3, 131.403, 1118.3, 133.403, 1106.3, 133.403, 1105.3, 134.403, 1105.3, 141.403, 1102.3, 144.403, 1101.3, 145.403, 1092.3, 145.403, 1091.3, 146.403, 1090.3, 155.403)
 
 [node name="stuhl" type="RigidBody2D" parent="objects"]
 position = Vector2(-1600, 128)
@@ -360,6 +364,21 @@ texture = ExtResource("16_tai57")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="objects/whiteboard"]
 position = Vector2(1039.42, -111)
 polygon = PackedVector2Array(12334.6, -748, 12334.6, -720, 12332.6, -721, 12333.6, -723, 12333.6, -748, 12323.6, -757, 12324.6, -758)
+
+[node name="wilkommensschild" type="RigidBody2D" parent="objects"]
+position = Vector2(-25600, 2048)
+collision_layer = 4
+collision_mask = 4
+mass = 10.0
+gravity_scale = 0.0
+freeze_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="objects/wilkommensschild"]
+light_mask = 0
+position = Vector2(25888.3, -1988.77)
+scale = Vector2(-0.0339681, 0.0225397)
+texture = ExtResource("15_iuyns")
+flip_h = true
 
 [node name="Player" parent="." node_paths=PackedStringArray("respawn_marker") instance=ExtResource("1_hg5f1")]
 position = Vector2(346, 78)
