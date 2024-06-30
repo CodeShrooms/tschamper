@@ -53,6 +53,7 @@ respawn_marker = NodePath("../RespawnMarker")
 remote_path = NodePath("../../Camera2D")
 
 [node name="PointLight2D2" type="PointLight2D" parent="Player"]
+visible = false
 position = Vector2(0, 1)
 scale = Vector2(1.33888, 1.33888)
 energy = 0.7
