@@ -197,10 +197,88 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 30.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 200.0,
+"texture": ExtResource("20_f1nf6")
 }],
 "loop": true,
 "name": &"shoot_stand",
-"speed": 5.0
+"speed": 7.5
 }, {
 "frames": [{
 "duration": 1.0,
@@ -602,7 +680,7 @@ texture_filter = 2
 position = Vector2(-1, 1.5)
 scale = Vector2(0.026616, 0.0224607)
 sprite_frames = SubResource("SpriteFrames_npxjt")
-animation = &"walk"
+animation = &"shoot_stand"
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture_filter = 2

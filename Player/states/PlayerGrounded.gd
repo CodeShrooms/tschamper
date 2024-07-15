@@ -1,6 +1,7 @@
 class_name PlayerGrounded
 extends PlayerState
 
+
 func enter():
 	super.enter()
 
@@ -23,10 +24,18 @@ func Physics_Update(_delta: float):
 
 	# update direction of sprite
 	update_facing_direction()
+	
+
 
 	# update animation
 	if player.direction.x != 0:
-		player.animated_sprite.play("walk")
+		if Input.is_action_just_pressed("shoot"):
+			player.animated_sprite.play("shoot_walk")
+		else:
+			player.animated_sprite.play("walk")
 	else:
-		player.animated_sprite.play("idle")
+		if Input.is_action_just_pressed("shoot"):
+			player.animated_sprite.play("shoot_stand")
+		else:
+			player.animated_sprite.play("idle")
 
