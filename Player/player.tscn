@@ -680,7 +680,7 @@ texture_filter = 2
 position = Vector2(-1, 1.5)
 scale = Vector2(0.026616, 0.0224607)
 sprite_frames = SubResource("SpriteFrames_npxjt")
-animation = &"shoot_stand"
+animation = &"talking"
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture_filter = 2
