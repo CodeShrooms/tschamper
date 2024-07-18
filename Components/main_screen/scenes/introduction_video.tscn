@@ -18,6 +18,7 @@ layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1088.0
 stream = ExtResource("2_mt2q5")
+expand = true
 
 [node name="SkipIntroButton" type="Button" parent="."]
 layout_mode = 0
