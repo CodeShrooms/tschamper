@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://ey2jg8v5g8ld"]
+
+[ext_resource type="Script" path="res://Weapon/Area2D.gd" id="1_m1ql6"]
+[ext_resource type="Texture2D" uid="uid://d2ns86vlggud6" path="res://Weapon/boooooom.png" id="2_q32tu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mya0b"]
+radius = 3.44828
+height = 6.89693
+
+[node name="Tacker" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 14
+collision_mask = 14
+script = ExtResource("1_m1ql6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+position = Vector2(0, 0.7)
+scale = Vector2(0.005, 0.00442308)
+texture = ExtResource("2_q32tu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(0.29, 0.29)
+skew = -0.010472
+shape = SubResource("CapsuleShape2D_mya0b")
+
+[connection signal="area_shape_entered" from="Area2D" to="Area2D" method="_on_area_shape_entered"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

@@ -17,11 +17,15 @@ signal update_lives(lives, max_lives)
 
 var direction : Vector2 = Vector2.ZERO
 
+#Shooting
+@export var speed = 200
+@export var shootenabler= 1    #to activate (1) and deactivate shooting 
 
 func _physics_process(_delta):
 	# the State Machine alters direction and velocity, updates animation
 	# implicit return made explicit
 	var _body_collided = move_and_slide()
+	getInput()
 
 
 # Functions that deal with the player dying
@@ -50,6 +54,19 @@ func take_damage(hit_damage: int):
 		# if taken to much damage the die function is called
 	if current_life <= 0:
 		die()
+		
+#shoot & input 
+func shoot():
+	var bullet = preload("res://Weapon/tacker.tscn").instantiate()
+	get_tree().root.add_child(bullet)
+	bullet.transform = $Muzzle.global_transform
+	
+ 
+func getInput():
+	if (shootenabler==1):
+		if Input.is_action_just_pressed("shoot"):
+			shoot()
+			
 
 # Weiterleitung eines Befehls in die Player StateMachine
 func force_state(state_name):

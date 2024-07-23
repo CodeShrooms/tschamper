@@ -34,7 +34,7 @@ corner_radius_bottom_left = 10
 [sub_resource type="Theme" id="Theme_h62eu"]
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_o6cvu")
 
-[node name="Testmob" type="CharacterBody2D"]
+[node name="Testmob" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_ae130")
@@ -44,8 +44,10 @@ scale = Vector2(0.091931, 0.091931)
 sprite_frames = SubResource("SpriteFrames_n5k57")
 frame_progress = 0.407295
 
-[node name="DamageArea" type="Area2D" parent="."]
+[node name="DamageArea" type="Area2D" parent="." groups=["Enemy"]]
 position = Vector2(0, -21)
+collision_layer = 3
+collision_mask = 3
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
@@ -89,4 +91,5 @@ theme_override_font_sizes/font_size = 33
 script = ExtResource("6_sykyl")
 
 [connection signal="update_lives" from="." to="ProgressBar" method="_on_testmob_update_lives"]
+[connection signal="area_shape_entered" from="DamageArea" to="." method="_on_damage_area_area_shape_entered"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_area_2d_body_entered"]

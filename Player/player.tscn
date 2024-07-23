@@ -1,4 +1,4 @@
-[gd_scene load_steps=134 format=3 uid="uid://cj2i5rtsdrvne"]
+[gd_scene load_steps=135 format=3 uid="uid://cj2i5rtsdrvne"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_iu520"]
 [ext_resource type="Texture2D" uid="uid://ck8juj87wvpx" path="res://textures/mechanic/idel/frame0000.png" id="2_7x31n"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://db24mj4kbulah" path="res://textures/mechanic/idel/frame0003.png" id="5_ph7nc"]
 [ext_resource type="Script" path="res://Player/states/PlayerGrounded.gd" id="5_ups8r"]
 [ext_resource type="Texture2D" uid="uid://lmiyu4qq1735" path="res://textures/mechanic/idel/frame0004.png" id="6_54kpj"]
+[ext_resource type="Script" path="res://Player/Muzzle.gd" id="6_bcnvj"]
 [ext_resource type="Script" path="res://Player/states/PlayerAirborne.gd" id="6_ys6kv"]
 [ext_resource type="Texture2D" uid="uid://bwl15feig4p50" path="res://textures/mechanic/idel/frame0005.png" id="7_rw0v7"]
 [ext_resource type="Script" path="res://Player/flashlight.gd" id="7_yda4i"]
@@ -196,10 +197,88 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 30.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f1nf6")
+}, {
+"duration": 200.0,
+"texture": ExtResource("20_f1nf6")
 }],
 "loop": true,
 "name": &"shoot_stand",
-"speed": 5.0
+"speed": 7.5
 }, {
 "frames": [{
 "duration": 1.0,
@@ -601,7 +680,7 @@ texture_filter = 2
 position = Vector2(-1, 1.5)
 scale = Vector2(0.026616, 0.0224607)
 sprite_frames = SubResource("SpriteFrames_npxjt")
-animation = &"walk"
+animation = &"talking"
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture_filter = 2
@@ -618,6 +697,10 @@ script = ExtResource("7_yda4i")
 [node name="CollisionBody" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_v1nkg")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(6, 3)
+script = ExtResource("6_bcnvj")
 
 [node name="dash" parent="." instance=ExtResource("4_1s46o")]
 unique_name_in_owner = true
